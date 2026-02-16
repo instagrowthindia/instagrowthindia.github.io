@@ -11,52 +11,82 @@ margin:0;
 font-family:Arial, sans-serif;
 }
 
-/* -------- LOGIN PAGE -------- */
+/* ---------- LOGIN SCREEN ---------- */
 
 .login-page{
 height:100vh;
+background:#f3f3f3;
 display:flex;
 justify-content:center;
 align-items:center;
-background:#f3f3f3;
-flex-direction:column;
 }
 
-.login-box{
+.login-card{
 background:white;
 width:90%;
 max-width:400px;
 padding:30px;
-border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
+border-radius:25px;
+box-shadow:0 15px 40px rgba(0,0,0,0.1);
 text-align:center;
 }
 
-.login-box h2{
+.logo{
+display:flex;
+justify-content:center;
+align-items:center;
 margin-bottom:15px;
 }
 
-.login-box input{
+.logo-box{
+width:40px;
+height:40px;
+background:linear-gradient(45deg,#ff7a00,#ff006a);
+border-radius:12px;
+margin-right:8px;
+}
+
+.logo-text{
+font-size:22px;
+font-weight:bold;
+}
+
+.logo-text span{
+color:#ff006a;
+}
+
+.login-card h2{
+margin-top:15px;
+font-size:22px;
+}
+
+.login-card p{
+color:#666;
+font-size:14px;
+margin:10px 0 20px;
+}
+
+.login-card input{
 width:100%;
-padding:12px;
-border-radius:10px;
-border:1px solid #ccc;
-margin:15px 0;
-font-size:16px;
+padding:14px;
+border-radius:12px;
+border:1px solid #ddd;
+font-size:15px;
+margin-bottom:15px;
 }
 
 .login-btn{
-background:linear-gradient(45deg,#ff7a00,#ff006a);
-color:white;
-border:none;
-padding:12px;
 width:100%;
-border-radius:10px;
+padding:14px;
+border:none;
+border-radius:12px;
 font-size:16px;
+color:white;
+background:linear-gradient(45deg,#ff7a00,#ff006a);
 cursor:pointer;
 }
 
-/* -------- MAIN PAGE -------- */
+/* ---------- MAIN PAGE ---------- */
 
 .main-page{
 display:none;
@@ -86,7 +116,7 @@ display:inline-block;
 margin:10px 0;
 }
 
-button.buy{
+.buy{
 background:#ff1744;
 color:white;
 border:none;
@@ -95,7 +125,7 @@ border-radius:10px;
 cursor:pointer;
 }
 
-/* -------- POPUP -------- */
+/* ---------- POPUP ---------- */
 
 .popup{
 display:none;
@@ -156,10 +186,20 @@ display:none;
 
 <!-- LOGIN PAGE -->
 <div class="login-page" id="loginPage">
-<div class="login-box">
+<div class="login-card">
+
+<div class="logo">
+<div class="logo-box"></div>
+<div class="logo-text">Insta<span>Grow</span></div>
+</div>
+
 <h2>Get Instagram Followers</h2>
+<p>Enter your Instagram username to continue</p>
+
 <input type="text" id="usernameInput" placeholder="@username">
+
 <button class="login-btn" onclick="continueSite()">Get Instagram Followers</button>
+
 </div>
 </div>
 
