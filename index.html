@@ -3,102 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Instagram Followers</title>
+<title>Today Big Offer</title>
 
 <style>
 body{
 margin:0;
 font-family:Arial, sans-serif;
-}
-
-/* ---------- LOGIN SCREEN ---------- */
-
-.login-page{
-height:100vh;
-background:#f3f3f3;
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-.login-card{
-background:white;
-width:90%;
-max-width:400px;
-padding:30px;
-border-radius:25px;
-box-shadow:0 15px 40px rgba(0,0,0,0.1);
-text-align:center;
-}
-
-.logo{
-display:flex;
-justify-content:center;
-align-items:center;
-margin-bottom:15px;
-}
-
-.logo-box{
-width:40px;
-height:40px;
-background:linear-gradient(45deg,#ff7a00,#ff006a);
-border-radius:12px;
-margin-right:8px;
-}
-
-.logo-text{
-font-size:22px;
-font-weight:bold;
-}
-
-.logo-text span{
-color:#ff006a;
-}
-
-.login-card h2{
-margin-top:15px;
-font-size:22px;
-}
-
-.login-card p{
-color:#666;
-font-size:14px;
-margin:10px 0 20px;
-}
-
-.login-card input{
-width:100%;
-padding:14px;
-border-radius:12px;
-border:1px solid #ddd;
-font-size:15px;
-margin-bottom:15px;
-}
-
-.login-btn{
-width:100%;
-padding:14px;
-border:none;
-border-radius:12px;
-font-size:16px;
-color:white;
-background:linear-gradient(45deg,#ff7a00,#ff006a);
-cursor:pointer;
-}
-
-/* ---------- MAIN PAGE ---------- */
-
-.main-page{
-display:none;
 background:linear-gradient(135deg,#a100ff,#ff6a00);
 color:white;
-min-height:100vh;
 text-align:center;
-padding-bottom:50px;
 }
 
 h1{
 padding:20px;
+font-size:28px;
 }
 
 .box{
@@ -114,18 +32,24 @@ padding:10px 20px;
 border-radius:10px;
 display:inline-block;
 margin:10px 0;
+font-size:18px;
 }
 
-.buy{
+button{
 background:#ff1744;
 color:white;
 border:none;
 padding:12px 25px;
 border-radius:10px;
+font-size:16px;
 cursor:pointer;
 }
 
-/* ---------- POPUP ---------- */
+button:hover{
+background:#d50000;
+}
+
+/* Popup */
 
 .popup{
 display:none;
@@ -147,14 +71,13 @@ max-width:350px;
 border-radius:20px;
 padding:20px;
 position:relative;
-text-align:center;
 }
 
 .close{
 position:absolute;
 top:10px;
 right:15px;
-font-size:22px;
+font-size:25px;
 color:red;
 cursor:pointer;
 }
@@ -165,12 +88,13 @@ margin:15px auto;
 display:block;
 }
 
-.popup input{
+input{
 width:90%;
 padding:10px;
 margin:8px 0;
 border-radius:8px;
 border:1px solid #ccc;
+font-size:14px;
 }
 
 .success{
@@ -179,68 +103,68 @@ font-weight:bold;
 margin-top:10px;
 display:none;
 }
+
+.error{
+color:red;
+font-weight:bold;
+margin-top:10px;
+display:none;
+}
+
+.features{
+margin-top:15px;
+font-size:15px;
+line-height:1.6;
+}
+.features p{
+margin:5px 0;
+}
 </style>
 </head>
 
 <body>
-
-<!-- LOGIN PAGE -->
-<div class="login-page" id="loginPage">
-<div class="login-card">
-
-<div class="logo">
-<div class="logo-box"></div>
-<div class="logo-text">Insta<span>Grow</span></div>
-</div>
-
-<h2>Get Instagram Followers</h2>
-<p>Enter your Instagram username to continue</p>
-
-<input type="text" id="usernameInput" placeholder="@username">
-
-<button class="login-btn" onclick="continueSite()">Get Instagram Followers</button>
-
-</div>
-</div>
-
-<!-- MAIN PAGE -->
-<div class="main-page" id="mainPage">
 
 <h1>🚀 TODAY BIG OFFER 🚀</h1>
 
 <div class="box">
 <h2>1K Instagram Followers</h2>
 <div class="price">₹150</div><br>
-<button class="buy" onclick="openPopup()">Buy Now</button>
+<button onclick="openPopup()">Buy Now</button>
 </div>
 
 <div class="box">
 <h2>2K Instagram Followers</h2>
 <div class="price">₹200</div><br>
-<button class="buy" onclick="openPopup()">Buy Now</button>
+<button onclick="openPopup()">Buy Now</button>
 </div>
 
 <div class="box">
 <h2>3K Instagram Followers</h2>
 <div class="price">₹300</div><br>
-<button class="buy" onclick="openPopup()">Buy Now</button>
+<button onclick="openPopup()">Buy Now</button>
 </div>
 
 <div class="box">
 <h2>5K Instagram Followers</h2>
 <div class="price">₹350</div><br>
-<button class="buy" onclick="openPopup()">Buy Now</button>
+<button onclick="openPopup()">Buy Now</button>
 </div>
 
 <div class="box">
 <h2>10K Instagram Followers</h2>
 <div class="price">₹450</div><br>
-<button class="buy" onclick="openPopup()">Buy Now</button>
-</div>
+<button onclick="openPopup()">Buy Now</button>
 
+<div class="features">
+<p>🇮🇳✨ Real Indian Followers</p>
+<p>🛡️🔒 Non-Drop Permanent Followers</p>
+<p>♾️✅ Lifetime Guaranteed</p>
+<p>⚡⏱️ Delivery Time: 10-30 Minutes</p>
+</div>
 </div>
 
 <!-- POPUP -->
+
 <div class="popup" id="popup">
 <div class="popup-content">
 
@@ -250,12 +174,17 @@ display:none;
 
 <img src="qr.png" class="qr-img">
 
-<h4>After Payment Enter Details</h4>
+<h4>After Payment Enter Details Below</h4>
 
-<input type="text" id="utrInput" placeholder="Enter UTR Number">
-<input type="text" id="instaInput" placeholder="Enter Instagram Link or Username">
+<input type="text" id="utr" placeholder="Enter UTR Number">
+<input type="text" id="insta" placeholder="Enter Instagram Link or Username">
 
-<button class="buy" onclick="submitOrder()">Submit</button>
+<br>
+<button onclick="submitOrder()">Submit</button>
+
+<div class="error" id="errorMsg">
+Please Fill All Details ❌
+</div>
 
 <div class="success" id="successMsg">
 Order Checking ✅ <br>
@@ -267,16 +196,6 @@ Wait 1-2 Hour
 
 <script>
 
-function continueSite(){
-var user = document.getElementById("usernameInput").value;
-if(user === ""){
-alert("Please Enter Instagram Username/link");
-return;
-}
-document.getElementById("loginPage").style.display="none";
-document.getElementById("mainPage").style.display="block";
-}
-
 function openPopup(){
 document.getElementById("popup").style.display="flex";
 }
@@ -284,22 +203,24 @@ document.getElementById("popup").style.display="flex";
 function closePopup(){
 document.getElementById("popup").style.display="none";
 document.getElementById("successMsg").style.display="none";
+document.getElementById("errorMsg").style.display="none";
 }
 
 function submitOrder(){
-var utr = document.getElementById("utrInput").value;
-var insta = document.getElementById("instaInput").value;
+
+var utr = document.getElementById("utr").value.trim();
+var insta = document.getElementById("insta").value.trim();
 
 if(utr === "" || insta === ""){
-alert("Please Fill All Details");
-return;
-}
-
+document.getElementById("errorMsg").style.display="block";
+document.getElementById("successMsg").style.display="none";
+}else{
 document.getElementById("successMsg").style.display="block";
+document.getElementById("errorMsg").style.display="none";
+}
 }
 
 </script>
 
 </body>
   </html>
-
