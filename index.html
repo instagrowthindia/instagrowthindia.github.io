@@ -49,8 +49,6 @@ button:hover{
 background:#d50000;
 }
 
-/* Popup */
-
 .popup{
 display:none;
 position:fixed;
@@ -110,15 +108,6 @@ font-weight:bold;
 margin-top:10px;
 display:none;
 }
-
-.features{
-margin-top:15px;
-font-size:15px;
-line-height:1.6;
-}
-.features p{
-margin:5px 0;
-}
 </style>
 </head>
 
@@ -127,43 +116,10 @@ margin:5px 0;
 <h1>🚀 TODAY BIG OFFER 🚀</h1>
 
 <div class="box">
-<h2>1K Instagram Followers</h2>
-<div class="price">₹150</div><br>
+<h2>Instagram Followers Packages</h2>
+<div class="price">Starting ₹150</div><br>
 <button onclick="openPopup()">Buy Now</button>
 </div>
-
-<div class="box">
-<h2>2K Instagram Followers</h2>
-<div class="price">₹200</div><br>
-<button onclick="openPopup()">Buy Now</button>
-</div>
-
-<div class="box">
-<h2>3K Instagram Followers</h2>
-<div class="price">₹300</div><br>
-<button onclick="openPopup()">Buy Now</button>
-</div>
-
-<div class="box">
-<h2>5K Instagram Followers</h2>
-<div class="price">₹350</div><br>
-<button onclick="openPopup()">Buy Now</button>
-</div>
-
-<div class="box">
-<h2>10K Instagram Followers</h2>
-<div class="price">₹450</div><br>
-<button onclick="openPopup()">Buy Now</button>
-
-<div class="features">
-<p>🇮🇳✨ Real Indian Followers</p>
-<p>🛡️🔒 Non-Drop Permanent Followers</p>
-<p>♾️✅ Lifetime Guaranteed</p>
-<p>⚡⏱️ Delivery Time: 10-30 Minutes</p>
-</div>
-</div>
-
-<!-- POPUP -->
 
 <div class="popup" id="popup">
 <div class="popup-content">
@@ -187,8 +143,6 @@ Please Fill All Details ❌
 </div>
 
 <div class="success" id="successMsg">
-Order Checking ✅ <br>
-Wait 1-2 Hour
 </div>
 
 </div>
@@ -214,13 +168,47 @@ var insta = document.getElementById("insta").value.trim();
 if(utr === "" || insta === ""){
 document.getElementById("errorMsg").style.display="block";
 document.getElementById("successMsg").style.display="none";
-}else{
+return;
+}
+
+var orderId = "ORD" + Date.now();
+
+var botToken = "8534138878:AAG3uCNq5tBYKxpwduZ YbPTXYDh3fmHRtJk";
+var chatId = "8513793478";
+
+var message =
+"🔥 NEW ORDER RECEIVED 🔥\n\n" +
+"🆔 Order ID: " + orderId + "\n" +
+"💳 UTR: " + utr + "\n" +
+"📸 Instagram: " + insta;
+
+fetch("https://api.telegram.org/bot" + botToken + "/sendMessage", {
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify({
+chat_id: chatId,
+text: message
+})
+})
+.then(response => response.json())
+.then(data => {
+
+document.getElementById("successMsg").innerHTML =
+"✅ Order Placed Successfully<br><br>Your Order ID: <b>" + orderId + "</b>";
+
 document.getElementById("successMsg").style.display="block";
 document.getElementById("errorMsg").style.display="none";
-}
+
+})
+.catch(error => {
+alert("Error sending to Telegram");
+});
+
 }
 
 </script>
 
 </body>
-  </html>
+</html>
