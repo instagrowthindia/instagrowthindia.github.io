@@ -2,13 +2,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Today Big Offer</title>
 
 <style>
+
 html,body{
 margin:0;
 padding:0;
+overflow-x:hidden;
+width:100%;
 font-family:'Segoe UI',sans-serif;
 background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);
 background-size:400% 400%;
@@ -23,7 +26,12 @@ text-align:center;
 100%{background-position:0% 50%;}
 }
 
-h1{padding:25px;font-size:26px;}
+h1{
+padding:25px 10px 15px 10px;
+font-size:26px;
+letter-spacing:2px;
+white-space:nowrap;
+}
 
 .card{
 background:linear-gradient(135deg,#7b1fa2,#c2185b);
@@ -33,6 +41,11 @@ border-radius:30px;
 box-shadow:0 15px 40px rgba(0,0,0,0.4);
 width:90%;
 max-width:420px;
+}
+
+.card h2{
+font-size:22px;
+margin-bottom:15px;
 }
 
 .price{
@@ -53,8 +66,16 @@ border-radius:20px;
 font-size:20px;
 color:white;
 cursor:pointer;
+box-shadow:0 8px 20px rgba(0,0,0,0.3);
 }
 
+.features{
+margin-top:20px;
+font-size:16px;
+line-height:30px;
+}
+
+/* POPUP */
 .popup{
 display:none;
 position:fixed;
@@ -62,7 +83,9 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:white;
+background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);
+background-size:400% 400%;
+animation:glowBG 8s ease infinite;
 overflow-y:auto;
 z-index:999;
 color:black;
@@ -71,7 +94,47 @@ color:black;
 .popup-content{
 max-width:420px;
 margin:auto;
-padding:20px;
+padding-bottom:40px;
+}
+
+.popup-header{
+background:#e60000;
+color:white;
+padding:22px;
+font-size:22px;
+font-weight:bold;
+}
+
+.packageBox{
+background:white;
+padding:25px;
+border-radius:20px;
+margin:20px;
+}
+
+.qr-img{
+width:230px;
+margin:20px auto;
+display:block;
+}
+
+.stepBox{
+background:#e8f0fe;
+margin:15px 0;
+padding:15px;
+border-radius:15px;
+text-align:left;
+font-size:16px;
+}
+
+.timerBox{
+background:#fff3cd;
+border:2px dashed orange;
+padding:15px;
+margin:15px 0;
+border-radius:15px;
+font-weight:bold;
+color:#ff6f00;
 }
 
 input{
@@ -80,6 +143,7 @@ padding:14px;
 margin:15px 0;
 border-radius:12px;
 border:1px solid #ccc;
+font-size:15px;
 }
 
 .paymentBtn{
@@ -93,10 +157,24 @@ cursor:pointer;
 width:95%;
 }
 
+.backBtn{
+background:#ccc;
+border:none;
+padding:12px;
+border-radius:15px;
+font-size:16px;
+margin-top:10px;
+width:95%;
+cursor:pointer;
+}
+
 .error{
 color:red;
+font-weight:bold;
+margin-top:10px;
 display:none;
 }
+
 </style>
 </head>
 
@@ -104,37 +182,90 @@ display:none;
 
 <h1>🚀 TODAY BIG OFFER 🚀</h1>
 
+<!-- DEMO PACKAGE -->
 <div class="card">
-<h2>100 Instagram Followers (DEMO)</h2>
+<h2>100 Instagram Followers(DEMO)</h2>
 <div class="price">₹20</div><br>
-<button class="buyBtn" onclick="openPopup('100 Followers DEMO','₹20')">Buy Now</button>
+<button class="buyBtn" onclick="openPopup('100 Instagram Followers(DEMO)','₹20','demoqr.png')">Buy Now</button>
 </div>
 
+<!-- MAIN PACKAGES -->
 <div class="card">
 <h2>1K Instagram Followers</h2>
 <div class="price">₹150</div><br>
-<button class="buyBtn" onclick="openPopup('1K Followers','₹150')">Buy Now</button>
+<button class="buyBtn" onclick="openPopup('1K Instagram Followers','₹150','qr.png')">Buy Now</button>
 </div>
 
+<div class="card">
+<h2>2K Instagram Followers</h2>
+<div class="price">₹200</div><br>
+<button class="buyBtn" onclick="openPopup('2K Instagram Followers','₹200','qr.png')">Buy Now</button>
+</div>
+
+<div class="card">
+<h2>3K Instagram Followers</h2>
+<div class="price">₹300</div><br>
+<button class="buyBtn" onclick="openPopup('3K Instagram Followers','₹300','qr.png')">Buy Now</button>
+</div>
+
+<div class="card">
+<h2>5K Instagram Followers</h2>
+<div class="price">₹350</div><br>
+<button class="buyBtn" onclick="openPopup('5K Instagram Followers','₹350','qr.png')">Buy Now</button>
+</div>
+
+<div class="card">
+<h2>10K Instagram Followers</h2>
+<div class="price">₹450</div><br>
+<button class="buyBtn" onclick="openPopup('10K Instagram Followers','₹450','qr.png')">Buy Now</button>
+
+<div class="features">
+🇮🇳 Real Indian Followers <br>
+🔒 Non-Drop Permanent <br>
+♾ Lifetime Guaranteed <br>
+⚡ 10–30 Minutes Delivery
+</div>
+</div>
+
+<!-- POPUP -->
 <div class="popup" id="popup">
 <div class="popup-content">
+<div class="popup-header">Complete Your Payment</div>
+<div class="packageBox">
+
 <h2 id="popupTitle"></h2>
 <h3 id="popupPrice" style="color:red;"></h3>
 
-<p>Scan & Complete Payment</p>
+<img id="qrImage" class="qr-img">
+
+<div class="stepBox"><b>Step 1:</b> Scan & Make Payment</div>
+<div class="stepBox"><b>Step 2:</b> Enter Instagram Link After Payment</div>
+<div class="stepBox"><b>Step 3:</b> Click On Payment Done</div>
+
+<div class="timerBox">⏳ Offer Ends In: <span id="timer">10:00</span></div>
 
 <input type="text" id="insta" placeholder="Enter Instagram Link">
 <button class="paymentBtn" onclick="submitOrder()">Payment Done</button>
+<button class="backBtn" onclick="closePopup()">Back To Packages</button>
+
 <div class="error" id="errorMsg">Please Enter Instagram Link</div>
 
 </div>
 </div>
+</div>
 
 <script>
-function openPopup(title,price){
+
+function openPopup(title,price,qr){
 document.getElementById("popupTitle").innerText=title;
 document.getElementById("popupPrice").innerText=price;
+document.getElementById("qrImage").src=qr;
 document.getElementById("popup").style.display="block";
+startTimer();
+}
+
+function closePopup(){
+document.getElementById("popup").style.display="none";
 }
 
 function submitOrder(){
@@ -143,42 +274,63 @@ if(insta==""){
 document.getElementById("errorMsg").style.display="block";
 return;
 }
-
 var orderId="TG-"+Math.random().toString(36).substr(2,9).toUpperCase();
 
 document.body.innerHTML=`
-<div style="min-height:100vh;text-align:center;padding:50px 20px;
-background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);
-color:white;font-family:'Segoe UI',sans-serif;">
+<div style="background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);
+background-size:400% 400%;
+animation:glowBG 8s ease infinite;
+min-height:100vh;
+text-align:center;
+padding:50px 20px;
+font-family:'Segoe UI',sans-serif;
+color:white;">
 
 <div style="width:150px;height:150px;background:#28a745;border-radius:50%;
 margin:40px auto;display:flex;align-items:center;justify-content:center;">
-<span style="font-size:75px;font-weight:bold;">✓</span>
+<span style="color:white;font-size:75px;font-weight:bold;">✓</span>
 </div>
 
-<h1>Order Checking!</h1>
-<p>Please send payment screenshot & Instagram link on WhatsApp for verification.</p>
+<h1>Order cheking!</h1>
+<p>send me payment screenshot and instagram link on WhatsApp.</p>
 
 <div style="background:white;color:black;border-radius:25px;padding:30px;margin:30px auto;max-width:380px;">
 <div>Order ID</div>
 <div style="color:#dc3545;font-size:24px;font-weight:bold;">${orderId}</div>
 </div>
 
-<a href="https://wa.me/917258028139?text=Hello%20I%20have%20completed%20payment.%20My%20Order%20ID:%20${orderId}" target="_blank">
-<button style="padding:15px 40px;border:none;border-radius:30px;background:#25D366;color:white;font-size:16px;">
-Send Screenshot on WhatsApp
-</button>
-</a>
+<div style="background:#e9f7ef;border-radius:25px;padding:30px;margin:20px auto;max-width:380px;color:black;">
+<div>⚡ Delivery Timeline</div>
+<div style="color:#dc3545;font-size:22px;font-weight:bold;">Within 2 Hours</div>
+</div>
 
-<br><br>
-
-<button onclick="location.reload()" style="padding:15px 40px;border:none;border-radius:30px;background:#ccc;font-size:16px;">
-Back To Home
-</button>
+<button onclick="location.reload()" style="padding:15px 40px;border:none;border-radius:30px;background:#ccc;font-size:16px;">Back To Home</button>
 
 </div>`;
 }
+
+/* TIMER */
+var time=600;
+var countdown;
+
+function startTimer(){
+clearInterval(countdown);
+time=600;
+countdown=setInterval(function(){
+var m=Math.floor(time/60);
+var s=time%60;
+if(s<10){s="0"+s;}
+document.getElementById("timer").innerText=m+":"+s;
+time--;
+if(time<0){
+clearInterval(countdown);
+document.getElementById("timer").innerText="Expired";
+}
+},1000);
+}
+
 </script>
 
 </body>
-</html>
+  </html>
+
