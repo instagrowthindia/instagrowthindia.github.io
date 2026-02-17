@@ -18,18 +18,20 @@ text-align:center;
 /* HEADER */
 
 h1{
-padding:25px 10px 10px 10px;
-font-size:32px;
+padding:30px 10px 10px 10px;
+font-size:34px;
 letter-spacing:2px;
+white-space:nowrap;   /* FORCE SINGLE LINE */
 }
 
 /* DEMO TEXT */
 
 .demoText{
 color:#ff0000;
-font-size:18px;
-font-weight:bold;
-margin-bottom:15px;
+font-size:20px;
+font-weight:900;
+margin-bottom:20px;
+text-shadow:0 0 10px rgba(255,0,0,0.8);
 }
 
 /* PACKAGE CARD */
@@ -221,7 +223,7 @@ display:none;
 
 </div>
 
-<!-- PAYMENT POPUP -->
+<!-- POPUP -->
 
 <div class="popup" id="popup">
 <div class="popup-content">
@@ -286,82 +288,17 @@ return;
 
 var orderId="TG-"+Math.random().toString(36).substr(2,10).toUpperCase();
 
-/* SUCCESS PAGE */
-
 document.body.innerHTML=`
-<div style="
-background:linear-gradient(135deg,#f8f9fa,#e9ecef);
-min-height:100vh;
-font-family:'Segoe UI',sans-serif;
-text-align:center;
-padding:50px 20px;
-">
-
-<div style="
-width:150px;
-height:150px;
-background:linear-gradient(135deg,#28a745,#34ce57);
-border-radius:50%;
-margin:40px auto;
-display:flex;
-align-items:center;
-justify-content:center;
-box-shadow:0 20px 50px rgba(0,0,0,0.2);
-">
-
-<span style="color:white;font-size:75px;font-weight:bold;">✓</span>
-
-</div>
-
+<div style="background:#f8f9fa;min-height:100vh;text-align:center;padding:50px;">
+<div style="font-size:70px;color:#28a745;">✓</div>
 <h1 style="color:#28a745;">Order Received!</h1>
-<p style="color:#555;font-size:18px;">Payment Received Successfully.</p>
-
-<div style="
-background:white;
-border-radius:25px;
-padding:30px;
-margin:30px auto;
-max-width:380px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
-">
-<div style="color:#777;font-size:15px;">Order ID</div>
-<div style="color:#dc3545;font-size:24px;font-weight:bold;">${orderId}</div>
-</div>
-
-<div style="
-background:#e9f7ef;
-border-radius:25px;
-padding:30px;
-margin:20px auto;
-max-width:380px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
-">
-<div style="font-size:18px;">⚡ Delivery Timeline</div>
-<div style="color:#dc3545;font-size:22px;font-weight:bold;">Within 2 Hours</div>
-</div>
-
-<p style="color:#555;font-size:16px;">
-Your followers will be increased shortly.
-</p>
-
-<button onclick="location.reload()" 
-style="
-background:#ccc;
-padding:15px 40px;
-border:none;
-border-radius:30px;
-font-size:16px;
-margin-top:25px;
-cursor:pointer;
-">
-Back To Home
-</button>
-
+<p>Payment Received Successfully.</p>
+<h2 style="color:red;">${orderId}</h2>
+<p><b>Delivery Timeline:</b> Within 2 Hours</p>
+<button onclick="location.reload()">Back To Home</button>
 </div>
 `;
 }
-
-/* TIMER */
 
 var time=600;
 var countdown;
