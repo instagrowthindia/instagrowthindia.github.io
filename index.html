@@ -6,7 +6,6 @@
 <title>Today Big Offer</title>
 
 <style>
-
 body{
 margin:0;
 font-family:Arial, sans-serif;
@@ -44,10 +43,11 @@ padding:12px 25px;
 border-radius:10px;
 font-size:16px;
 cursor:pointer;
+margin-top:8px;
 }
 
-button:hover{
-background:#d50000;
+.backBtn{
+background:#888;
 }
 
 .popup{
@@ -66,7 +66,7 @@ align-items:center;
 background:white;
 color:black;
 width:90%;
-max-width:380px;
+max-width:350px;
 border-radius:20px;
 padding:20px;
 position:relative;
@@ -82,55 +82,32 @@ cursor:pointer;
 }
 
 .qr-img{
-width:220px;
+width:170px;
 margin:15px auto;
-border-radius:15px;
-}
-
-.step-box{
-background:#f1f1f1;
-padding:15px;
-border-radius:15px;
-margin:15px 0;
-font-size:14px;
-}
-
-.timer-box{
-margin:20px;
-padding:15px;
-border:2px dashed orange;
-border-radius:15px;
-background:#fff3e0;
-}
-
-.timer{
-display:flex;
-justify-content:center;
-gap:15px;
-margin-top:10px;
-}
-
-.timer div{
-background:#ff9800;
-color:white;
-padding:15px;
-border-radius:10px;
-font-size:14px;
+display:block;
 }
 
 input{
 width:90%;
-padding:12px;
+padding:10px;
 margin:10px 0;
-border-radius:10px;
+border-radius:8px;
 border:1px solid #ccc;
+font-size:14px;
 }
 
 .success{
 color:green;
-display:none;
-margin-top:10px;
 font-weight:bold;
+margin-top:10px;
+display:none;
+}
+
+.error{
+color:red;
+font-weight:bold;
+margin-top:10px;
+display:none;
 }
 
 </style>
@@ -140,107 +117,109 @@ font-weight:bold;
 
 <h1>🚀 TODAY BIG OFFER 🚀</h1>
 
+<!-- PACKAGES -->
+
+<div class="box">
+<h2>100 Instagram Followers (Demo)</h2>
+<div class="price">₹20</div>
+<button onclick="openPopup('100 Instagram Followers (Demo)','₹20','demoqr.png')">Buy Demo</button>
+</div>
+
 <div class="box">
 <h2>1K Instagram Followers</h2>
-<div class="price">₹149</div><br>
-<button onclick="openPopup('1K Instagram Followers','₹149')">Order Now</button>
+<div class="price">₹150</div>
+<button onclick="openPopup('1K Instagram Followers','₹150','qr.png')">Buy Now</button>
+</div>
+
+<div class="box">
+<h2>2K Instagram Followers</h2>
+<div class="price">₹200</div>
+<button onclick="openPopup('2K Instagram Followers','₹200','qr.png')">Buy Now</button>
+</div>
+
+<div class="box">
+<h2>3K Instagram Followers</h2>
+<div class="price">₹300</div>
+<button onclick="openPopup('3K Instagram Followers','₹300','qr.png')">Buy Now</button>
 </div>
 
 <div class="box">
 <h2>5K Instagram Followers</h2>
-<div class="price">₹249</div><br>
-<button onclick="openPopup('5K Instagram Followers','₹249')">Order Now</button>
+<div class="price">₹350</div>
+<button onclick="openPopup('5K Instagram Followers','₹350','qr.png')">Buy Now</button>
 </div>
 
 <div class="box">
-<h2>100 Followers (Demo)</h2>
-<div class="price">₹20</div><br>
-<button onclick="openPopup('100 Followers Demo','₹20')">Order Now</button>
+<h2>10K Instagram Followers</h2>
+<div class="price">₹450</div>
+<button onclick="openPopup('10K Instagram Followers','₹450','qr.png')">Buy Now</button>
 </div>
 
+<!-- POPUP -->
 
 <div class="popup" id="popup">
 <div class="popup-content">
 
 <span class="close" onclick="closePopup()">✖</span>
 
-<h2 id="packageTitle"></h2>
-<h3 id="packagePrice" style="color:red;"></h3>
+<h3 id="popupTitle"></h3>
+<h2 id="popupPrice" style="color:red;"></h2>
 
-<img src="YOUR_QR_IMAGE_LINK_HERE" class="qr-img">
+<img src="" id="qrImage" class="qr-img">
 
-<div class="step-box">
-<b>Step 1: Scan & Pay</b><br><br>
-Scan the QR code above and complete the payment.
-</div>
+<h4>Step 1: Scan & Pay</h4>
+<p>Scan the QR code above and complete the payment.</p>
 
-<div class="step-box">
-<b>Step 2: Submit Instagram Details</b><br><br>
-After completing the payment, put your Instagram link or username below and click <b>"Payment Done"</b>.
-</div>
-
-<div class="timer-box">
-<h3 style="color:#ff9800;">⏳ Special Offer Ends In:</h3>
-<div class="timer">
-<div><span id="minutes">10</span><br>Minutes</div>
-<div><span id="seconds">00</span><br>Seconds</div>
-</div>
-</div>
-
-<h3>After Payment Enter Instagram Details</h3>
+<h4>Step 2: Put Instagram Link</h4>
+<p>After payment, enter your Instagram link or username below and click <b>Payment Done</b>.</p>
 
 <input type="text" id="insta" placeholder="Enter Instagram Link or Username">
 
-<button onclick="submitOrder()">✔ Payment Done</button>
+<button onclick="submitOrder()">Payment Done</button>
 
-<p class="success" id="successMsg">
-✅ Payment Successful! Your order has been received.
-</p>
+<button class="backBtn" onclick="closePopup()">⬅ Back To Packages</button>
+
+<div class="error" id="errorMsg">
+Please Enter Instagram Link ❌
+</div>
+
+<div class="success" id="successMsg">
+Payment Received ✅ <br>
+Order Processing...
+</div>
 
 </div>
 </div>
 
 <script>
 
-function openPopup(title,price){
+function openPopup(title, price, qr){
+
+document.getElementById("popupTitle").innerText = title;
+document.getElementById("popupPrice").innerText = price;
+document.getElementById("qrImage").src = qr;
+
 document.getElementById("popup").style.display="flex";
-document.getElementById("packageTitle").innerText=title;
-document.getElementById("packagePrice").innerText=price;
 }
 
 function closePopup(){
 document.getElementById("popup").style.display="none";
 document.getElementById("successMsg").style.display="none";
+document.getElementById("errorMsg").style.display="none";
 }
 
 function submitOrder(){
-var insta=document.getElementById("insta").value.trim();
 
-if(insta===""){
-alert("Please enter your Instagram username or link.");
-return;
-}
+var insta = document.getElementById("insta").value.trim();
 
+if(insta === ""){
+document.getElementById("errorMsg").style.display="block";
+document.getElementById("successMsg").style.display="none";
+}else{
 document.getElementById("successMsg").style.display="block";
+document.getElementById("errorMsg").style.display="none";
 }
-
-var totalTime=600;
-
-var timer=setInterval(function(){
-
-var minutes=Math.floor(totalTime/60);
-var seconds=totalTime%60;
-
-document.getElementById("minutes").innerText=minutes.toString().padStart(2,'0');
-document.getElementById("seconds").innerText=seconds.toString().padStart(2,'0');
-
-if(totalTime<=0){
-clearInterval(timer);
 }
-
-totalTime--;
-
-},1000);
 
 </script>
 
