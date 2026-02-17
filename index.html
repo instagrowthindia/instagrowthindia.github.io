@@ -15,49 +15,77 @@ color:white;
 text-align:center;
 }
 
+/* TITLE */
+
 h1{
-padding:25px 10px;
-font-size:28px;
+padding:30px 10px;
+font-size:30px;
+letter-spacing:1px;
 }
 
 /* PACKAGE CARD */
 
 .card{
 background:linear-gradient(135deg,#7b1fa2,#c2185b);
-margin:20px;
-padding:30px;
-border-radius:25px;
-box-shadow:0 8px 20px rgba(0,0,0,0.3);
+margin:25px;
+padding:35px 25px;
+border-radius:30px;
+box-shadow:0 12px 30px rgba(0,0,0,0.35);
+transition:0.3s;
 }
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card h2{
+font-size:26px;
+margin-bottom:25px;
+}
+
+/* PRICE */
 
 .price{
 background:#00c853;
 display:inline-block;
-padding:12px 30px;
-border-radius:12px;
-font-size:20px;
+padding:14px 35px;
+border-radius:15px;
+font-size:22px;
 font-weight:bold;
-margin-bottom:15px;
+margin-bottom:20px;
+box-shadow:0 6px 15px rgba(0,0,0,0.3);
 }
+
+/* BUTTON */
 
 .buyBtn{
 background:#ff1744;
 border:none;
-padding:15px 35px;
-border-radius:15px;
+padding:16px 45px;
+border-radius:20px;
 font-size:18px;
 color:white;
 cursor:pointer;
+box-shadow:0 8px 20px rgba(0,0,0,0.3);
+transition:0.3s;
 }
 
-/* 10K FEATURES */
+.buyBtn:hover{
+transform:scale(1.05);
+}
+
+/* PREMIUM FEATURES FOR 10K */
 
 .features{
-margin-top:15px;
-font-size:14px;
-text-align:left;
-line-height:26px;
+margin-top:25px;
+font-size:16px;
+line-height:32px;
+text-align:center;
 opacity:0.95;
+}
+
+.features span{
+display:block;
 }
 
 /* POPUP */
@@ -75,84 +103,87 @@ z-index:999;
 }
 
 .popup-content{
-max-width:400px;
+max-width:420px;
 margin:auto;
-padding-bottom:40px;
+padding-bottom:50px;
 }
 
 .popup-header{
 background:#e60000;
 color:white;
-padding:20px;
-font-size:22px;
+padding:22px;
+font-size:24px;
 font-weight:bold;
 }
 
 .packageBox{
 background:white;
 color:black;
-padding:20px;
+padding:25px;
+border-radius:0 0 25px 25px;
 }
 
 .qr-img{
-width:220px;
-margin:20px auto;
+width:230px;
+margin:25px auto;
 display:block;
 }
 
 .stepBox{
 background:#e8f0fe;
-margin:15px;
-padding:15px;
-border-radius:12px;
+margin:18px;
+padding:18px;
+border-radius:15px;
 text-align:left;
+font-size:15px;
 }
 
 .timerBox{
 background:#fff3cd;
 border:2px dashed orange;
-padding:15px;
-margin:15px;
-border-radius:15px;
+padding:18px;
+margin:18px;
+border-radius:18px;
 font-weight:bold;
 color:#ff6f00;
+font-size:16px;
 }
 
 input{
-width:90%;
-padding:12px;
-margin:15px 0;
-border-radius:10px;
+width:92%;
+padding:14px;
+margin:18px 0;
+border-radius:12px;
 border:1px solid #ccc;
-font-size:14px;
+font-size:15px;
 }
 
 .paymentBtn{
 background:#e60000;
 border:none;
-padding:15px;
-border-radius:12px;
+padding:16px;
+border-radius:15px;
 font-size:18px;
 color:white;
 cursor:pointer;
-width:90%;
+width:92%;
 }
 
 .backBtn{
 background:#ccc;
 border:none;
-padding:12px;
-border-radius:12px;
+padding:14px;
+border-radius:15px;
 font-size:16px;
-margin-top:10px;
-width:90%;
+margin-top:12px;
+width:92%;
 cursor:pointer;
 }
 
 .error{
 color:red;
 font-weight:bold;
-margin-top:10px;
+margin-top:12px;
 display:none;
 }
 
@@ -162,26 +193,6 @@ display:none;
 <body>
 
 <h1>🚀 TODAY BIG OFFER 🚀</h1>
-
-<!-- PACKAGES -->
-
-<div class="card">
-<h2>1K Instagram Followers</h2>
-<div class="price">₹150</div><br>
-<button class="buyBtn" onclick="openPopup('1K Followers','₹150')">Buy Now</button>
-</div>
-
-<div class="card">
-<h2>2K Instagram Followers</h2>
-<div class="price">₹200</div><br>
-<button class="buyBtn" onclick="openPopup('2K Followers','₹200')">Buy Now</button>
-</div>
-
-<div class="card">
-<h2>3K Instagram Followers</h2>
-<div class="price">₹300</div><br>
-<button class="buyBtn" onclick="openPopup('3K Followers','₹300')">Buy Now</button>
-</div>
 
 <div class="card">
 <h2>5K Instagram Followers</h2>
@@ -195,10 +206,10 @@ display:none;
 <button class="buyBtn" onclick="openPopup('10K Followers','₹450')">Buy Now</button>
 
 <div class="features">
-🇮🇳 Real Indian Followers<br>
-🔒 Non-Drop Permanent Followers<br>
-♾️ Lifetime Guaranteed<br>
-⚡ Delivery Time: 10-30 Minutes
+<span>🇮🇳 Real Indian Followers</span>
+<span>🔒 Non-Drop Permanent Followers</span>
+<span>♾️ Lifetime Guaranteed</span>
+<span>⚡ Delivery Time: 10-30 Minutes</span>
 </div>
 
 </div>
@@ -248,10 +259,7 @@ Please Enter Instagram Link ❌
 </div>
 </div>
 
-
 <script>
-
-/* OPEN POPUP */
 
 function openPopup(title,price){
 document.getElementById("popupTitle").innerText=title;
@@ -260,134 +268,18 @@ document.getElementById("popup").style.display="block";
 startTimer();
 }
 
-/* CLOSE POPUP */
-
 function closePopup(){
 document.getElementById("popup").style.display="none";
 }
 
-/* SUBMIT */
-
 function submitOrder(){
-
 var insta=document.getElementById("insta").value.trim();
-
 if(insta==""){
 document.getElementById("errorMsg").style.display="block";
 return;
 }
-
-var orderId="TG-"+Math.random().toString(36).substr(2,10).toUpperCase();
-
-/* SUCCESS PAGE */
-
-document.body.innerHTML=`
-
-<div style="
-background:linear-gradient(135deg,#f8f9fa,#e9ecef);
-min-height:100vh;
-font-family:'Segoe UI',sans-serif;
-text-align:center;
-padding:40px;
-">
-
-<div style="
-width:140px;
-height:140px;
-background:linear-gradient(135deg,#28a745,#34ce57);
-border-radius:50%;
-margin:50px auto 25px auto;
-display:flex;
-align-items:center;
-justify-content:center;
-box-shadow:0 15px 40px rgba(0,0,0,0.2);
-animation:pop 0.4s ease;
-">
-
-<span style="color:white;font-size:70px;font-weight:bold;">✓</span>
-
-</div>
-
-<h1 style="color:#28a745;font-size:28px;">Order Received!</h1>
-
-<p style="color:#6c757d;font-size:17px;margin-bottom:30px;">
-Payment Received Successfully.
-</p>
-
-<div style="
-background:white;
-border-radius:25px;
-padding:30px;
-margin:20px auto;
-max-width:360px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-">
-
-<div style="font-size:15px;color:#6c757d;margin-bottom:8px;">
-Order ID
-</div>
-
-<div style="
-color:#dc3545;
-font-size:22px;
-font-weight:700;
-letter-spacing:1px;
-">
-${orderId}
-</div>
-
-</div>
-
-<div style="
-background:linear-gradient(135deg,#e6f9ec,#d4edda);
-border-radius:25px;
-padding:30px;
-margin:20px auto;
-max-width:360px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-">
-
-<div style="font-size:16px;color:#155724;margin-bottom:8px;">
-⚡ Delivery Timeline
-</div>
-
-<div style="color:#dc3545;font-size:22px;font-weight:700;">
-Within 2 Hours
-</div>
-
-</div>
-
-<p style="color:#6c757d;margin-top:20px;font-size:16px;">
-Your followers will be increased shortly.
-</p>
-
-<button onclick="location.reload()" 
-style="
-background:linear-gradient(135deg,#dee2e6,#ced4da);
-padding:15px 40px;
-border:none;
-border-radius:40px;
-font-size:16px;
-margin-top:30px;
-cursor:pointer;
-box-shadow:0 8px 20px rgba(0,0,0,0.1);
-">
-Back To Home
-</button>
-
-<style>
-@keyframes pop {
-0% { transform: scale(0.7); opacity:0; }
-100% { transform: scale(1); opacity:1; }
+alert("Order Successful!");
 }
-</style>
-
-</div>
-`;
-
-}
-
-/* TIMER */
 
 var time=600;
 var countdown;
@@ -412,4 +304,4 @@ document.getElementById("timer").innerText="Expired";
 </script>
 
 </body>
-  </html>
+</html>
