@@ -20,6 +20,8 @@ padding:25px 10px;
 font-size:28px;
 }
 
+/* PACKAGE CARD */
+
 .card{
 background:linear-gradient(135deg,#7b1fa2,#c2185b);
 margin:20px;
@@ -57,89 +59,121 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.7);
-justify-content:center;
-align-items:center;
+background:#f5f5f5;
+overflow-y:auto;   /* SCROLL ENABLED */
 z-index:999;
 }
 
 .popup-content{
-background:white;
-color:black;
-width:90%;
-max-width:350px;
-border-radius:20px;
-padding:20px;
-position:relative;
+max-width:400px;
+margin:auto;
+padding-bottom:30px;
 }
 
-.close{
-position:absolute;
-top:8px;
-right:12px;
-font-size:28px;
+/* HEADER */
+
+.popup-header{
+background:#e60000;
+color:white;
+padding:20px;
+font-size:22px;
 font-weight:bold;
-color:red;
-cursor:pointer;
+}
+
+.packageBox{
+background:white;
+color:black;
+padding:20px;
 }
 
 .qr-img{
-width:180px;
-margin:15px auto;
+width:220px;
+margin:20px auto;
 display:block;
+}
+
+.stepBox{
+background:#e8f0fe;
+margin:15px;
+padding:15px;
+border-radius:12px;
+text-align:left;
 }
 
 .timerBox{
 background:#fff3cd;
-color:#ff6f00;
-padding:12px;
-border-radius:12px;
-margin:15px 0;
+border:2px dashed orange;
+padding:15px;
+margin:15px;
+border-radius:15px;
 font-weight:bold;
+color:#ff6f00;
 }
 
 input{
 width:90%;
 padding:12px;
-margin:12px 0;
+margin:15px 0;
 border-radius:10px;
 border:1px solid #ccc;
 font-size:14px;
 }
 
 .paymentBtn{
-background:#ff1744;
+background:#e60000;
 border:none;
-padding:12px 30px;
+padding:15px;
 border-radius:12px;
-font-size:16px;
+font-size:18px;
 color:white;
 cursor:pointer;
-margin-top:10px;
+width:90%;
 }
 
 .backBtn{
-background:#888;
+background:#ccc;
 border:none;
-padding:10px 25px;
-border-radius:10px;
+padding:12px;
+border-radius:12px;
+font-size:16px;
+margin-top:10px;
+width:90%;
+cursor:pointer;
+}
+
+.successPage{
+display:none;
+padding:30px;
+color:black;
+background:white;
+min-height:100vh;
+}
+
+.successPage h2{
+color:green;
+}
+
+.orderBox{
+border:2px solid #2196f3;
+padding:20px;
+margin:20px;
+border-radius:15px;
+}
+
+.deliveryBox{
+border:2px solid green;
+padding:20px;
+margin:20px;
+border-radius:15px;
+}
+
+.close{
+position:fixed;
+right:15px;
+top:15px;
+font-size:28px;
 color:white;
 cursor:pointer;
-margin-top:10px;
-}
-
-.success{
-color:green;
-font-weight:bold;
-margin-top:10px;
-display:none;
-}
-
-.error{
-color:red;
-font-weight:bold;
-margin-top:10px;
-display:none;
 }
 
 </style>
@@ -154,132 +188,163 @@ display:none;
 <div class="card">
 <h2>1K Instagram Followers</h2>
 <div class="price">₹150</div><br>
-<button class="buyBtn" onclick="openPopup('1K Instagram Followers','₹150')">Buy Now</button>
+<button class="buyBtn" onclick="openPopup('Starter Package - 1K Followers','₹150')">Buy Now</button>
 </div>
 
 <div class="card">
 <h2>2K Instagram Followers</h2>
 <div class="price">₹200</div><br>
-<button class="buyBtn" onclick="openPopup('2K Instagram Followers','₹200')">Buy Now</button>
+<button class="buyBtn" onclick="openPopup('2K Followers','₹200')">Buy Now</button>
 </div>
 
 <div class="card">
 <h2>3K Instagram Followers</h2>
 <div class="price">₹300</div><br>
-<button class="buyBtn" onclick="openPopup('3K Instagram Followers','₹300')">Buy Now</button>
+<button class="buyBtn" onclick="openPopup('3K Followers','₹300')">Buy Now</button>
 </div>
 
 <div class="card">
 <h2>5K Instagram Followers</h2>
 <div class="price">₹350</div><br>
-<button class="buyBtn" onclick="openPopup('5K Instagram Followers','₹350')">Buy Now</button>
+<button class="buyBtn" onclick="openPopup('5K Followers','₹350')">Buy Now</button>
 </div>
 
 <div class="card">
 <h2>10K Instagram Followers</h2>
 <div class="price">₹450</div><br>
-<button class="buyBtn" onclick="openPopup('10K Instagram Followers','₹450')">Buy Now</button>
+<button class="buyBtn" onclick="openPopup('10K Followers','₹450')">Buy Now</button>
 </div>
 
 
-<!-- POPUP -->
+<!-- PAYMENT POPUP -->
 
 <div class="popup" id="popup">
+
 <div class="popup-content">
 
-<span class="close" onclick="closePopup()">✖</span>
-
-<h3 id="popupTitle"></h3>
-<h2 id="popupPrice" style="color:red;"></h2>
-
-<img src="qr.png" class="qr-img">
-
-<!-- TIMER -->
-<div class="timerBox">
-⏳ Offer Ends In: <span id="timer">10:00</span>
+<div class="popup-header">
+Complete Your Payment
 </div>
 
-<h4>Step 1: Scan & Pay</h4>
-<p>Scan the QR code above and complete the payment.</p>
+<div class="packageBox">
+<h2 id="popupTitle"></h2>
+<h2 style="color:red;" id="popupPrice"></h2>
 
-<h4>Step 2: Put Instagram Link</h4>
-<p>After payment, enter your Instagram link or username below and click <b>Payment Done</b>.</p>
+<h3>Scan QR Code to Pay</h3>
+<img src="qr.png" class="qr-img">
+
+<div class="stepBox">
+<b>Step 1: Scan & Pay</b><br>
+Scan the QR code and complete payment.
+</div>
+
+<div class="stepBox">
+<b>Step 2: Confirm Payment</b><br>
+After payment, enter your Instagram link and click Payment Done.
+</div>
+
+<div class="timerBox">
+⏳ Special Offer Ends In: <span id="timer">10:00</span>
+</div>
 
 <input type="text" id="insta" placeholder="Enter Instagram Link or Username">
 
-<button class="paymentBtn" onclick="submitOrder()">Payment Done</button>
-
+<center>
+<button class="paymentBtn" onclick="submitOrder()">Payment Done</button><br>
 <button class="backBtn" onclick="closePopup()">⬅ Back To Packages</button>
+</center>
 
-<div class="error" id="errorMsg">
-Please Enter Instagram Link ❌
-</div>
-
-<div class="success" id="successMsg">
-Payment Received ✅ <br>
-Order Processing...
 </div>
 
 </div>
+
+</div>
+
+
+<!-- SUCCESS PAGE -->
+
+<div class="successPage" id="successPage">
+
+<h2>✔ Order Received!</h2>
+<p>Payment Received Successfully.</p>
+
+<div class="orderBox">
+<b>Order ID</b><br>
+<span id="orderId" style="color:red;font-size:18px;"></span>
+</div>
+
+<div class="deliveryBox">
+⚡ Delivery Timeline<br>
+<b style="color:red;">Within 2 Hours</b>
+</div>
+
+<p>Your followers will be increased shortly.</p>
+
+<button class="backBtn" onclick="goHome()">Back To Home</button>
+
 </div>
 
 
 <script>
 
-function openPopup(title, price){
-document.getElementById("popupTitle").innerText = title;
-document.getElementById("popupPrice").innerText = price;
-document.getElementById("popup").style.display="flex";
-document.getElementById("successMsg").style.display="none";
-document.getElementById("errorMsg").style.display="none";
-document.getElementById("insta").value="";
+/* OPEN POPUP */
+
+function openPopup(title,price){
+document.getElementById("popupTitle").innerText=title;
+document.getElementById("popupPrice").innerText=price;
+document.getElementById("popup").style.display="block";
 startTimer();
 }
+
+/* CLOSE */
 
 function closePopup(){
 document.getElementById("popup").style.display="none";
 }
 
+/* PAYMENT */
+
 function submitOrder(){
-
-var insta = document.getElementById("insta").value.trim();
-
-if(insta === ""){
-document.getElementById("errorMsg").style.display="block";
-document.getElementById("successMsg").style.display="none";
-}else{
-document.getElementById("successMsg").style.display="block";
-document.getElementById("errorMsg").style.display="none";
+var insta=document.getElementById("insta").value.trim();
+if(insta==""){
+alert("Please Enter Instagram Link");
+return;
 }
+
+var id="TG-"+Math.random().toString(36).substr(2,10).toUpperCase();
+document.getElementById("orderId").innerText=id;
+
+document.getElementById("popup").style.display="none";
+document.getElementById("successPage").style.display="block";
 }
 
 /* TIMER */
 
-var time = 600;
+var time=600;
 var countdown;
 
 function startTimer(){
 clearInterval(countdown);
-time = 600;
+time=600;
 
-countdown = setInterval(function(){
-var minutes = Math.floor(time / 60);
-var seconds = time % 60;
-
-if(seconds < 10){ seconds = "0" + seconds; }
-
-document.getElementById("timer").innerText = minutes + ":" + seconds;
-
+countdown=setInterval(function(){
+var m=Math.floor(time/60);
+var s=time%60;
+if(s<10){s="0"+s;}
+document.getElementById("timer").innerText=m+":"+s;
 time--;
-
-if(time < 0){
+if(time<0){
 clearInterval(countdown);
-document.getElementById("timer").innerText = "Expired";
+document.getElementById("timer").innerText="Expired";
 }
 },1000);
+}
+
+function goHome(){
+location.reload();
 }
 
 </script>
 
 </body>
-  </html>
+</html>
