@@ -77,6 +77,8 @@ font-size:16px;
 line-height:30px;
 }
 
+/* POPUP */
+
 .popup{
 display:none;
 position:fixed;
@@ -111,6 +113,13 @@ color:black;
 padding:25px;
 border-radius:20px;
 margin:20px;
+}
+
+.qr-img{
+width:250px;
+margin:20px auto;
+display:block;
+border-radius:15px;
 }
 
 .stepBox{
@@ -182,38 +191,6 @@ display:none;
 <button class="buyBtn" onclick="openPopup('1K Instagram Followers','₹150')">Buy Now</button>
 </div>
 
-<div class="card">
-<h2>2K Instagram Followers</h2>
-<div class="price">₹200</div><br>
-<button class="buyBtn" onclick="openPopup('2K Instagram Followers','₹200')">Buy Now</button>
-</div>
-
-<div class="card">
-<h2>3K Instagram Followers</h2>
-<div class="price">₹300</div><br>
-<button class="buyBtn" onclick="openPopup('3K Instagram Followers','₹300')">Buy Now</button>
-</div>
-
-<div class="card">
-<h2>5K Instagram Followers</h2>
-<div class="price">₹350</div><br>
-<button class="buyBtn" onclick="openPopup('5K Instagram Followers','₹350')">Buy Now</button>
-</div>
-
-<div class="card">
-<h2>10K Instagram Followers</h2>
-<div class="price">₹450</div><br>
-<button class="buyBtn" onclick="openPopup('10K Instagram Followers','₹450')">Buy Now</button>
-
-<div class="features">
-🇮🇳 Real Indian Followers <br>
-🔒 Non-Drop Permanent Followers <br>
-♾️ Lifetime Guaranteed <br>
-⚡ Delivery Time: 10-30 Minutes
-</div>
-
-</div>
-
 <!-- POPUP -->
 
 <div class="popup" id="popup">
@@ -225,6 +202,9 @@ display:none;
 
 <h2 id="popupTitle"></h2>
 <h2 style="color:red;" id="popupPrice"></h2>
+
+<h3>Scan QR Code to Pay</h3>
+<img src="qr.png" class="qr-img">
 
 <div class="stepBox"><b>Step 1:</b> Scan & Make Payment</div>
 <div class="stepBox"><b>Step 2:</b> Enter Instagram Link After Payment</div>
@@ -315,8 +295,7 @@ align-items:center;
 justify-content:center;
 box-shadow:0 20px 50px rgba(0,0,0,0.3);
 ">
-
-<span style="color:white;font-size:75px;font-weight:bold;">✓</span>
+<span style="font-size:75px;">✓</span>
 </div>
 
 <h1>Order Received!</h1>
@@ -328,9 +307,7 @@ color:black;
 border-radius:25px;
 padding:30px;
 margin:30px auto;
-max-width:380px;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
-">
+max-width:380px;">
 <div>Order ID</div>
 <div style="color:#dc3545;font-size:24px;font-weight:bold;">${orderId}</div>
 </div>
@@ -341,8 +318,7 @@ border-radius:25px;
 padding:30px;
 margin:20px auto;
 max-width:380px;
-color:black;
-">
+color:black;">
 <div>⚡ Delivery Timeline</div>
 <div style="color:#dc3545;font-size:22px;font-weight:bold;">Within 2 Hours</div>
 </div>
@@ -353,8 +329,7 @@ padding:15px 40px;
 border:none;
 border-radius:30px;
 font-size:16px;
-margin-top:25px;
-cursor:pointer;">
+margin-top:25px;">
 Back To Home
 </button>
 
@@ -365,4 +340,4 @@ Back To Home
 </script>
 
 </body>
-  </html>
+</html>
