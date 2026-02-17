@@ -16,15 +16,13 @@ text-align:center;
 }
 
 /* TITLE */
-
 h1{
 padding:30px 10px;
 font-size:30px;
 letter-spacing:1px;
 }
 
-/* PACKAGE CARD */
-
+/* CARD */
 .card{
 background:linear-gradient(135deg,#7b1fa2,#c2185b);
 margin:25px;
@@ -44,7 +42,6 @@ margin-bottom:25px;
 }
 
 /* PRICE */
-
 .price{
 background:#00c853;
 display:inline-block;
@@ -57,7 +54,6 @@ box-shadow:0 6px 15px rgba(0,0,0,0.3);
 }
 
 /* BUTTON */
-
 .buyBtn{
 background:#ff1744;
 border:none;
@@ -74,22 +70,18 @@ transition:0.3s;
 transform:scale(1.05);
 }
 
-/* PREMIUM FEATURES FOR 10K */
-
+/* PREMIUM FEATURES */
 .features{
 margin-top:25px;
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:20px;
 font-size:16px;
 line-height:32px;
-text-align:center;
-opacity:0.95;
-}
-
-.features span{
-display:block;
+box-shadow:inset 0 0 20px rgba(255,255,255,0.1);
 }
 
 /* POPUP */
-
 .popup{
 display:none;
 position:fixed;
@@ -195,6 +187,24 @@ display:none;
 <h1>🚀 TODAY BIG OFFER 🚀</h1>
 
 <div class="card">
+<h2>1K Instagram Followers</h2>
+<div class="price">₹150</div><br>
+<button class="buyBtn" onclick="openPopup('1K Followers','₹150')">Buy Now</button>
+</div>
+
+<div class="card">
+<h2>2K Instagram Followers</h2>
+<div class="price">₹200</div><br>
+<button class="buyBtn" onclick="openPopup('2K Followers','₹200')">Buy Now</button>
+</div>
+
+<div class="card">
+<h2>3K Instagram Followers</h2>
+<div class="price">₹300</div><br>
+<button class="buyBtn" onclick="openPopup('3K Followers','₹300')">Buy Now</button>
+</div>
+
+<div class="card">
 <h2>5K Instagram Followers</h2>
 <div class="price">₹350</div><br>
 <button class="buyBtn" onclick="openPopup('5K Followers','₹350')">Buy Now</button>
@@ -206,14 +216,13 @@ display:none;
 <button class="buyBtn" onclick="openPopup('10K Followers','₹450')">Buy Now</button>
 
 <div class="features">
-<span>🇮🇳 Real Indian Followers</span>
-<span>🔒 Non-Drop Permanent Followers</span>
-<span>♾️ Lifetime Guaranteed</span>
-<span>⚡ Delivery Time: 10-30 Minutes</span>
+🇮🇳 Real Indian Followers<br>
+🔒 Non-Drop Permanent Followers<br>
+♾️ Lifetime Guaranteed<br>
+⚡ Delivery Time: 10-30 Minutes
 </div>
 
 </div>
-
 
 <!-- POPUP -->
 
@@ -274,10 +283,12 @@ document.getElementById("popup").style.display="none";
 
 function submitOrder(){
 var insta=document.getElementById("insta").value.trim();
+
 if(insta==""){
 document.getElementById("errorMsg").style.display="block";
 return;
 }
+
 alert("Order Successful!");
 }
 
@@ -304,4 +315,4 @@ document.getElementById("timer").innerText="Expired";
 </script>
 
 </body>
-</html>
+  </html>
