@@ -67,7 +67,7 @@ z-index:999;
 .popup-content{
 max-width:400px;
 margin:auto;
-padding-bottom:30px;
+padding-bottom:40px;
 }
 
 .popup-header{
@@ -153,6 +153,8 @@ display:none;
 
 <h1>🚀 TODAY BIG OFFER 🚀</h1>
 
+<!-- PACKAGES -->
+
 <div class="card">
 <h2>1K Instagram Followers</h2>
 <div class="price">₹150</div><br>
@@ -187,7 +189,6 @@ display:none;
 <!-- POPUP -->
 
 <div class="popup" id="popup">
-
 <div class="popup-content">
 
 <div class="popup-header">
@@ -225,10 +226,8 @@ Please Enter Instagram Link ❌
 </div>
 
 </div>
-
 </div>
 </div>
-
 
 <script>
 
@@ -251,29 +250,52 @@ document.getElementById("errorMsg").style.display="block";
 return;
 }
 
-// नया पूरा पेज खोलो
 var orderId="TG-"+Math.random().toString(36).substr(2,10).toUpperCase();
 
+/* NEW INSTAGRAM STYLE SUCCESS PAGE */
+
 document.body.innerHTML=`
-<div style="font-family:Arial;background:#f5f5f5;text-align:center;padding:30px;min-height:100vh;">
 
-<h2 style="color:green;">✔ Order Successful!</h2>
-<p>Payment Received Successfully.</p>
+<div style="background:#f2f2f2;min-height:100vh;font-family:Arial;text-align:center;padding:30px;">
 
-<div style="border:2px solid #2196f3;padding:20px;margin:20px;border-radius:15px;background:white;">
-<b>Order ID</b><br>
-<span style="color:red;font-size:20px;">${orderId}</span>
+<div style="width:120px;height:120px;background:#28a745;
+border-radius:50%;margin:40px auto 20px auto;
+display:flex;align-items:center;justify-content:center;
+box-shadow:0 8px 25px rgba(0,0,0,0.2);">
+
+<span style="color:white;font-size:60px;">✔</span>
+
 </div>
 
-<div style="border:2px solid green;padding:20px;margin:20px;border-radius:15px;background:white;">
-⚡ Delivery Timeline<br>
-<b style="color:red;">Within 2 Hours</b>
+<h2 style="color:#28a745;">Order Received!</h2>
+
+<p style="color:#555;font-size:16px;margin-bottom:25px;">
+Payment Received Successfully.
+</p>
+
+<div style="background:white;border:2px solid #2196f3;
+border-radius:20px;padding:25px;margin:20px auto;
+max-width:350px;box-shadow:0 4px 15px rgba(0,0,0,0.08);">
+
+<div style="font-weight:bold;margin-bottom:10px;">Order ID</div>
+<div style="color:red;font-size:20px;font-weight:bold;">${orderId}</div>
+
 </div>
 
-<p>Your followers will be increased shortly.</p>
+<div style="background:#e9f7ef;border:2px solid #28a745;
+border-radius:20px;padding:25px;margin:20px auto;
+max-width:350px;box-shadow:0 4px 15px rgba(0,0,0,0.08);">
+
+<div style="font-size:18px;margin-bottom:8px;">⚡ Delivery Timeline</div>
+<div style="color:red;font-size:20px;font-weight:bold;">Within 2 Hours</div>
+
+</div>
+
+<p style="color:#555;">Your followers will be increased shortly.</p>
 
 <button onclick="location.reload()" 
-style="background:#ccc;padding:12px 30px;border:none;border-radius:12px;font-size:16px;cursor:pointer;">
+style="background:#ccc;padding:14px 35px;border:none;
+border-radius:30px;font-size:16px;cursor:pointer;margin-top:20px;">
 Back To Home
 </button>
 
