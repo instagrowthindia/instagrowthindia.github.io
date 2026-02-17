@@ -6,48 +6,50 @@
 <title>Today Big Offer</title>
 
 <style>
+
 body{
 margin:0;
 font-family:Arial, sans-serif;
-background:linear-gradient(135deg,#a100ff,#ff6a00);
+background:linear-gradient(135deg,#a100ff,#ff2e8b);
 color:white;
 text-align:center;
 }
 
 h1{
-padding:20px;
+padding:25px 10px;
 font-size:28px;
 }
 
-.box{
-background:rgba(0,0,0,0.25);
+.card{
+background:linear-gradient(135deg,#7b1fa2,#c2185b);
 margin:20px;
-padding:25px;
-border-radius:20px;
+padding:30px;
+border-radius:25px;
+box-shadow:0 8px 20px rgba(0,0,0,0.3);
+}
+
+.card h2{
+margin-bottom:20px;
 }
 
 .price{
 background:#00c853;
-padding:10px 20px;
-border-radius:10px;
 display:inline-block;
-margin:10px 0;
-font-size:18px;
+padding:12px 30px;
+border-radius:12px;
+font-size:20px;
+font-weight:bold;
+margin-bottom:15px;
 }
 
-button{
+.buyBtn{
 background:#ff1744;
-color:white;
 border:none;
-padding:12px 25px;
-border-radius:10px;
-font-size:16px;
+padding:15px 35px;
+border-radius:15px;
+font-size:18px;
+color:white;
 cursor:pointer;
-margin-top:8px;
-}
-
-.backBtn{
-background:#888;
 }
 
 .popup{
@@ -82,18 +84,39 @@ cursor:pointer;
 }
 
 .qr-img{
-width:170px;
+width:180px;
 margin:15px auto;
 display:block;
 }
 
 input{
 width:90%;
-padding:10px;
-margin:10px 0;
-border-radius:8px;
+padding:12px;
+margin:12px 0;
+border-radius:10px;
 border:1px solid #ccc;
 font-size:14px;
+}
+
+.paymentBtn{
+background:#ff1744;
+border:none;
+padding:12px 30px;
+border-radius:12px;
+font-size:16px;
+color:white;
+cursor:pointer;
+margin-top:10px;
+}
+
+.backBtn{
+background:#888;
+border:none;
+padding:10px 25px;
+border-radius:10px;
+color:white;
+cursor:pointer;
+margin-top:10px;
 }
 
 .success{
@@ -119,41 +142,36 @@ display:none;
 
 <!-- PACKAGES -->
 
-<div class="box">
-<h2>100 Instagram Followers (Demo)</h2>
-<div class="price">₹20</div>
-<button onclick="openPopup('100 Instagram Followers (Demo)','₹20','demoqr.png')">Buy Demo</button>
-</div>
-
-<div class="box">
+<div class="card">
 <h2>1K Instagram Followers</h2>
-<div class="price">₹150</div>
-<button onclick="openPopup('1K Instagram Followers','₹150','qr.png')">Buy Now</button>
+<div class="price">₹150</div><br>
+<button class="buyBtn" onclick="openPopup('1K Instagram Followers','₹150')">Buy Now</button>
 </div>
 
-<div class="box">
+<div class="card">
 <h2>2K Instagram Followers</h2>
-<div class="price">₹200</div>
-<button onclick="openPopup('2K Instagram Followers','₹200','qr.png')">Buy Now</button>
+<div class="price">₹200</div><br>
+<button class="buyBtn" onclick="openPopup('2K Instagram Followers','₹200')">Buy Now</button>
 </div>
 
-<div class="box">
+<div class="card">
 <h2>3K Instagram Followers</h2>
-<div class="price">₹300</div>
-<button onclick="openPopup('3K Instagram Followers','₹300','qr.png')">Buy Now</button>
+<div class="price">₹300</div><br>
+<button class="buyBtn" onclick="openPopup('3K Instagram Followers','₹300')">Buy Now</button>
 </div>
 
-<div class="box">
+<div class="card">
 <h2>5K Instagram Followers</h2>
-<div class="price">₹350</div>
-<button onclick="openPopup('5K Instagram Followers','₹350','qr.png')">Buy Now</button>
+<div class="price">₹350</div><br>
+<button class="buyBtn" onclick="openPopup('5K Instagram Followers','₹350')">Buy Now</button>
 </div>
 
-<div class="box">
+<div class="card">
 <h2>10K Instagram Followers</h2>
-<div class="price">₹450</div>
-<button onclick="openPopup('10K Instagram Followers','₹450','qr.png')">Buy Now</button>
+<div class="price">₹450</div><br>
+<button class="buyBtn" onclick="openPopup('10K Instagram Followers','₹450')">Buy Now</button>
 </div>
+
 
 <!-- POPUP -->
 
@@ -165,7 +183,7 @@ display:none;
 <h3 id="popupTitle"></h3>
 <h2 id="popupPrice" style="color:red;"></h2>
 
-<img src="" id="qrImage" class="qr-img">
+<img src="qr.png" class="qr-img">
 
 <h4>Step 1: Scan & Pay</h4>
 <p>Scan the QR code above and complete the payment.</p>
@@ -175,7 +193,7 @@ display:none;
 
 <input type="text" id="insta" placeholder="Enter Instagram Link or Username">
 
-<button onclick="submitOrder()">Payment Done</button>
+<button class="paymentBtn" onclick="submitOrder()">Payment Done</button>
 
 <button class="backBtn" onclick="closePopup()">⬅ Back To Packages</button>
 
@@ -191,14 +209,12 @@ Order Processing...
 </div>
 </div>
 
+
 <script>
 
-function openPopup(title, price, qr){
-
+function openPopup(title, price){
 document.getElementById("popupTitle").innerText = title;
 document.getElementById("popupPrice").innerText = price;
-document.getElementById("qrImage").src = qr;
-
 document.getElementById("popup").style.display="flex";
 }
 
@@ -224,4 +240,4 @@ document.getElementById("errorMsg").style.display="none";
 </script>
 
 </body>
-  </html>
+</html>
