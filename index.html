@@ -6,6 +6,7 @@
 <title>Today Big Offer</title>
 
 <style>
+
 body{
 margin:0;
 font-family:Arial, sans-serif;
@@ -45,6 +46,10 @@ font-size:16px;
 cursor:pointer;
 }
 
+button:hover{
+background:#d50000;
+}
+
 .popup{
 display:none;
 position:fixed;
@@ -61,7 +66,7 @@ align-items:center;
 background:white;
 color:black;
 width:90%;
-max-width:350px;
+max-width:380px;
 border-radius:20px;
 padding:20px;
 position:relative;
@@ -77,33 +82,57 @@ cursor:pointer;
 }
 
 .qr-img{
-width:150px;
+width:220px;
 margin:15px auto;
-display:block;
+border-radius:15px;
+}
+
+.step-box{
+background:#f1f1f1;
+padding:15px;
+border-radius:15px;
+margin:15px 0;
+font-size:14px;
+}
+
+.timer-box{
+margin:20px;
+padding:15px;
+border:2px dashed orange;
+border-radius:15px;
+background:#fff3e0;
+}
+
+.timer{
+display:flex;
+justify-content:center;
+gap:15px;
+margin-top:10px;
+}
+
+.timer div{
+background:#ff9800;
+color:white;
+padding:15px;
+border-radius:10px;
+font-size:14px;
 }
 
 input{
 width:90%;
-padding:10px;
-margin:8px 0;
-border-radius:8px;
+padding:12px;
+margin:10px 0;
+border-radius:10px;
 border:1px solid #ccc;
-font-size:14px;
 }
 
 .success{
 color:green;
-font-weight:bold;
-margin-top:10px;
 display:none;
+margin-top:10px;
+font-weight:bold;
 }
 
-.error{
-color:red;
-font-weight:bold;
-margin-top:10px;
-display:none;
-}
 </style>
 </head>
 
@@ -111,111 +140,109 @@ display:none;
 
 <h1>🚀 TODAY BIG OFFER 🚀</h1>
 
-<!-- DEMO PACKAGE -->
-<div class="box">
-<h2>100 Instagram Followers (Demo)</h2>
-<div class="price">₹20</div><br>
-<button onclick="openPopup('demo')">Buy Demo</button>
-</div>
-
-<!-- MAIN PACKAGES -->
 <div class="box">
 <h2>1K Instagram Followers</h2>
-<div class="price">₹150</div><br>
-<button onclick="openPopup('main')">Buy Now</button>
-</div>
-
-<div class="box">
-<h2>2K Instagram Followers</h2>
-<div class="price">₹200</div><br>
-<button onclick="openPopup('main')">Buy Now</button>
-</div>
-
-<div class="box">
-<h2>3K Instagram Followers</h2>
-<div class="price">₹300</div><br>
-<button onclick="openPopup('main')">Buy Now</button>
+<div class="price">₹149</div><br>
+<button onclick="openPopup('1K Instagram Followers','₹149')">Order Now</button>
 </div>
 
 <div class="box">
 <h2>5K Instagram Followers</h2>
-<div class="price">₹350</div><br>
-<button onclick="openPopup('main')">Buy Now</button>
+<div class="price">₹249</div><br>
+<button onclick="openPopup('5K Instagram Followers','₹249')">Order Now</button>
 </div>
 
 <div class="box">
-<h2>10K Instagram Followers</h2>
-<div class="price">₹450</div><br>
-<button onclick="openPopup('main')">Buy Now</button>
+<h2>100 Followers (Demo)</h2>
+<div class="price">₹20</div><br>
+<button onclick="openPopup('100 Followers Demo','₹20')">Order Now</button>
 </div>
 
-<!-- POPUP -->
 
 <div class="popup" id="popup">
 <div class="popup-content">
 
 <span class="close" onclick="closePopup()">✖</span>
 
-<h3 id="popupTitle">Scan QR To Pay</h3>
+<h2 id="packageTitle"></h2>
+<h3 id="packagePrice" style="color:red;"></h3>
 
-<img src="" id="qrImage" class="qr-img">
+<img src="YOUR_QR_IMAGE_LINK_HERE" class="qr-img">
 
-<h4>After Payment Enter Details Below</h4>
+<div class="step-box">
+<b>Step 1: Scan & Pay</b><br><br>
+Scan the QR code above and complete the payment.
+</div>
 
-<input type="text" id="utr" placeholder="Enter UTR Number">
+<div class="step-box">
+<b>Step 2: Submit Instagram Details</b><br><br>
+After completing the payment, put your Instagram link or username below and click <b>"Payment Done"</b>.
+</div>
+
+<div class="timer-box">
+<h3 style="color:#ff9800;">⏳ Special Offer Ends In:</h3>
+<div class="timer">
+<div><span id="minutes">10</span><br>Minutes</div>
+<div><span id="seconds">00</span><br>Seconds</div>
+</div>
+</div>
+
+<h3>After Payment Enter Instagram Details</h3>
+
 <input type="text" id="insta" placeholder="Enter Instagram Link or Username">
 
-<br>
-<button onclick="submitOrder()">Submit</button>
+<button onclick="submitOrder()">✔ Payment Done</button>
 
-<div class="error" id="errorMsg">
-Please Fill All Details ❌
-</div>
-
-<div class="success" id="successMsg">
-Order Checking ✅ <br>
-Wait 1-2 Hour
-</div>
+<p class="success" id="successMsg">
+✅ Payment Successful! Your order has been received.
+</p>
 
 </div>
 </div>
 
 <script>
 
-function openPopup(type){
-
-if(type === "demo"){
-document.getElementById("qrImage").src = "demoqr.png";
-document.getElementById("popupTitle").innerText = "Scan QR (₹20 Demo)";
-}else{
-document.getElementById("qrImage").src = "qr.png";
-document.getElementById("popupTitle").innerText = "Scan QR To Pay";
-}
-
+function openPopup(title,price){
 document.getElementById("popup").style.display="flex";
+document.getElementById("packageTitle").innerText=title;
+document.getElementById("packagePrice").innerText=price;
 }
 
 function closePopup(){
 document.getElementById("popup").style.display="none";
 document.getElementById("successMsg").style.display="none";
-document.getElementById("errorMsg").style.display="none";
 }
 
 function submitOrder(){
+var insta=document.getElementById("insta").value.trim();
 
-var utr = document.getElementById("utr").value.trim();
-var insta = document.getElementById("insta").value.trim();
+if(insta===""){
+alert("Please enter your Instagram username or link.");
+return;
+}
 
-if(utr === "" || insta === ""){
-document.getElementById("errorMsg").style.display="block";
-document.getElementById("successMsg").style.display="none";
-}else{
 document.getElementById("successMsg").style.display="block";
-document.getElementById("errorMsg").style.display="none";
 }
+
+var totalTime=600;
+
+var timer=setInterval(function(){
+
+var minutes=Math.floor(totalTime/60);
+var seconds=totalTime%60;
+
+document.getElementById("minutes").innerText=minutes.toString().padStart(2,'0');
+document.getElementById("seconds").innerText=seconds.toString().padStart(2,'0');
+
+if(totalTime<=0){
+clearInterval(timer);
 }
+
+totalTime--;
+
+},1000);
 
 </script>
 
 </body>
-  </html>
+</html>
