@@ -1,227 +1,226 @@
-‎<!DOCTYPE html>
-‎<html>
-‎<head>
-‎<meta charset="UTF-8">
-‎<meta name="viewport" content="width=device-width, initial-scale=1.0">
-‎<title>Today Big Offer</title>
-‎
-‎<style>
-‎body{
-‎margin:0;
-‎font-family:Arial, sans-serif;
-‎background:linear-gradient(135deg,#a100ff,#ff6a00);
-‎color:white;
-‎text-align:center;
-‎}
-‎
-‎h1{
-‎padding:20px;
-‎font-size:28px;
-‎}
-‎
-‎.box{
-‎background:rgba(0,0,0,0.25);
-‎margin:20px;
-‎padding:25px;
-‎border-radius:20px;
-‎}
-‎
-‎.price{
-‎background:#00c853;
-‎padding:10px 20px;
-‎border-radius:10px;
-‎display:inline-block;
-‎margin:10px 0;
-‎font-size:18px;
-‎}
-‎
-‎button{
-‎background:#ff1744;
-‎color:white;
-‎border:none;
-‎padding:12px 25px;
-‎border-radius:10px;
-‎font-size:16px;
-‎cursor:pointer;
-‎}
-‎
-‎button:hover{
-‎background:#d50000;
-‎}
-‎
-‎/* Popup */
-‎
-‎.popup{
-‎display:none;
-‎position:fixed;
-‎top:0;
-‎left:0;
-‎width:100%;
-‎height:100%;
-‎background:rgba(0,0,0,0.7);
-‎justify-content:center;
-‎align-items:center;
-‎}
-‎
-‎.popup-content{
-‎background:white;
-‎color:black;
-‎width:90%;
-‎max-width:350px;
-‎border-radius:20px;
-‎padding:20px;
-‎position:relative;
-‎}
-‎
-‎.close{
-‎position:absolute;
-‎top:10px;
-‎right:15px;
-‎font-size:25px;
-‎color:red;
-‎cursor:pointer;
-‎}
-‎
-‎.qr-img{
-‎width:150px;
-‎margin:15px auto;
-‎display:block;
-‎}
-‎
-‎input{
-‎width:90%;
-‎padding:10px;
-‎margin:8px 0;
-‎border-radius:8px;
-‎border:1px solid #ccc;
-‎font-size:14px;
-‎}
-‎
-‎.success{
-‎color:green;
-‎font-weight:bold;
-‎margin-top:10px;
-‎display:none;
-‎}
-‎
-‎.error{
-‎color:red;
-‎font-weight:bold;
-‎margin-top:10px;
-‎display:none;
-‎}
-‎
-‎.features{
-‎margin-top:15px;
-‎font-size:15px;
-‎line-height:1.6;
-‎}
-‎.features p{
-‎margin:5px 0;
-‎}
-‎</style>
-‎</head>
-‎
-‎<body>
-‎
-‎<h1>🚀 TODAY BIG OFFER 🚀</h1>
-‎
-‎<div class="box">
-‎<h2>1K Instagram Followers</h2>
-‎<div class="price">₹150</div><br>
-‎<button onclick="openPopup()">Buy Now</button>
-‎</div>
-‎
-‎<div class="box">
-‎<h2>2K Instagram Followers</h2>
-‎<div class="price">₹200</div><br>
-‎<button onclick="openPopup()">Buy Now</button>
-‎</div>
-‎
-‎<div class="box">
-‎<h2>3K Instagram Followers</h2>
-‎<div class="price">₹300</div><br>
-‎<button onclick="openPopup()">Buy Now</button>
-‎</div>
-‎
-‎<div class="box">
-‎<h2>5K Instagram Followers</h2>
-‎<div class="price">₹350</div><br>
-‎<button onclick="openPopup()">Buy Now</button>
-‎</div>
-‎
-‎<div class="box">
-‎<h2>10K Instagram Followers</h2>
-‎<div class="price">₹450</div><br>
-‎<button onclick="openPopup()">Buy Now</button>
-‎
-‎<div class="features">
-‎<p>🇮🇳✨ Real Indian Followers</p>
-‎<p>🛡️🔒 Non-Drop Permanent Followers</p>
-‎<p>♾️✅ Lifetime Guaranteed</p>
-‎<p>⚡⏱️ Delivery Time: 10-30 Minutes</p>
-‎</div>
-‎</div>
-‎
-‎<!-- POPUP -->
-‎
-‎<div class="popup" id="popup">
-‎<div class="popup-content">
-‎
-‎<span class="close" onclick="closePopup()">✖</span>
-‎
-‎<h3>Scan QR To Pay</h3>
-‎
-‎<img src="qr.png" class="qr-img">
-‎
-‎<h4>After Payment Enter Details Below</h4>
-‎
-‎<input type="text" id="utr" placeholder="Enter UTR Number">
-‎<input type="text" id="insta" placeholder="Enter Instagram Link or Username">
-‎
-‎<br>
-‎<button onclick="submitOrder()">Submit</button>
-‎
-‎<div class="error" id="errorMsg">
-‎Please Fill All Details ❌
-‎</div>
-‎
-‎<div class="success" id="successMsg">
-‎Order Checking ✅ <br>
-‎Wait 1-2 Hour
-‎</div>
-‎
-‎</div>
-‎</div>
-‎
-‎<script>
-‎
-‎function openPopup(){
-‎document.getElementById("popup").style.display="flex";
-‎}
-‎
-‎function closePopup(){
-‎document.getElementById("popup").style.display="none";
-‎document.getElementById("successMsg").style.display="none";
-‎document.getElementById("errorMsg").style.display="none";
-‎}
-‎
-‎function submitOrder(){
-‎
-‎var utr = document.getElementById("utr").value.trim();
-‎var insta = document.getElementById("insta").value.trim();
-‎
-‎if(utr === "" || insta === ""){
-‎document.getElementById("errorMsg").style.display="block";
-‎document.getElementById("successMsg").style.display="none";
-‎}else{
-‎document.getElementById("successMsg").style.display="block";
-‎document.getElementById("errorMsg").style.display="none";
-‎}
-‎}
-‎
-‎</script>
-‎
-‎</body>
-‎</html>
-‎
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Today Big Offer</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:linear-gradient(135deg,#a100ff,#ff6a00);
+color:white;
+text-align:center;
+}
+
+h1{
+padding:20px;
+font-size:28px;
+}
+
+.box{
+background:rgba(0,0,0,0.25);
+margin:20px;
+padding:25px;
+border-radius:20px;
+}
+
+.price{
+background:#00c853;
+padding:10px 20px;
+border-radius:10px;
+display:inline-block;
+margin:10px 0;
+font-size:18px;
+}
+
+button{
+background:#ff1744;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#d50000;
+}
+
+/* Popup */
+
+.popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+}
+
+.popup-content{
+background:white;
+color:black;
+width:90%;
+max-width:350px;
+border-radius:20px;
+padding:20px;
+position:relative;
+}
+
+.close{
+position:absolute;
+top:10px;
+right:15px;
+font-size:25px;
+color:red;
+cursor:pointer;
+}
+
+.qr-img{
+width:150px;
+margin:15px auto;
+display:block;
+}
+
+input{
+width:90%;
+padding:10px;
+margin:8px 0;
+border-radius:8px;
+border:1px solid #ccc;
+font-size:14px;
+}
+
+.success{
+color:green;
+font-weight:bold;
+margin-top:10px;
+display:none;
+}
+
+.error{
+color:red;
+font-weight:bold;
+margin-top:10px;
+display:none;
+}
+
+.features{
+margin-top:15px;
+font-size:15px;
+line-height:1.6;
+}
+.features p{
+margin:5px 0;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🚀 TODAY BIG OFFER 🚀</h1>
+
+<div class="box">
+<h2>1K Instagram Followers</h2>
+<div class="price">₹150</div><br>
+<button onclick="openPopup()">Buy Now</button>
+</div>
+
+<div class="box">
+<h2>2K Instagram Followers</h2>
+<div class="price">₹200</div><br>
+<button onclick="openPopup()">Buy Now</button>
+</div>
+
+<div class="box">
+<h2>3K Instagram Followers</h2>
+<div class="price">₹300</div><br>
+<button onclick="openPopup()">Buy Now</button>
+</div>
+
+<div class="box">
+<h2>5K Instagram Followers</h2>
+<div class="price">₹350</div><br>
+<button onclick="openPopup()">Buy Now</button>
+</div>
+
+<div class="box">
+<h2>10K Instagram Followers</h2>
+<div class="price">₹450</div><br>
+<button onclick="openPopup()">Buy Now</button>
+
+<div class="features">
+<p>🇮🇳✨ Real Indian Followers</p>
+<p>🛡️🔒 Non-Drop Permanent Followers</p>
+<p>♾️✅ Lifetime Guaranteed</p>
+<p>⚡⏱️ Delivery Time: 10-30 Minutes</p>
+</div>
+</div>
+
+<!-- POPUP -->
+
+<div class="popup" id="popup">
+<div class="popup-content">
+
+<span class="close" onclick="closePopup()">✖</span>
+
+<h3>Scan QR To Pay</h3>
+
+<img src="qr.png" class="qr-img">
+
+<h4>After Payment Enter Details Below</h4>
+
+<input type="text" id="utr" placeholder="Enter UTR Number">
+<input type="text" id="insta" placeholder="Enter Instagram Link or Username">
+
+<br>
+<button onclick="submitOrder()">Submit</button>
+
+<div class="error" id="errorMsg">
+Please Fill All Details ❌
+</div>
+
+<div class="success" id="successMsg">
+Order Checking ✅ <br>
+Wait 1-2 Hour
+</div>
+
+</div>
+</div>
+
+<script>
+
+function openPopup(){
+document.getElementById("popup").style.display="flex";
+}
+
+function closePopup(){
+document.getElementById("popup").style.display="none";
+document.getElementById("successMsg").style.display="none";
+document.getElementById("errorMsg").style.display="none";
+}
+
+function submitOrder(){
+
+var utr = document.getElementById("utr").value.trim();
+var insta = document.getElementById("insta").value.trim();
+
+if(utr === "" || insta === ""){
+document.getElementById("errorMsg").style.display="block";
+document.getElementById("successMsg").style.display="none";
+}else{
+document.getElementById("successMsg").style.display="block";
+document.getElementById("errorMsg").style.display="none";
+}
+}
+
+</script>
+
+</body>
+  </html>
