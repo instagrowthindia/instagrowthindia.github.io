@@ -75,7 +75,6 @@ font-size:16px;
 line-height:30px;
 }
 
-/* POPUP */
 .popup{
 display:none;
 position:fixed;
@@ -175,6 +174,17 @@ margin-top:10px;
 display:none;
 }
 
+.whatsappBtn{
+background:#25D366;
+color:white;
+padding:15px 30px;
+border:none;
+border-radius:30px;
+font-size:18px;
+margin-top:20px;
+cursor:pointer;
+}
+
 </style>
 </head>
 
@@ -182,14 +192,12 @@ display:none;
 
 <h1>🚀 TODAY BIG OFFER 🚀</h1>
 
-<!-- DEMO PACKAGE -->
 <div class="card">
-<h2>100 Instagram Followers(DEMO)</h2>
+<h2>100 Instagram Followers (DEMO)</h2>
 <div class="price">₹20</div><br>
 <button class="buyBtn" onclick="openPopup('100 Instagram Followers(DEMO)','₹20','demoqr.png')">Buy Now</button>
 </div>
 
-<!-- MAIN PACKAGES -->
 <div class="card">
 <h2>1K Instagram Followers</h2>
 <div class="price">₹150</div><br>
@@ -227,7 +235,6 @@ display:none;
 </div>
 </div>
 
-<!-- POPUP -->
 <div class="popup" id="popup">
 <div class="popup-content">
 <div class="popup-header">Complete Your Payment</div>
@@ -274,7 +281,10 @@ if(insta==""){
 document.getElementById("errorMsg").style.display="block";
 return;
 }
-var orderId="TG-"+Math.random().toString(36).substr(2,9).toUpperCase();
+
+var whatsappNumber="917258028139"; // 🔴 7258028139 (country code ke saath)
+
+var message="Hello, I have completed payment. My Instagram link: "+insta;
 
 document.body.innerHTML=`
 <div style="background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);
@@ -291,20 +301,19 @@ margin:40px auto;display:flex;align-items:center;justify-content:center;">
 <span style="color:white;font-size:75px;font-weight:bold;">✓</span>
 </div>
 
-<h1>Order cheking!</h1>
-<p>send me payment screenshot and instagram link on WhatsApp.</p>
+<h1>Order Checking</h1>
+<p>Send Your Instagram Link On WhatsApp</p>
 
-<div style="background:white;color:black;border-radius:25px;padding:30px;margin:30px auto;max-width:380px;">
-<div>Order ID</div>
-<div style="color:#dc3545;font-size:24px;font-weight:bold;">${orderId}</div>
-</div>
+<button class="whatsappBtn"
+onclick="window.location.href='https://wa.me/'+whatsappNumber+'?text='+encodeURIComponent('${message}')">
+Chat On WhatsApp
+</button>
 
-<div style="background:#e9f7ef;border-radius:25px;padding:30px;margin:20px auto;max-width:380px;color:black;">
-<div>⚡ Delivery Timeline</div>
-<div style="color:#dc3545;font-size:22px;font-weight:bold;">Within 2 Hours</div>
-</div>
+<br><br>
 
-<button onclick="location.reload()" style="padding:15px 40px;border:none;border-radius:30px;background:#ccc;font-size:16px;">Back To Home</button>
+<button onclick="location.reload()" style="padding:15px 40px;border:none;border-radius:30px;background:#ccc;font-size:16px;">
+Back To Home
+</button>
 
 </div>`;
 }
@@ -333,4 +342,3 @@ document.getElementById("timer").innerText="Expired";
 
 </body>
   </html>
-
