@@ -50,6 +50,16 @@ color:white;
 cursor:pointer;
 }
 
+/* 10K FEATURES */
+
+.features{
+margin-top:15px;
+font-size:14px;
+text-align:left;
+line-height:26px;
+opacity:0.95;
+}
+
 /* POPUP */
 
 .popup{
@@ -158,7 +168,7 @@ display:none;
 <div class="card">
 <h2>1K Instagram Followers</h2>
 <div class="price">₹150</div><br>
-<button class="buyBtn" onclick="openPopup('Starter Package - 1K Followers','₹150')">Buy Now</button>
+<button class="buyBtn" onclick="openPopup('1K Followers','₹150')">Buy Now</button>
 </div>
 
 <div class="card">
@@ -183,6 +193,14 @@ display:none;
 <h2>10K Instagram Followers</h2>
 <div class="price">₹450</div><br>
 <button class="buyBtn" onclick="openPopup('10K Followers','₹450')">Buy Now</button>
+
+<div class="features">
+🇮🇳 Real Indian Followers<br>
+🔒 Non-Drop Permanent Followers<br>
+♾️ Lifetime Guaranteed<br>
+⚡ Delivery Time: 10-30 Minutes
+</div>
+
 </div>
 
 
@@ -196,6 +214,7 @@ Complete Your Payment
 </div>
 
 <div class="packageBox">
+
 <h2 id="popupTitle"></h2>
 <h2 style="color:red;" id="popupPrice"></h2>
 
@@ -229,7 +248,10 @@ Please Enter Instagram Link ❌
 </div>
 </div>
 
+
 <script>
+
+/* OPEN POPUP */
 
 function openPopup(title,price){
 document.getElementById("popupTitle").innerText=title;
@@ -238,11 +260,16 @@ document.getElementById("popup").style.display="block";
 startTimer();
 }
 
+/* CLOSE POPUP */
+
 function closePopup(){
 document.getElementById("popup").style.display="none";
 }
 
+/* SUBMIT */
+
 function submitOrder(){
+
 var insta=document.getElementById("insta").value.trim();
 
 if(insta==""){
@@ -252,7 +279,7 @@ return;
 
 var orderId="TG-"+Math.random().toString(36).substr(2,10).toUpperCase();
 
-/* PREMIUM SUCCESS PAGE */
+/* SUCCESS PAGE */
 
 document.body.innerHTML=`
 
@@ -357,6 +384,7 @@ Back To Home
 
 </div>
 `;
+
 }
 
 /* TIMER */
