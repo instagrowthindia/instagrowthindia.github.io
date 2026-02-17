@@ -45,12 +45,6 @@ font-size:16px;
 cursor:pointer;
 }
 
-button:hover{
-background:#d50000;
-}
-
-/* Popup */
-
 .popup{
 display:none;
 position:fixed;
@@ -110,15 +104,6 @@ font-weight:bold;
 margin-top:10px;
 display:none;
 }
-
-.features{
-margin-top:15px;
-font-size:15px;
-line-height:1.6;
-}
-.features p{
-margin:5px 0;
-}
 </style>
 </head>
 
@@ -126,41 +111,42 @@ margin:5px 0;
 
 <h1>🚀 TODAY BIG OFFER 🚀</h1>
 
+<!-- DEMO PACKAGE -->
+<div class="box">
+<h2>100 Instagram Followers (Demo)</h2>
+<div class="price">₹20</div><br>
+<button onclick="openPopup('demo')">Buy Demo</button>
+</div>
+
+<!-- MAIN PACKAGES -->
 <div class="box">
 <h2>1K Instagram Followers</h2>
 <div class="price">₹150</div><br>
-<button onclick="openPopup()">Buy Now</button>
+<button onclick="openPopup('main')">Buy Now</button>
 </div>
 
 <div class="box">
 <h2>2K Instagram Followers</h2>
 <div class="price">₹200</div><br>
-<button onclick="openPopup()">Buy Now</button>
+<button onclick="openPopup('main')">Buy Now</button>
 </div>
 
 <div class="box">
 <h2>3K Instagram Followers</h2>
 <div class="price">₹300</div><br>
-<button onclick="openPopup()">Buy Now</button>
+<button onclick="openPopup('main')">Buy Now</button>
 </div>
 
 <div class="box">
 <h2>5K Instagram Followers</h2>
 <div class="price">₹350</div><br>
-<button onclick="openPopup()">Buy Now</button>
+<button onclick="openPopup('main')">Buy Now</button>
 </div>
 
 <div class="box">
 <h2>10K Instagram Followers</h2>
 <div class="price">₹450</div><br>
-<button onclick="openPopup()">Buy Now</button>
-
-<div class="features">
-<p>🇮🇳✨ Real Indian Followers</p>
-<p>🛡️🔒 Non-Drop Permanent Followers</p>
-<p>♾️✅ Lifetime Guaranteed</p>
-<p>⚡⏱️ Delivery Time: 10-30 Minutes</p>
-</div>
+<button onclick="openPopup('main')">Buy Now</button>
 </div>
 
 <!-- POPUP -->
@@ -170,9 +156,9 @@ margin:5px 0;
 
 <span class="close" onclick="closePopup()">✖</span>
 
-<h3>Scan QR To Pay</h3>
+<h3 id="popupTitle">Scan QR To Pay</h3>
 
-<img src="qr.png" class="qr-img">
+<img src="" id="qrImage" class="qr-img">
 
 <h4>After Payment Enter Details Below</h4>
 
@@ -196,7 +182,16 @@ Wait 1-2 Hour
 
 <script>
 
-function openPopup(){
+function openPopup(type){
+
+if(type === "demo"){
+document.getElementById("qrImage").src = "demoqr.png";
+document.getElementById("popupTitle").innerText = "Scan QR (₹20 Demo)";
+}else{
+document.getElementById("qrImage").src = "qr.png";
+document.getElementById("popupTitle").innerText = "Scan QR To Pay";
+}
+
 document.getElementById("popup").style.display="flex";
 }
 
