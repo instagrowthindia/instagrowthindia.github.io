@@ -7,15 +7,17 @@
 
 <style>
 
-body{
+html,body{
 margin:0;
+padding:0;
+overflow-x:hidden;
+width:100%;
 font-family:'Segoe UI',sans-serif;
 background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);
 background-size:400% 400%;
 animation:glowBG 8s ease infinite;
 color:white;
 text-align:center;
-overflow-x:hidden;
 }
 
 @keyframes glowBG{
@@ -25,29 +27,24 @@ overflow-x:hidden;
 }
 
 h1{
-padding:25px 10px 10px 10px;
+padding:25px 10px 15px 10px;
 font-size:26px;
 letter-spacing:2px;
 white-space:nowrap;
 }
 
-.demoText{
-color:#ff0000;
-font-size:18px;
-font-weight:bold;
-margin-bottom:15px;
-}
-
 .card{
 background:linear-gradient(135deg,#7b1fa2,#c2185b);
-margin:20px;
+margin:20px auto;
 padding:35px 25px;
 border-radius:30px;
 box-shadow:0 15px 40px rgba(0,0,0,0.4);
+width:90%;
+max-width:420px;
 }
 
 .card h2{
-font-size:24px;
+font-size:22px;
 margin-bottom:15px;
 }
 
@@ -72,6 +69,13 @@ cursor:pointer;
 box-shadow:0 8px 20px rgba(0,0,0,0.3);
 }
 
+.features{
+margin-top:20px;
+font-size:16px;
+line-height:30px;
+}
+
+/* POPUP */
 .popup{
 display:none;
 position:fixed;
@@ -84,6 +88,7 @@ background-size:400% 400%;
 animation:glowBG 8s ease infinite;
 overflow-y:auto;
 z-index:999;
+color:black;
 }
 
 .popup-content{
@@ -102,10 +107,15 @@ font-weight:bold;
 
 .packageBox{
 background:white;
-color:black;
 padding:25px;
 border-radius:20px;
 margin:20px;
+}
+
+.qr-img{
+width:230px;
+margin:20px auto;
+display:block;
 }
 
 .stepBox{
@@ -171,62 +181,74 @@ display:none;
 <body>
 
 <h1>🚀 TODAY BIG OFFER 🚀</h1>
-<div class="demoText">Demo Is Over Today</div>
 
+<!-- DEMO PACKAGE -->
+<div class="card">
+<h2>100 Instagram Followers</h2>
+<div class="price">₹20</div><br>
+<button class="buyBtn" onclick="openPopup('100 Instagram Followers','₹20','demoqr.png')">Buy Now</button>
+</div>
+
+<!-- MAIN PACKAGES -->
 <div class="card">
 <h2>1K Instagram Followers</h2>
 <div class="price">₹150</div><br>
-<button class="buyBtn" onclick="openPopup('1K Instagram Followers','₹150')">Buy Now</button>
+<button class="buyBtn" onclick="openPopup('1K Instagram Followers','₹150','qr.png')">Buy Now</button>
 </div>
 
 <div class="card">
 <h2>2K Instagram Followers</h2>
 <div class="price">₹200</div><br>
-<button class="buyBtn" onclick="openPopup('2K Instagram Followers','₹200')">Buy Now</button>
+<button class="buyBtn" onclick="openPopup('2K Instagram Followers','₹200','qr.png')">Buy Now</button>
 </div>
 
 <div class="card">
 <h2>3K Instagram Followers</h2>
 <div class="price">₹300</div><br>
-<button class="buyBtn" onclick="openPopup('3K Instagram Followers','₹300')">Buy Now</button>
+<button class="buyBtn" onclick="openPopup('3K Instagram Followers','₹300','qr.png')">Buy Now</button>
 </div>
 
 <div class="card">
 <h2>5K Instagram Followers</h2>
 <div class="price">₹350</div><br>
-<button class="buyBtn" onclick="openPopup('5K Instagram Followers','₹350')">Buy Now</button>
+<button class="buyBtn" onclick="openPopup('5K Instagram Followers','₹350','qr.png')">Buy Now</button>
 </div>
 
 <div class="card">
 <h2>10K Instagram Followers</h2>
 <div class="price">₹450</div><br>
-<button class="buyBtn" onclick="openPopup('10K Instagram Followers','₹450')">Buy Now</button>
+<button class="buyBtn" onclick="openPopup('10K Instagram Followers','₹450','qr.png')">Buy Now</button>
+
+<div class="features">
+🇮🇳 Real Indian Followers <br>
+🔒 Non-Drop Permanent <br>
+♾ Lifetime Guaranteed <br>
+⚡ 10–30 Minutes Delivery
+</div>
 </div>
 
+<!-- POPUP -->
 <div class="popup" id="popup">
 <div class="popup-content">
-
-<div class="popup-header">
-Complete Your Payment
-</div>
-
+<div class="popup-header">Complete Your Payment</div>
 <div class="packageBox">
 
 <h2 id="popupTitle"></h2>
-<h2 style="color:red;" id="popupPrice"></h2>
+<h3 id="popupPrice" style="color:red;"></h3>
+
+<img id="qrImage" class="qr-img">
 
 <div class="stepBox"><b>Step 1:</b> Scan & Make Payment</div>
 <div class="stepBox"><b>Step 2:</b> Enter Instagram Link After Payment</div>
 <div class="stepBox"><b>Step 3:</b> Click On Payment Done</div>
 
+<div class="timerBox">⏳ Offer Ends In: <span id="timer">10:00</span></div>
+
 <input type="text" id="insta" placeholder="Enter Instagram Link">
-
 <button class="paymentBtn" onclick="submitOrder()">Payment Done</button>
-<button class="backBtn" onclick="closePopup()">⬅ Back To Packages</button>
+<button class="backBtn" onclick="closePopup()">Back To Packages</button>
 
-<div class="error" id="errorMsg">
-Please Enter Instagram Link ❌
-</div>
+<div class="error" id="errorMsg">Please Enter Instagram Link</div>
 
 </div>
 </div>
@@ -234,10 +256,12 @@ Please Enter Instagram Link ❌
 
 <script>
 
-function openPopup(title,price){
+function openPopup(title,price,qr){
 document.getElementById("popupTitle").innerText=title;
 document.getElementById("popupPrice").innerText=price;
+document.getElementById("qrImage").src=qr;
 document.getElementById("popup").style.display="block";
+startTimer();
 }
 
 function closePopup(){
@@ -245,81 +269,64 @@ document.getElementById("popup").style.display="none";
 }
 
 function submitOrder(){
-
 var insta=document.getElementById("insta").value.trim();
-
 if(insta==""){
 document.getElementById("errorMsg").style.display="block";
 return;
 }
-
-/* UPDATED SUCCESS PAGE */
+var orderId="TG-"+Math.random().toString(36).substr(2,9).toUpperCase();
 
 document.body.innerHTML=`
-
-<div style="
-background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);
+<div style="background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);
 background-size:400% 400%;
 animation:glowBG 8s ease infinite;
 min-height:100vh;
 text-align:center;
 padding:50px 20px;
 font-family:'Segoe UI',sans-serif;
-color:white;
-">
+color:white;">
 
-<div style="
-width:150px;
-height:150px;
-background:linear-gradient(135deg,#28a745,#34ce57);
-border-radius:50%;
-margin:40px auto;
-display:flex;
-align-items:center;
-justify-content:center;
-box-shadow:0 20px 50px rgba(0,0,0,0.3);
-">
-
+<div style="width:150px;height:150px;background:#28a745;border-radius:50%;
+margin:40px auto;display:flex;align-items:center;justify-content:center;">
 <span style="color:white;font-size:75px;font-weight:bold;">✓</span>
-
 </div>
 
-<h1 style="color:white;">Order Checking</h1>
+<h1>Order Received!</h1>
+<p>Payment Received Successfully.</p>
 
-<p style="font-size:18px;">
-Pending Payment Received<br>
-Send me payment screenshot and Your Instagram ID Link On WhatsApp
-</p>
-
-<div style="
-background:#e9f7ef;
-border-radius:25px;
-padding:30px;
-margin:30px auto;
-max-width:380px;
-color:black;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
-">
-<div style="font-size:18px;">⚡ Delivery Timeline</div>
-<div style="color:#dc3545;font-size:22px;font-weight:bold;">2 Hours</div>
+<div style="background:white;color:black;border-radius:25px;padding:30px;margin:30px auto;max-width:380px;">
+<div>Order ID</div>
+<div style="color:#dc3545;font-size:24px;font-weight:bold;">${orderId}</div>
 </div>
 
-<button onclick="location.reload()" 
-style="
-background:#ccc;
-padding:15px 40px;
-border:none;
-border-radius:30px;
-font-size:16px;
-margin-top:25px;
-cursor:pointer;
-">
-Back To Home
-</button>
-
+<div style="background:#e9f7ef;border-radius:25px;padding:30px;margin:20px auto;max-width:380px;color:black;">
+<div>⚡ Delivery Timeline</div>
+<div style="color:#dc3545;font-size:22px;font-weight:bold;">Within 2 Hours</div>
 </div>
-`;
 
+<button onclick="location.reload()" style="padding:15px 40px;border:none;border-radius:30px;background:#ccc;font-size:16px;">Back To Home</button>
+
+</div>`;
+}
+
+/* TIMER */
+var time=600;
+var countdown;
+
+function startTimer(){
+clearInterval(countdown);
+time=600;
+countdown=setInterval(function(){
+var m=Math.floor(time/60);
+var s=time%60;
+if(s<10){s="0"+s;}
+document.getElementById("timer").innerText=m+":"+s;
+time--;
+if(time<0){
+clearInterval(countdown);
+document.getElementById("timer").innerText="Expired";
+}
+},1000);
 }
 
 </script>
