@@ -6,50 +6,48 @@
 <title>Today Big Offer</title>
 
 <style>
-
 body{
 margin:0;
 font-family:Arial, sans-serif;
-background:linear-gradient(135deg,#a100ff,#ff2e8b);
+background:linear-gradient(135deg,#a100ff,#ff6a00);
 color:white;
 text-align:center;
 }
 
 h1{
-padding:25px 10px;
+padding:20px;
 font-size:28px;
 }
 
-.card{
-background:linear-gradient(135deg,#7b1fa2,#c2185b);
+.box{
+background:rgba(0,0,0,0.25);
 margin:20px;
-padding:30px;
-border-radius:25px;
-box-shadow:0 8px 20px rgba(0,0,0,0.3);
-}
-
-.card h2{
-margin-bottom:20px;
+padding:25px;
+border-radius:20px;
 }
 
 .price{
 background:#00c853;
+padding:10px 20px;
+border-radius:10px;
 display:inline-block;
-padding:12px 30px;
-border-radius:12px;
-font-size:20px;
-font-weight:bold;
-margin-bottom:15px;
+margin:10px 0;
+font-size:18px;
 }
 
-.buyBtn{
+button{
 background:#ff1744;
-border:none;
-padding:15px 35px;
-border-radius:15px;
-font-size:18px;
 color:white;
+border:none;
+padding:12px 25px;
+border-radius:10px;
+font-size:16px;
 cursor:pointer;
+margin-top:8px;
+}
+
+.backBtn{
+background:#888;
 }
 
 .popup{
@@ -68,7 +66,7 @@ align-items:center;
 background:white;
 color:black;
 width:90%;
-max-width:360px;
+max-width:350px;
 border-radius:20px;
 padding:20px;
 position:relative;
@@ -84,58 +82,32 @@ cursor:pointer;
 }
 
 .qr-img{
-width:180px;
+width:170px;
 margin:15px auto;
 display:block;
 }
 
 input{
 width:90%;
-padding:12px;
-margin:12px 0;
-border-radius:10px;
+padding:10px;
+margin:10px 0;
+border-radius:8px;
 border:1px solid #ccc;
 font-size:14px;
 }
 
-.paymentBtn{
-background:#ff1744;
-border:none;
-padding:12px 30px;
-border-radius:12px;
-font-size:16px;
-color:white;
-cursor:pointer;
-margin-top:10px;
-}
-
-.backBtn{
-background:#888;
-border:none;
-padding:10px 25px;
-border-radius:10px;
-color:white;
-cursor:pointer;
-margin-top:10px;
-}
-
 .success{
-background:#00c853;
-color:white;
-padding:12px;
-border-radius:10px;
+color:green;
 font-weight:bold;
-margin-top:12px;
+margin-top:10px;
 display:none;
 }
 
-.timerBox{
-background:#fff3cd;
-color:#ff6f00;
-padding:15px;
-border-radius:15px;
-margin:15px 0;
+.error{
+color:red;
 font-weight:bold;
+margin-top:10px;
+display:none;
 }
 
 </style>
@@ -145,45 +117,43 @@ font-weight:bold;
 
 <h1>🚀 TODAY BIG OFFER 🚀</h1>
 
-<!-- DEMO PACKAGE -->
-<div class="card">
+<!-- PACKAGES -->
+
+<div class="box">
 <h2>100 Instagram Followers (Demo)</h2>
-<div class="price">₹20</div><br>
-<button class="buyBtn" onclick="openPopup('100 Instagram Followers (Demo)','₹20')">Buy Demo</button>
+<div class="price">₹20</div>
+<button onclick="openPopup('100 Instagram Followers (Demo)','₹20','demoqr.png')">Buy Demo</button>
 </div>
 
-<!-- MAIN PACKAGES -->
-
-<div class="card">
+<div class="box">
 <h2>1K Instagram Followers</h2>
-<div class="price">₹150</div><br>
-<button class="buyBtn" onclick="openPopup('1K Instagram Followers','₹150')">Buy Now</button>
+<div class="price">₹150</div>
+<button onclick="openPopup('1K Instagram Followers','₹150','qr.png')">Buy Now</button>
 </div>
 
-<div class="card">
+<div class="box">
 <h2>2K Instagram Followers</h2>
-<div class="price">₹200</div><br>
-<button class="buyBtn" onclick="openPopup('2K Instagram Followers','₹200')">Buy Now</button>
+<div class="price">₹200</div>
+<button onclick="openPopup('2K Instagram Followers','₹200','qr.png')">Buy Now</button>
 </div>
 
-<div class="card">
+<div class="box">
 <h2>3K Instagram Followers</h2>
-<div class="price">₹300</div><br>
-<button class="buyBtn" onclick="openPopup('3K Instagram Followers','₹300')">Buy Now</button>
+<div class="price">₹300</div>
+<button onclick="openPopup('3K Instagram Followers','₹300','qr.png')">Buy Now</button>
 </div>
 
-<div class="card">
+<div class="box">
 <h2>5K Instagram Followers</h2>
-<div class="price">₹350</div><br>
-<button class="buyBtn" onclick="openPopup('5K Instagram Followers','₹350')">Buy Now</button>
+<div class="price">₹350</div>
+<button onclick="openPopup('5K Instagram Followers','₹350','qr.png')">Buy Now</button>
 </div>
 
-<div class="card">
+<div class="box">
 <h2>10K Instagram Followers</h2>
-<div class="price">₹450</div><br>
-<button class="buyBtn" onclick="openPopup('10K Instagram Followers','₹450')">Buy Now</button>
+<div class="price">₹450</div>
+<button onclick="openPopup('10K Instagram Followers','₹450','qr.png')">Buy Now</button>
 </div>
-
 
 <!-- POPUP -->
 
@@ -195,44 +165,47 @@ font-weight:bold;
 <h3 id="popupTitle"></h3>
 <h2 id="popupPrice" style="color:red;"></h2>
 
-<img src="qr.png" class="qr-img">
-
-<div class="timerBox">
-⏳ Offer Ends In: <span id="timer">10:00</span>
-</div>
+<img src="" id="qrImage" class="qr-img">
 
 <h4>Step 1: Scan & Pay</h4>
-<p>Scan the QR code above and complete payment.</p>
+<p>Scan the QR code above and complete the payment.</p>
 
 <h4>Step 2: Put Instagram Link</h4>
-<p>After payment, enter your Instagram link below and click Payment Done.</p>
+<p>After payment, enter your Instagram link or username below and click <b>Payment Done</b>.</p>
 
 <input type="text" id="insta" placeholder="Enter Instagram Link or Username">
 
-<button class="paymentBtn" onclick="submitOrder()">Payment Done</button>
+<button onclick="submitOrder()">Payment Done</button>
 
 <button class="backBtn" onclick="closePopup()">⬅ Back To Packages</button>
 
+<div class="error" id="errorMsg">
+Please Enter Instagram Link ❌
+</div>
+
 <div class="success" id="successMsg">
-Send me payment screenshot and your Instagram link on WhatsApp ✅
+Payment Received ✅ <br>
+Order Processing...
 </div>
 
 </div>
 </div>
-
 
 <script>
 
-function openPopup(title, price){
+function openPopup(title, price, qr){
+
 document.getElementById("popupTitle").innerText = title;
 document.getElementById("popupPrice").innerText = price;
+document.getElementById("qrImage").src = qr;
+
 document.getElementById("popup").style.display="flex";
-startTimer();
 }
 
 function closePopup(){
 document.getElementById("popup").style.display="none";
 document.getElementById("successMsg").style.display="none";
+document.getElementById("errorMsg").style.display="none";
 }
 
 function submitOrder(){
@@ -240,38 +213,15 @@ function submitOrder(){
 var insta = document.getElementById("insta").value.trim();
 
 if(insta === ""){
-alert("Please enter Instagram link");
+document.getElementById("errorMsg").style.display="block";
+document.getElementById("successMsg").style.display="none";
 }else{
 document.getElementById("successMsg").style.display="block";
+document.getElementById("errorMsg").style.display="none";
 }
-}
-
-// COUNTDOWN TIMER
-var time = 600;
-var countdown;
-
-function startTimer(){
-clearInterval(countdown);
-time = 600;
-
-countdown = setInterval(function(){
-var minutes = Math.floor(time / 60);
-var seconds = time % 60;
-
-if(seconds < 10){ seconds = "0" + seconds; }
-
-document.getElementById("timer").innerText = minutes + ":" + seconds;
-
-time--;
-
-if(time < 0){
-clearInterval(countdown);
-document.getElementById("timer").innerText = "Expired";
-}
-},1000);
 }
 
 </script>
 
 </body>
-</html>
+  </html>
