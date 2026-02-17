@@ -60,7 +60,7 @@ left:0;
 width:100%;
 height:100%;
 background:#f5f5f5;
-overflow-y:auto;   /* SCROLL ENABLED */
+overflow-y:auto;
 z-index:999;
 }
 
@@ -69,8 +69,6 @@ max-width:400px;
 margin:auto;
 padding-bottom:30px;
 }
-
-/* HEADER */
 
 .popup-header{
 background:#e60000;
@@ -141,39 +139,11 @@ width:90%;
 cursor:pointer;
 }
 
-.successPage{
+.error{
+color:red;
+font-weight:bold;
+margin-top:10px;
 display:none;
-padding:30px;
-color:black;
-background:white;
-min-height:100vh;
-}
-
-.successPage h2{
-color:green;
-}
-
-.orderBox{
-border:2px solid #2196f3;
-padding:20px;
-margin:20px;
-border-radius:15px;
-}
-
-.deliveryBox{
-border:2px solid green;
-padding:20px;
-margin:20px;
-border-radius:15px;
-}
-
-.close{
-position:fixed;
-right:15px;
-top:15px;
-font-size:28px;
-color:white;
-cursor:pointer;
 }
 
 </style>
@@ -182,8 +152,6 @@ cursor:pointer;
 <body>
 
 <h1>🚀 TODAY BIG OFFER 🚀</h1>
-
-<!-- PACKAGES -->
 
 <div class="card">
 <h2>1K Instagram Followers</h2>
@@ -216,7 +184,7 @@ cursor:pointer;
 </div>
 
 
-<!-- PAYMENT POPUP -->
+<!-- POPUP -->
 
 <div class="popup" id="popup">
 
@@ -234,13 +202,11 @@ Complete Your Payment
 <img src="qr.png" class="qr-img">
 
 <div class="stepBox">
-<b>Step 1: Scan & Pay</b><br>
-Scan the QR code and complete payment.
+<b>Step 1:</b> Scan & Pay
 </div>
 
 <div class="stepBox">
-<b>Step 2: Confirm Payment</b><br>
-After payment, enter your Instagram link and click Payment Done.
+<b>Step 2:</b> Enter Instagram link and click Payment Done
 </div>
 
 <div class="timerBox">
@@ -254,40 +220,17 @@ After payment, enter your Instagram link and click Payment Done.
 <button class="backBtn" onclick="closePopup()">⬅ Back To Packages</button>
 </center>
 
+<div class="error" id="errorMsg">
+Please Enter Instagram Link ❌
 </div>
 
 </div>
 
 </div>
-
-
-<!-- SUCCESS PAGE -->
-
-<div class="successPage" id="successPage">
-
-<h2>✔ Order Received!</h2>
-<p>Payment Received Successfully.</p>
-
-<div class="orderBox">
-<b>Order ID</b><br>
-<span id="orderId" style="color:red;font-size:18px;"></span>
-</div>
-
-<div class="deliveryBox">
-⚡ Delivery Timeline<br>
-<b style="color:red;">Within 2 Hours</b>
-</div>
-
-<p>Your followers will be increased shortly.</p>
-
-<button class="backBtn" onclick="goHome()">Back To Home</button>
-
 </div>
 
 
 <script>
-
-/* OPEN POPUP */
 
 function openPopup(title,price){
 document.getElementById("popupTitle").innerText=title;
@@ -296,26 +239,46 @@ document.getElementById("popup").style.display="block";
 startTimer();
 }
 
-/* CLOSE */
-
 function closePopup(){
 document.getElementById("popup").style.display="none";
 }
 
-/* PAYMENT */
-
 function submitOrder(){
 var insta=document.getElementById("insta").value.trim();
+
 if(insta==""){
-alert("Please Enter Instagram Link");
+document.getElementById("errorMsg").style.display="block";
 return;
 }
 
-var id="TG-"+Math.random().toString(36).substr(2,10).toUpperCase();
-document.getElementById("orderId").innerText=id;
+// नया पूरा पेज खोलो
+var orderId="TG-"+Math.random().toString(36).substr(2,10).toUpperCase();
 
-document.getElementById("popup").style.display="none";
-document.getElementById("successPage").style.display="block";
+document.body.innerHTML=`
+<div style="font-family:Arial;background:#f5f5f5;text-align:center;padding:30px;min-height:100vh;">
+
+<h2 style="color:green;">✔ Order Successful!</h2>
+<p>Payment Received Successfully.</p>
+
+<div style="border:2px solid #2196f3;padding:20px;margin:20px;border-radius:15px;background:white;">
+<b>Order ID</b><br>
+<span style="color:red;font-size:20px;">${orderId}</span>
+</div>
+
+<div style="border:2px solid green;padding:20px;margin:20px;border-radius:15px;background:white;">
+⚡ Delivery Timeline<br>
+<b style="color:red;">Within 2 Hours</b>
+</div>
+
+<p>Your followers will be increased shortly.</p>
+
+<button onclick="location.reload()" 
+style="background:#ccc;padding:12px 30px;border:none;border-radius:12px;font-size:16px;cursor:pointer;">
+Back To Home
+</button>
+
+</div>
+`;
 }
 
 /* TIMER */
@@ -340,11 +303,7 @@ document.getElementById("timer").innerText="Expired";
 },1000);
 }
 
-function goHome(){
-location.reload();
-}
-
 </script>
 
 </body>
-</html>
+  </html>
