@@ -20,6 +20,16 @@ padding:25px 10px;
 font-size:28px;
 }
 
+/* 🔴 DEMO OVER TEXT */
+.demoText{
+color:#ff0000;
+font-size:18px;
+font-weight:bold;
+margin-top:-10px;
+margin-bottom:15px;
+letter-spacing:1px;
+}
+
 /* PACKAGE CARD */
 
 .card{
@@ -153,6 +163,11 @@ display:none;
 
 <h1>🚀 TODAY BIG OFFER 🚀</h1>
 
+<!-- 🔴 NEW TEXT ADDED HERE -->
+<div class="demoText">
+Demo Is Over Today
+</div>
+
 <!-- PACKAGES -->
 
 <div class="card">
@@ -193,7 +208,7 @@ display:none;
 
 </div>
 
-<!-- POPUP -->
+<!-- POPUP SAME AS BEFORE -->
 
 <div class="popup" id="popup">
 <div class="popup-content">
@@ -251,122 +266,12 @@ document.getElementById("popup").style.display="none";
 
 function submitOrder(){
 var insta=document.getElementById("insta").value.trim();
-
 if(insta==""){
 document.getElementById("errorMsg").style.display="block";
 return;
 }
-
-var orderId="TG-"+Math.random().toString(36).substr(2,10).toUpperCase();
-
-/* PREMIUM SUCCESS PAGE */
-
-document.body.innerHTML=`
-
-<div style="
-background:linear-gradient(135deg,#f8f9fa,#e9ecef);
-min-height:100vh;
-font-family:'Segoe UI',sans-serif;
-text-align:center;
-padding:40px;
-">
-
-<div style="
-width:140px;
-height:140px;
-background:linear-gradient(135deg,#28a745,#34ce57);
-border-radius:50%;
-margin:50px auto 25px auto;
-display:flex;
-align-items:center;
-justify-content:center;
-box-shadow:0 15px 40px rgba(0,0,0,0.2);
-animation:pop 0.4s ease;
-">
-
-<span style="color:white;font-size:70px;font-weight:bold;">✓</span>
-
-</div>
-
-<h1 style="color:#28a745;font-size:28px;">Order Received!</h1>
-
-<p style="color:#6c757d;font-size:17px;margin-bottom:30px;">
-Payment Received Successfully.
-</p>
-
-<div style="
-background:white;
-border-radius:25px;
-padding:30px;
-margin:20px auto;
-max-width:360px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-">
-
-<div style="font-size:15px;color:#6c757d;margin-bottom:8px;">
-Order ID
-</div>
-
-<div style="
-color:#dc3545;
-font-size:22px;
-font-weight:700;
-letter-spacing:1px;
-">
-${orderId}
-</div>
-
-</div>
-
-<div style="
-background:linear-gradient(135deg,#e6f9ec,#d4edda);
-border-radius:25px;
-padding:30px;
-margin:20px auto;
-max-width:360px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-">
-
-<div style="font-size:16px;color:#155724;margin-bottom:8px;">
-⚡ Delivery Timeline
-</div>
-
-<div style="color:#dc3545;font-size:22px;font-weight:700;">
-Within 2 Hours
-</div>
-
-</div>
-
-<p style="color:#6c757d;margin-top:20px;font-size:16px;">
-Your followers will be increased shortly.
-</p>
-
-<button onclick="location.reload()" 
-style="
-background:linear-gradient(135deg,#dee2e6,#ced4da);
-padding:15px 40px;
-border:none;
-border-radius:40px;
-font-size:16px;
-margin-top:30px;
-cursor:pointer;
-box-shadow:0 8px 20px rgba(0,0,0,0.1);
-">
-Back To Home
-</button>
-
-<style>
-@keyframes pop {
-0% { transform: scale(0.7); opacity:0; }
-100% { transform: scale(1); opacity:1; }
+alert("Order Successful!");
 }
-</style>
-
-</div>
-`;
-}
-
-/* TIMER */
 
 var time=600;
 var countdown;
@@ -391,5 +296,4 @@ document.getElementById("timer").innerText="Expired";
 </script>
 
 </body>
-  </html>
-
+</html>
