@@ -3,43 +3,104 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Today Big Offer</title><style>
-html,body{margin:0;padding:0;font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);color:white;text-align:center;}
+html,body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);
+color:white;
+text-align:center;
+}
 
-/* LIVE COUNTER */
+/* 🔥 LIVE COUNTER */
 .liveBox{
-position:fixed;top:10px;left:10px;
-background:#000;padding:8px 15px;border-radius:20px;
-font-size:14px;z-index:9999;
+position:fixed;
+top:10px;
+left:10px;
+background:black;
+padding:8px 15px;
+border-radius:20px;
+font-size:14px;
+z-index:9999;
 }
 
 /* FAKE ORDER */
 .popupOrder{
-position:fixed;bottom:20px;left:20px;
-background:#fff;color:#000;padding:12px;
-border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.3);
-font-size:14px;display:none;z-index:9999;
+position:fixed;
+bottom:20px;
+left:20px;
+background:#fff;
+color:#000;
+padding:12px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+font-size:14px;
+display:none;
+z-index:9999;
+max-width:250px;
 }
 
+/* TITLE */
+h1{
+margin-top:60px;
+}
+
+/* CARD */
 .card{
 background:linear-gradient(135deg,#7b1fa2,#c2185b);
-margin:20px;padding:30px;border-radius:25px;
+margin:20px;
+padding:35px;
+border-radius:30px;
 }
 
-.price{background:#00c853;padding:10px 20px;border-radius:10px;display:inline-block;}
+/* PRICE */
+.price{
+background:#00c853;
+padding:12px 25px;
+border-radius:15px;
+display:inline-block;
+font-weight:bold;
+}
 
+/* BUTTON */
 .buyBtn{
-background:#ff1744;border:none;padding:15px 40px;
-border-radius:20px;color:white;font-size:18px;
+background:#ff1744;
+border:none;
+padding:15px 40px;
+border-radius:25px;
+color:white;
+font-size:18px;
+margin-top:15px;
 }
 
+/* FEATURES */
+.features{
+margin-top:20px;
+line-height:28px;
+}
+
+/* POPUP */
 .popup{
-display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
 background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);
 z-index:999;
 }
 
+.popupBox{
+background:white;
+color:black;
+margin:80px 20px;
+padding:25px;
+border-radius:20px;
+}
+
+/* LOADER */
 .loader{
-border:6px solid #f3f3f3;
+border:6px solid #eee;
 border-top:6px solid red;
 border-radius:50%;
 width:60px;height:60px;
@@ -48,19 +109,41 @@ margin:30px auto;
 }
 @keyframes spin{100%{transform:rotate(360deg);}}
 
-.error{color:red;display:none;margin-top:10px;}
-</style></head><body><div class="liveBox" id="liveCount">🔥 120 PEOPLE WATCHING NOW</div><h1>🚀 TODAY BIG OFFER 🚀</h1><!-- PACKAGES --><div class="card">
+/* ERROR */
+.error{
+color:red;
+display:none;
+margin-top:10px;
+}
+</style></head><body><!-- 🔥 LIVE --><div class="liveBox" id="liveCount">🔥 120 PEOPLE WATCHING NOW</div><h1>🚀 TODAY BIG OFFER 🚀</h1><!-- DEMO --><div class="card">
+<h2>100 Instagram Followers (DEMO)</h2>
+<div class="price">₹20</div><br>
+<button class="buyBtn" onclick="openPopup('100 Followers','₹20')">Buy Now</button>
+</div><!-- PACKAGES --><div class="card">
 <h2>1K Instagram Followers</h2>
-<div class="price">₹150</div><br><br>
+<div class="price">₹150</div><br>
 <button class="buyBtn" onclick="openPopup('1K Followers','₹150')">Buy Now</button>
 </div><div class="card">
+<h2>2K Instagram Followers</h2>
+<div class="price">₹200</div><br>
+<button class="buyBtn" onclick="openPopup('2K Followers','₹200')">Buy Now</button>
+</div><div class="card">
+<h2>3K Instagram Followers</h2>
+<div class="price">₹300</div><br>
+<button class="buyBtn" onclick="openPopup('3K Followers','₹300')">Buy Now</button>
+</div><div class="card">
 <h2>5K Instagram Followers</h2>
-<div class="price">₹350</div><br><br>
+<div class="price">₹350</div><br>
 <button class="buyBtn" onclick="openPopup('5K Followers','₹350')">Buy Now</button>
 </div><div class="card">
 <h2>10K Instagram Followers</h2>
-<div class="price">₹450</div><br><br>
-<button class="buyBtn" onclick="openPopup('10K Followers','₹450')">Buy Now</button>
+<div class="price">₹450</div><br>
+<button class="buyBtn" onclick="openPopup('10K Followers','₹450')">Buy Now</button><div class="features">
+🇮🇳 Real Indian Followers <br>
+🔒 Non-Drop Permanent <br>
+♾ Lifetime Guaranteed <br>
+⚡ Fast Delivery
+</div>
 </div><!-- POPUP --><div id="popup" class="popup"></div><!-- FAKE ORDER --><div id="orderBox" class="popupOrder"></div><script>
 
 // LIVE COUNT
@@ -71,9 +154,9 @@ document.getElementById("liveCount").innerText="🔥 "+num+" PEOPLE WATCHING NOW
 setInterval(updateLive,3000);
 
 // FAKE USERS
-var users=["_king_rahul","ajay_yt","mr_manoj","its_vikram","dark_99","real_sonu","vip_rohit","killer_amit","pro_ankit","legend_karan","insta_deepak","official_nikhil","boss_pawan","gaming_arjun","stylish_ramesh"];
+var users=["_insta_king","official_rahul","real_ajay","mr_manoj","vip_vikram","dark_rohit","pro_ankit","legend_karan","boss_pawan","gaming_arjun","stylish_ramesh","killer_amit","its_deepak","official_nikhil","royal_sonu"];
 var locations=["Delhi","Mumbai","Chennai","Kolkata","Hyderabad","Patna"];
-var packages=["1K","2K","5K","10K"];
+var packages=["1K","2K","3K","5K","10K"];
 var times=["Just now","1 min ago","5 min ago","10 min ago"];
 
 function showOrder(){
@@ -95,20 +178,20 @@ function openPopup(title,price){
 document.getElementById("popup").style.display="block";
 
 document.getElementById("popup").innerHTML=`
-<div style="padding:20px;text-align:center;">
+<div class="popupBox">
 
-<button onclick="closePopup()" style="position:absolute;top:10px;right:10px;">← Back</button>
+<button onclick="closePopup()" style="float:right;">← Back</button>
 
 <h2>`+title+`</h2>
 <h3 style="color:red;">`+price+`</h3>
 
-<img src="dk.jpg" width="220"><br><br>
+<img src="dk.jpg" width="200"><br><br>
 
-<p>Scan & Pay</p>
+<div>Scan & Pay</div><br>
 
 <input id="insta" placeholder="Enter Instagram Link"><br><br>
 
-<button onclick="submitOrder()">Payment Done</button><br><br>
+<button onclick="submitOrder()">Payment Done</button>
 
 <div id="error" class="error">⚠️ ENTER INSTAGRAM LINK</div>
 
@@ -133,7 +216,7 @@ return;
 document.body.innerHTML=`
 <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;">
 <div class="loader"></div>
-<h1>VERIFYING PAYMENT...</h1>
+<h2>VERIFYING PAYMENT...</h2>
 <p>SEND SCREENSHOT ON WHATSAPP</p>
 <a href="https://wa.me/917258028139">CHAT NOW</a>
 </div>`;
@@ -142,15 +225,18 @@ document.body.innerHTML=`
 setTimeout(()=>{
 document.body.innerHTML=`
 <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;">
-<div style="width:120px;height:120px;background:#28a745;border-radius:50%;display:flex;align-items:center;justify-content:center;">
-<span style="font-size:60px;">✓</span>
+
+<div style="width:130px;height:130px;background:#28a745;border-radius:50%;
+display:flex;align-items:center;justify-content:center;">
+<span style="font-size:70px;">✓</span>
 </div>
 
 <h1>PAYMENT SUCCESSFUL</h1>
 
 <p>⚠️ SEND SCREENSHOT & INSTAGRAM ID ON WHATSAPP</p>
 
-<a href="https://wa.me/917258028139" style="background:#25D366;color:white;padding:15px 30px;border-radius:20px;">
+<a href="https://wa.me/917258028139"
+style="background:#25D366;color:white;padding:15px 35px;border-radius:20px;">
 CHAT ON WHATSAPP
 </a>
 
