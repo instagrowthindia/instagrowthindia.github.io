@@ -207,13 +207,195 @@ font-size:14px;
 <div class="indian">
 🇮🇳 INDIAN FOLLOWERS • FAST DELIVERY
 </div>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Today Big Offer</title>
 
+<style>
+body{
+margin:0;
+font-family:sans-serif;
+background:linear-gradient(135deg,#ff00cc,#7b00ff);
+color:white;
+text-align:center;
+}
+
+/* LIVE */
+.live{
+background:black;
+padding:10px 18px;
+border-radius:30px;
+display:inline-block;
+margin-top:10px;
+}
+
+/* HEADER */
+h1{
+margin-top:20px;
+}
+
+/* CARD */
+.card{
+background:linear-gradient(135deg,#7b1fa2,#c2185b);
+margin:20px;
+padding:25px;
+border-radius:20px;
+}
+
+/* PRICE */
+.price{
+background:#00c853;
+padding:8px 20px;
+border-radius:15px;
+display:inline-block;
+margin:10px 0;
+}
+
+/* BUTTON */
+.buy{
+background:#ff1744;
+padding:12px 25px;
+border:none;
+border-radius:20px;
+color:white;
+font-size:16px;
+}
+
+/* POPUP */
+.popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#ff00cc,#7b00ff);
+overflow-y:auto;
+}
+
+.box{
+padding:20px;
+}
+
+/* STEP */
+.step{
+background:rgba(255,255,255,0.2);
+padding:12px;
+margin:10px 0;
+border-radius:10px;
+}
+
+/* TIMER */
+.timer{
+background:#fff3cd;
+color:black;
+padding:12px;
+border-radius:10px;
+margin:10px 0;
+font-weight:bold;
+}
+
+/* INPUT */
+input{
+width:90%;
+padding:12px;
+border-radius:10px;
+border:none;
+}
+
+/* BUTTON */
+.btn{
+background:#00c853;
+padding:14px;
+border:none;
+border-radius:20px;
+color:white;
+width:90%;
+margin-top:10px;
+font-size:16px;
+}
+
+.back{
+background:#ccc;
+padding:12px;
+border:none;
+border-radius:20px;
+width:90%;
+margin-top:10px;
+margin-bottom:30px;
+}
+
+/* ERROR */
+.error{
+color:yellow;
+display:none;
+margin-top:10px;
+}
+
+/* LOADER */
+.loader{
+border:6px solid #f3f3f3;
+border-top:6px solid #00c853;
+border-radius:50%;
+width:70px;
+height:70px;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}
+
+/* NOTIFICATION */
+.noti{
+position:fixed;
+bottom:15px;
+left:50%;
+transform:translateX(-50%);
+background:white;
+color:black;
+padding:12px 18px;
+border-radius:20px;
+display:none;
+font-size:14px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🚀 TODAY BIG OFFER 🚀</h1>
+
+<!-- LIVE ABOVE FIRST CARD -->
+<div class="live">🔴 LIVE <span id="watch">120</span> watching now</div>
+
+<!-- CARDS -->
+<div class="card">
+<h2>100 Followers (DEMO)</h2>
+<div class="price">₹20</div><br>
+<button class="buy" onclick="openPay('100 Followers','₹20')">Buy Now</button>
 </div>
 
-<!-- FOOTER -->
-<div class="footer">
-🔒 Non-Drop Guarantee <br>
-⚡ Delivery 10–30 Minutes
+<div class="card">
+<h2>1K Followers</h2>
+<div class="price">₹150</div><br>
+<button class="buy" onclick="openPay('1K Followers','₹150')">Buy Now</button>
+</div>
+
+<div class="card">
+<h2>5K Followers</h2>
+<div class="price">₹350</div><br>
+<button class="buy" onclick="openPay('5K Followers','₹350')">Buy Now</button>
+</div>
+
+<div class="card">
+<h2>10K Followers</h2>
+<div class="price">₹450</div><br>
+<button class="buy" onclick="openPay('10K Followers','₹450')">Buy Now</button>
 </div>
 
 <!-- POPUP -->
@@ -250,11 +432,36 @@ function openPay(t,p){
 document.getElementById("popup").style.display="block";
 document.getElementById("title").innerText=t;
 document.getElementById("price").innerText=p;
+startTimer();
 }
 
 /* CLOSE */
 function closePop(){
 document.getElementById("popup").style.display="none";
+}
+
+/* TIMER FIX */
+let time=600;
+let timerInterval;
+
+function startTimer(){
+clearInterval(timerInterval);
+time=600;
+
+timerInterval=setInterval(()=>{
+let m=Math.floor(time/60);
+let s=time%60;
+if(s<10){s="0"+s;}
+
+document.getElementById("time").innerText=m+":"+s;
+
+time--;
+
+if(time<0){
+clearInterval(timerInterval);
+document.getElementById("time").innerText="Expired";
+}
+},1000);
 }
 
 /* PAYMENT */
@@ -285,29 +492,24 @@ document.body.innerHTML=`
 </div>
 `;
 },2000);
-
 }
 
-/* LIVE */
+/* LIVE COUNT */
 setInterval(()=>{
 document.getElementById("watch").innerText=Math.floor(Math.random()*100+80);
 },2000);
 
-/* BUY POPUP */
-let users=["insta_raj","viral_king","growth_hub","real_boost","social_hero","insta_pro","followers_king","trend_user","fast_growth","insta_star","user_x","boost_now","grow_fast","insta_viral","pro_user"];
-
-let cities=["Delhi","Mumbai","Kolkata","Chennai","Hyderabad","Pune","Jaipur","Lucknow","Patna","Surat"];
-
-let plans=["1K","2K","3K","5K","10K"];
+/* POPUP BUY */
+let users=["insta_raj","viral_king","growth_hub","real_boost","insta_pro","fast_growth","insta_star"];
+let cities=["Delhi","Mumbai","Kolkata","Chennai","Hyderabad","Jaipur"];
 
 setInterval(()=>{
 let u=users[Math.floor(Math.random()*users.length)];
 let c=cities[Math.floor(Math.random()*cities.length)];
-let p=plans[Math.floor(Math.random()*plans.length)];
 
 let n=document.getElementById("noti");
 n.style.display="block";
-n.innerText="🔥 "+u+" just bought "+p+" followers from "+c;
+n.innerText="🔥 "+u+" just bought followers from "+c;
 
 setTimeout(()=>{n.style.display="none";},4000);
 
