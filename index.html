@@ -22,32 +22,30 @@ input{width:95%;padding:14px;margin:15px 0;border-radius:12px;border:1px solid #
 .paymentBtn{background:#e60000;border:none;padding:15px;border-radius:15px;font-size:18px;color:white;cursor:pointer;width:95%;}
 .backBtn{background:#ccc;border:none;padding:12px;border-radius:15px;font-size:16px;margin-top:10px;width:95%;cursor:pointer;}
 .error{color:red;font-weight:bold;margin-top:10px;display:none;}
-</style></head>
-<body>
-<h1>🚀 TODAY BIG OFFER 🚀</h1><div class="card">
+</style></head><body><h1>🚀 TODAY BIG OFFER 🚀</h1><div class="card">
 <h2>100 Instagram Followers (DEMO)</h2>
 <div class="price">₹20</div><br>
-<button class="buyBtn" onclick="openPopup('100 Instagram Followers (DEMO)','₹20','Dk.jpg')">Buy Now</button>
+<button class="buyBtn" onclick="openPopup('100 Instagram Followers (DEMO)','₹20','dk.jpg')">Buy Now</button>
 </div><div class="card">
 <h2>1K Instagram Followers</h2>
 <div class="price">₹150</div><br>
-<button class="buyBtn" onclick="openPopup('1K Instagram Followers','₹150','Dk.jpg')">Buy Now</button>
+<button class="buyBtn" onclick="openPopup('1K Instagram Followers','₹150','dk.jpg')">Buy Now</button>
 </div><div class="card">
 <h2>2K Instagram Followers</h2>
 <div class="price">₹200</div><br>
-<button class="buyBtn" onclick="openPopup('2K Instagram Followers','₹200','Dk.jpg')">Buy Now</button>
+<button class="buyBtn" onclick="openPopup('2K Instagram Followers','₹200','dk.jpg')">Buy Now</button>
 </div><div class="card">
 <h2>3K Instagram Followers</h2>
 <div class="price">₹300</div><br>
-<button class="buyBtn" onclick="openPopup('3K Instagram Followers','₹300','Dk.jpg')">Buy Now</button>
+<button class="buyBtn" onclick="openPopup('3K Instagram Followers','₹300','dk.jpg')">Buy Now</button>
 </div><div class="card">
 <h2>5K Instagram Followers</h2>
 <div class="price">₹350</div><br>
-<button class="buyBtn" onclick="openPopup('5K Instagram Followers','₹350','Dk.jpg')">Buy Now</button>
+<button class="buyBtn" onclick="openPopup('5K Instagram Followers','₹350','dk.jpg')">Buy Now</button>
 </div><div class="card">
 <h2>10K Instagram Followers</h2>
 <div class="price">₹450</div><br>
-<button class="buyBtn" onclick="openPopup('10K Instagram Followers','₹450','Dk.jpg')">Buy Now</button><div class="features">
+<button class="buyBtn" onclick="openPopup('10K Instagram Followers','₹450','dk.jpg')">Buy Now</button><div class="features">
 🇮🇳 Real Indian Followers <br>
 🔒 Non-Drop Permanent <br>
 ♾ Lifetime Guaranteed <br>
@@ -56,19 +54,12 @@ input{width:95%;padding:14px;margin:15px 0;border-radius:12px;border:1px solid #
 </div><div class="popup" id="popup">
 <div class="popup-content">
 <div class="popup-header">Complete Your Payment</div>
-<div class="packageBox">
-<h2 id="popupTitle"></h2>
-<h3 id="popupPrice" style="color:red;"></h3>
-<img id="qrImage" class="qr-img">
-<div class="stepBox"><b>Step 1:</b> Scan & Make Payment</div>
+<div class="packageBox"><h2 id="popupTitle"></h2>
+<h3 id="popupPrice" style="color:red;"></h3><img id="qrImage" class="qr-img"><div class="stepBox"><b>Step 1:</b> Scan & Make Payment</div>
 <div class="stepBox"><b>Step 2:</b> Enter Instagram Link After Payment</div>
-<div class="stepBox"><b>Step 3:</b> Click On Payment Done</div>
-<div class="timerBox">⏳ Offer Ends In: <span id="timer">10:00</span></div>
-<input type="text" id="insta" placeholder="Enter Instagram Link">
+<div class="stepBox"><b>Step 3:</b> Click On Payment Done</div><div class="timerBox">⏳ Offer Ends In: <span id="timer">10:00</span></div><input type="text" id="insta" placeholder="Enter Instagram Link">
 <button class="paymentBtn" onclick="submitOrder()">Payment Done</button>
-<button class="backBtn" onclick="closePopup()">⬅️Back To Packages</button>
-<div class="error" id="errorMsg">Please Enter Instagram Link</div>
-</div>
+<button class="backBtn" onclick="closePopup()">⬅️Back To Packages</button><div class="error" id="errorMsg">Please Enter Instagram Link</div></div>
 </div>
 </div><script>
 function openPopup(title,price,qr){
@@ -78,20 +69,75 @@ document.getElementById("qrImage").src=qr;
 document.getElementById("popup").style.display="block";
 startTimer();
 }
-function closePopup(){document.getElementById("popup").style.display="none";}
+
+function closePopup(){
+document.getElementById("popup").style.display="none";
+}
+
 function submitOrder(){
 var insta=document.getElementById("insta").value.trim();
-if(insta==""){document.getElementById("errorMsg").style.display="block";return;}
-document.body.innerHTML=`<div style="background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);background-size:400% 400%;animation:glowBG 8s ease infinite;min-height:100vh;text-align:center;padding:50px 20px;font-family:'Segoe UI',sans-serif;color:white;">
-<div style="width:150px;height:150px;background:#28a745;border-radius:50%;margin:40px auto;display:flex;align-items:center;justify-content:center;"><span style="color:white;font-size:75px;font-weight:bold;">✓</span></div>
-<h1 style="font-size:32px;font-weight:bold;letter-spacing:2px;">Order checking </h1>
-<p style="font-size:20px;font-weight:bold;margin-top:20px;">SEND PAYMENT SCREENSHOT AND YOUR INSTAGRAM LINK ON WHATSAPP</p>
-<a href="https://wa.me/917258028139" target="_blank" style="display:inline-block;margin-top:30px;background:#25D366;color:white;padding:18px 45px;border-radius:40px;font-size:20px;text-decoration:none;font-weight:bold;">Chat On WhatsApp</a>
+if(insta==""){
+document.getElementById("errorMsg").style.display="block";
+return;
+}
+
+document.body.innerHTML=`
+<div style="background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);
+background-size:400% 400%;
+animation:glowBG 8s ease infinite;
+min-height:100vh;
+text-align:center;
+padding:50px 20px;
+font-family:'Segoe UI',sans-serif;
+color:white;">
+
+<div style="width:150px;height:150px;background:#28a745;border-radius:50%;
+margin:40px auto;display:flex;align-items:center;justify-content:center;">
+<span style="color:white;font-size:75px;font-weight:bold;">✓</span>
+</div>
+
+<h1 style="font-size:32px;font-weight:bold;letter-spacing:2px;">
+Order checking 
+</h1>
+
+<p style="font-size:20px;font-weight:bold;margin-top:20px;">
+SEND PAYMENT SCREENSHOT AND YOUR INSTAGRAM LINK ON WHATSAPP
+</p>
+
+<a href="https://wa.me/917258028139" target="_blank"
+style="display:inline-block;margin-top:30px;background:#25D366;color:white;
+padding:18px 45px;border-radius:40px;font-size:20px;
+text-decoration:none;font-weight:bold;">
+Chat On WhatsApp
+</a>
+
 <br><br>
-<button onclick="location.reload()" style="padding:15px 40px;border:none;border-radius:30px;background:#ccc;font-size:16px;">⬅ Back To Home</button>
+
+<button onclick="location.reload()" 
+style="padding:15px 40px;border:none;border-radius:30px;background:#ccc;font-size:16px;">
+⬅ Back To Home
+</button>
+
 </div>`;
 }
-var time=600;var countdown;
-function startTimer(){clearInterval(countdown);time=600;countdown=setInterval(function(){var m=Math.floor(time/60);var s=time%60;if(s<10){s="0"+s;}document.getElementById("timer").innerText=m+":"+s;time--;if(time<0){clearInterval(countdown);document.getElementById("timer").innerText="Expired";}},1000);}
+
+var time=600;
+var countdown;
+
+function startTimer(){
+clearInterval(countdown);
+time=600;
+countdown=setInterval(function(){
+var m=Math.floor(time/60);
+var s=time%60;
+if(s<10){s="0"+s;}
+document.getElementById("timer").innerText=m+":"+s;
+time--;
+if(time<0){
+clearInterval(countdown);
+document.getElementById("timer").innerText="Expired";
+}
+},1000);
+}
 </script></body>
 </html>
