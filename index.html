@@ -22,6 +22,21 @@ input{width:95%;padding:14px;margin:15px 0;border-radius:12px;border:1px solid #
 .paymentBtn{background:#e60000;border:none;padding:15px;border-radius:15px;font-size:18px;color:white;cursor:pointer;width:95%;}
 .backBtn{background:#ccc;border:none;padding:12px;border-radius:15px;font-size:16px;margin-top:10px;width:95%;cursor:pointer;}
 .error{color:red;font-weight:bold;margin-top:10px;display:none;}
+
+/* Loader */
+.loader{
+border:6px solid #f3f3f3;
+border-top:6px solid #ff1744;
+border-radius:50%;
+width:60px;
+height:60px;
+animation:spin 1s linear infinite;
+margin:30px auto;
+}
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
 </style></head><body><h1>🚀 TODAY BIG OFFER 🚀</h1><div class="card">
 <h2>100 Instagram Followers (DEMO)</h2>
 <div class="price">₹20</div><br>
@@ -51,19 +66,24 @@ input{width:95%;padding:14px;margin:15px 0;border-radius:12px;border:1px solid #
 ♾ Lifetime Guaranteed <br>
 ⚡ 10–30 Minutes Delivery
 </div>
-</div><!-- POPUP --><div class="popup" id="popup">
-<div class="popup-content"><!-- 🔙 TOP BACK BUTTON --><button onclick="closePopup()" style="position:fixed;top:15px;left:15px;background:#ccc;border:none;padding:10px 15px;border-radius:10px;font-size:14px;cursor:pointer;z-index:1000;">
-⬅ Back
-</button><div class="popup-header">Complete Your Payment</div><div class="packageBox">
+</div><div class="popup" id="popup">
+<div class="popup-content"><!-- RIGHT BACK --><button onclick="closePopup()" style="position:fixed;top:15px;right:15px;background:#fff;border:none;padding:10px 15px;border-radius:10px;z-index:1000;">← Back</button>
+
+<div class="popup-header">Complete Your Payment</div><div class="packageBox">
 <h2 id="popupTitle"></h2>
 <h3 id="popupPrice" style="color:red;"></h3><img id="qrImage" class="qr-img"><div class="stepBox"><b>Step 1:</b> Scan & Make Payment</div>
 <div class="stepBox"><b>Step 2:</b> Enter Instagram Link After Payment</div>
 <div class="stepBox"><b>Step 3:</b> Click On Payment Done</div><div class="timerBox">⏳ Offer Ends In: <span id="timer">10:00</span></div><input type="text" id="insta" placeholder="Enter Instagram Link">
-<button class="paymentBtn" onclick="submitOrder()">Payment Done</button><!-- 🔙 BOTTOM BACK --><button class="backBtn" onclick="closePopup()">⬅️Back To Packages</button>
+<button class="paymentBtn" onclick="submitOrder()">Payment Done</button><button class="backBtn" onclick="closePopup()">⬅️Back To Packages</button>
 
 <div class="error" id="errorMsg">Please Enter Instagram Link</div></div>
 </div>
 </div><script>
+
+// swipe block
+history.pushState(null, null, location.href);
+window.onpopstate = function () { history.go(1); };
+
 function openPopup(title,price,qr){
 document.getElementById("popupTitle").innerText=title;
 document.getElementById("popupPrice").innerText=price;
@@ -83,14 +103,28 @@ document.getElementById("errorMsg").style.display="block";
 return;
 }
 
-document.body.innerHTML=`<div style="background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);background-size:400% 400%;animation:glowBG 8s ease infinite;min-height:100vh;text-align:center;padding:50px 20px;font-family:'Segoe UI',sans-serif;color:white;">
-<div style="width:150px;height:150px;background:#28a745;border-radius:50%;margin:40px auto;display:flex;align-items:center;justify-content:center;"><span style="color:white;font-size:75px;font-weight:bold;">✓</span></div>
-<h1 style="font-size:32px;font-weight:bold;letter-spacing:2px;">Order checking </h1>
-<p style="font-size:20px;font-weight:bold;margin-top:20px;">SEND PAYMENT SCREENSHOT AND YOUR INSTAGRAM LINK ON WHATSAPP</p>
-<a href="https://wa.me/917258028139" target="_blank" style="display:inline-block;margin-top:30px;background:#25D366;color:white;padding:18px 45px;border-radius:40px;font-size:20px;text-decoration:none;font-weight:bold;">Chat On WhatsApp</a>
-<br><br>
-<button onclick="location.reload()" style="padding:15px 40px;border:none;border-radius:30px;background:#ccc;font-size:16px;">⬅ Back To Home</button>
+// FAKE LOADING
+document.body.innerHTML=`
+<div style="text-align:center;padding:80px;color:white;">
+<div class="loader"></div>
+<h2>Checking Payment...</h2>
+<p>Please wait 3 seconds</p>
 </div>`;
+
+// AUTO SUCCESS
+setTimeout(function(){
+document.body.innerHTML=`
+<div style="background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);min-height:100vh;text-align:center;padding:50px;color:white;">
+<div style="width:150px;height:150px;background:#28a745;border-radius:50%;margin:40px auto;display:flex;align-items:center;justify-content:center;">
+<span style="font-size:75px;">✓</span>
+</div>
+<h1>Payment Successful</h1>
+<p>Send screenshot & Instagram link on WhatsApp</p>
+<a href="https://wa.me/917258028139" target="_blank" style="background:#25D366;color:white;padding:15px 40px;border-radius:30px;display:inline-block;margin-top:20px;">Chat Now</a>
+<br><br>
+<button onclick="location.reload()" style="padding:10px 30px;border:none;border-radius:20px;">Back Home</button>
+</div>`;
+},3000);
 }
 
 var time=600;
