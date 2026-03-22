@@ -23,7 +23,6 @@ input{width:95%;padding:14px;margin:15px 0;border-radius:12px;border:1px solid #
 .backBtn{background:#ccc;border:none;padding:12px;border-radius:15px;font-size:16px;margin-top:10px;width:95%;cursor:pointer;}
 .error{color:red;font-weight:bold;margin-top:10px;display:none;}
 
-/* Loader */
 .loader{
 border:6px solid #f3f3f3;
 border-top:6px solid #ff1744;
@@ -67,7 +66,7 @@ margin:30px auto;
 ⚡ 10–30 Minutes Delivery
 </div>
 </div><div class="popup" id="popup">
-<div class="popup-content"><!-- RIGHT BACK --><button onclick="closePopup()" style="position:fixed;top:15px;right:15px;background:#fff;border:none;padding:10px 15px;border-radius:10px;z-index:1000;">← Back</button>
+<div class="popup-content"><button onclick="closePopup()" style="position:fixed;top:15px;right:15px;background:#fff;border:none;padding:10px 15px;border-radius:10px;z-index:1000;">← Back</button>
 
 <div class="popup-header">Complete Your Payment</div><div class="packageBox">
 <h2 id="popupTitle"></h2>
@@ -79,10 +78,6 @@ margin:30px auto;
 <div class="error" id="errorMsg">Please Enter Instagram Link</div></div>
 </div>
 </div><script>
-
-// swipe block
-history.pushState(null, null, location.href);
-window.onpopstate = function () { history.go(1); };
 
 function openPopup(title,price,qr){
 document.getElementById("popupTitle").innerText=title;
@@ -98,31 +93,68 @@ document.getElementById("popup").style.display="none";
 
 function submitOrder(){
 var insta=document.getElementById("insta").value.trim();
+
+// ❌ FAIL
 if(insta==""){
-document.getElementById("errorMsg").style.display="block";
+alert("ENTER INSTAGRAM LINK");
 return;
 }
 
-// FAKE LOADING
+// 🔄 VERIFYING SCREEN
 document.body.innerHTML=`
-<div style="text-align:center;padding:80px;color:white;">
+<div style="background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);
+min-height:100vh;text-align:center;padding:80px 20px;color:white;">
+
 <div class="loader"></div>
-<h2>Checking Payment...</h2>
-<p>Please wait 3 seconds</p>
+
+<h1 style="font-size:34px;font-weight:bold;">
+VERIFYING PAYMENT...
+</h1>
+
+<p style="font-size:20px;font-weight:bold;margin-top:20px;">
+SEND PAYMENT SCREENSHOT AND INSTAGRAM ID ON WHATSAPP
+</p>
+
+<a href="https://wa.me/917258028139" target="_blank"
+style="background:#25D366;color:white;padding:18px 45px;border-radius:40px;
+display:inline-block;margin-top:30px;font-size:20px;font-weight:bold;">
+CHAT ON WHATSAPP
+</a>
+
 </div>`;
 
-// AUTO SUCCESS
+// ✅ SUCCESS AFTER 3 SEC
 setTimeout(function(){
 document.body.innerHTML=`
-<div style="background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);min-height:100vh;text-align:center;padding:50px;color:white;">
-<div style="width:150px;height:150px;background:#28a745;border-radius:50%;margin:40px auto;display:flex;align-items:center;justify-content:center;">
+<div style="background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);
+min-height:100vh;text-align:center;padding:50px;color:white;">
+
+<div style="width:150px;height:150px;background:#28a745;border-radius:50%;
+margin:40px auto;display:flex;align-items:center;justify-content:center;">
 <span style="font-size:75px;">✓</span>
 </div>
-<h1>Payment Successful</h1>
-<p>Send screenshot & Instagram link on WhatsApp</p>
-<a href="https://wa.me/917258028139" target="_blank" style="background:#25D366;color:white;padding:15px 40px;border-radius:30px;display:inline-block;margin-top:20px;">Chat Now</a>
+
+<h1 style="font-size:34px;font-weight:bold;">
+PAYMENT SUCCESSFUL
+</h1>
+
+<p style="font-size:20px;font-weight:bold;margin-top:20px;">
+SEND PAYMENT SCREENSHOT AND INSTAGRAM ID ON WHATSAPP
+</p>
+
+<a href="https://wa.me/917258028139" target="_blank"
+style="background:#25D366;color:white;padding:18px 45px;border-radius:40px;
+display:inline-block;margin-top:30px;font-size:20px;font-weight:bold;">
+CHAT ON WHATSAPP
+</a>
+
 <br><br>
-<button onclick="location.reload()" style="padding:10px 30px;border:none;border-radius:20px;">Back Home</button>
+
+<button onclick="location.reload()" 
+style="padding:15px 40px;border:none;border-radius:30px;background:#ccc;font-size:16px;">
+BACK HOME
+</button>
+
 </div>`;
 },3000);
 }
