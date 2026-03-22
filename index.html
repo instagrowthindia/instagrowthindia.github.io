@@ -301,6 +301,19 @@ document.body.innerHTML=`
 }
 
 /* LIVE */
+let users = [
+"insta_raj","growth_hub","viral_king",
+"insta_pro","fast_user","real_boost",
+"follower_zone","insta_star","social_x",
+"trend_user","insta_gain","pro_boost"
+];
+
+let cities = [
+"Delhi","Mumbai","Kolkata",
+"Hyderabad","Jaipur","Chennai",
+"Bangalore","Patna","Lucknow"
+];
+
 let packages = ["1K","2K","3K","5K","10K"];
 
 function showPopup(){
@@ -314,20 +327,15 @@ let n = document.getElementById("noti");
 n.style.display="block";
 n.innerText="🔥 "+u+" just bought "+p+" followers from "+c;
 
-// 4 सेकंड दिखेगा
 setTimeout(()=>{
     n.style.display="none";
 
-    // फिर 5-6 सेकंड बाद नया popup
-    let delay = Math.floor(Math.random()*2000)+5000; // 5–7 sec
+    let delay = Math.floor(Math.random()*2000)+5000;
     setTimeout(showPopup, delay);
 
 },4000);
 }
 
-// पहली बार 3 सेकंड बाद start
 setTimeout(showPopup,3000);
-</script>
-
 </body>
 </html>
