@@ -14,12 +14,11 @@ color:white;
 text-align:center;
 }
 
-/* LIVE */
+/* LIVE LEFT */
 .live{
 position:fixed;
-top:10px;
-left:50%;
-transform:translateX(-50%);
+top:15px;
+left:15px;
 background:black;
 padding:10px 18px;
 border-radius:30px;
@@ -29,7 +28,7 @@ z-index:999;
 
 /* HEADER */
 h1{
-margin-top:60px;
+margin-top:80px;
 }
 
 /* CARD */
@@ -59,6 +58,13 @@ color:white;
 font-size:16px;
 }
 
+/* INDIAN TEXT */
+.indian{
+margin-top:15px;
+font-size:18px;
+font-weight:bold;
+}
+
 /* FOOTER */
 .footer{
 margin-top:30px;
@@ -74,8 +80,8 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:white;
-color:black;
+background:linear-gradient(135deg,#ff00cc,#7b00ff);
+color:white;
 overflow:auto;
 }
 
@@ -85,8 +91,8 @@ padding:20px;
 
 /* STEP */
 .step{
-background:#e3f2fd;
-padding:10px;
+background:rgba(255,255,255,0.2);
+padding:12px;
 margin:10px 0;
 border-radius:10px;
 }
@@ -94,6 +100,7 @@ border-radius:10px;
 /* TIMER */
 .timer{
 background:#fff3cd;
+color:black;
 padding:10px;
 border-radius:10px;
 margin:10px 0;
@@ -102,25 +109,26 @@ margin:10px 0;
 /* INPUT */
 input{
 width:90%;
-padding:10px;
+padding:12px;
 border-radius:10px;
-border:1px solid #ccc;
+border:none;
 }
 
 /* BUTTON */
 .btn{
 background:#00c853;
-padding:12px;
+padding:14px;
 border:none;
 border-radius:20px;
 color:white;
 width:90%;
 margin-top:10px;
+font-size:16px;
 }
 
 .back{
 background:#ccc;
-padding:10px;
+padding:12px;
 border:none;
 border-radius:20px;
 width:90%;
@@ -129,7 +137,7 @@ margin-top:10px;
 
 /* ERROR */
 .error{
-color:red;
+color:yellow;
 display:none;
 margin-top:10px;
 }
@@ -139,8 +147,8 @@ margin-top:10px;
 border:6px solid #f3f3f3;
 border-top:6px solid #00c853;
 border-radius:50%;
-width:60px;
-height:60px;
+width:70px;
+height:70px;
 animation:spin 1s linear infinite;
 }
 
@@ -148,7 +156,7 @@ animation:spin 1s linear infinite;
 100%{transform:rotate(360deg);}
 }
 
-/* POPUP BUY NOTI */
+/* POPUP BUY */
 .noti{
 position:fixed;
 bottom:15px;
@@ -186,18 +194,6 @@ font-size:14px;
 </div>
 
 <div class="card">
-<h2>2K Followers</h2>
-<div class="price">₹200</div><br>
-<button class="buy" onclick="openPay('2K Followers','₹200')">Buy Now</button>
-</div>
-
-<div class="card">
-<h2>3K Followers</h2>
-<div class="price">₹300</div><br>
-<button class="buy" onclick="openPay('3K Followers','₹300')">Buy Now</button>
-</div>
-
-<div class="card">
 <h2>5K Followers</h2>
 <div class="price">₹350</div><br>
 <button class="buy" onclick="openPay('5K Followers','₹350')">Buy Now</button>
@@ -207,13 +203,17 @@ font-size:14px;
 <h2>10K Followers</h2>
 <div class="price">₹450</div><br>
 <button class="buy" onclick="openPay('10K Followers','₹450')">Buy Now</button>
+
+<div class="indian">
+🇮🇳 INDIAN FOLLOWERS • FAST DELIVERY
+</div>
+
 </div>
 
 <!-- FOOTER -->
 <div class="footer">
-🇮🇳 Indian Followers <br>
 🔒 Non-Drop Guarantee <br>
-⚡ Fast Delivery (10–30 min)
+⚡ Delivery 10–30 Minutes
 </div>
 
 <!-- POPUP -->
@@ -221,13 +221,13 @@ font-size:14px;
 <div class="box">
 
 <h2 id="title"></h2>
-<h3 id="price" style="color:red;"></h3>
+<h3 id="price" style="color:#00ffcc;"></h3>
 
-<img src="dk.jpg" width="200">
+<img src="dk.jpg" width="200" style="background:white;padding:10px;border-radius:10px;">
 
-<div class="step"><b>Step 1:</b> Scan & Pay</div>
-<div class="step"><b>Step 2:</b> Enter Instagram Link</div>
-<div class="step"><b>Step 3:</b> Click Payment Done</div>
+<div class="step">Step 1: Scan & Pay</div>
+<div class="step">Step 2: Enter Instagram Link</div>
+<div class="step">Step 3: Click Payment Done</div>
 
 <div class="timer">⏳ Offer Ends In: <span id="time">10:00</span></div>
 
@@ -270,7 +270,7 @@ document.body.innerHTML=`
 <div style="height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;">
 <div class="loader"></div>
 <h1>VERIFYING PAYMENT...</h1>
-<p>Send screenshot on WhatsApp</p>
+<p>SEND SCREENSHOT ON WHATSAPP</p>
 </div>
 `;
 
@@ -288,12 +288,12 @@ document.body.innerHTML=`
 
 }
 
-/* LIVE COUNT */
+/* LIVE */
 setInterval(()=>{
 document.getElementById("watch").innerText=Math.floor(Math.random()*100+80);
 },2000);
 
-/* FAKE BUY POPUP */
+/* BUY POPUP */
 let users=["insta_raj","viral_king","growth_hub","real_boost","social_hero","insta_pro","followers_king","trend_user","fast_growth","insta_star","user_x","boost_now","grow_fast","insta_viral","pro_user"];
 
 let cities=["Delhi","Mumbai","Kolkata","Chennai","Hyderabad","Pune","Jaipur","Lucknow","Patna","Surat"];
