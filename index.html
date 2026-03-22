@@ -54,7 +54,7 @@ font-size:16px;
 line-height:28px;
 }
 
-/* POPUP */
+/* POPUP PAGE */
 .popup{
 display:none;
 position:fixed;
@@ -66,7 +66,7 @@ background:linear-gradient(135deg,#ff00cc,#7b00ff);
 overflow-y:auto;
 }
 
-/* BACK BUTTON ONLY QR PAGE */
+/* BACK BUTTON */
 .backTop{
 position:fixed;
 top:15px;
@@ -140,7 +140,7 @@ animation:spin 1s linear infinite;
 }
 @keyframes spin{100%{transform:rotate(360deg);}}
 
-/* POPUP NOTI */
+/* NOTIFICATION */
 .noti{
 position:fixed;
 bottom:15px;
@@ -158,6 +158,7 @@ display:none;
 <body>
 
 <h1>🚀 TODAY BIG OFFER 🚀</h1>
+
 <div class="live">🔴 LIVE <span id="watch">120</span> watching now</div>
 
 <!-- PACKAGES -->
@@ -300,42 +301,46 @@ document.body.innerHTML=`
 },2000);
 }
 
-/* LIVE */
-let users = [
+/* LIVE COUNT */
+setInterval(()=>{
+document.getElementById("watch").innerText=Math.floor(Math.random()*100+80);
+},2000);
+
+/* POPUP SYSTEM */
+let users=[
 "insta_raj","growth_hub","viral_king",
 "insta_pro","fast_user","real_boost",
-"follower_zone","insta_star","social_x",
-"trend_user","insta_gain","pro_boost"
+"follower_zone","insta_star","social_x"
 ];
 
-let cities = [
+let cities=[
 "Delhi","Mumbai","Kolkata",
-"Hyderabad","Jaipur","Chennai",
-"Bangalore","Patna","Lucknow"
+"Hyderabad","Jaipur","Chennai"
 ];
 
-let packages = ["1K","2K","3K","5K","10K"];
+let packages=["1K","2K","3K","5K","10K"];
 
 function showPopup(){
 
-let u = users[Math.floor(Math.random()*users.length)];
-let c = cities[Math.floor(Math.random()*cities.length)];
-let p = packages[Math.floor(Math.random()*packages.length)];
+let u=users[Math.floor(Math.random()*users.length)];
+let c=cities[Math.floor(Math.random()*cities.length)];
+let p=packages[Math.floor(Math.random()*packages.length)];
 
-let n = document.getElementById("noti");
+let n=document.getElementById("noti");
 
 n.style.display="block";
 n.innerText="🔥 "+u+" just bought "+p+" followers from "+c;
 
 setTimeout(()=>{
-    n.style.display="none";
-
-    let delay = Math.floor(Math.random()*2000)+5000;
-    setTimeout(showPopup, delay);
-
+n.style.display="none";
+let delay=Math.floor(Math.random()*2000)+5000;
+setTimeout(showPopup,delay);
 },4000);
 }
 
 setTimeout(showPopup,3000);
+
+</script>
+
 </body>
 </html>
