@@ -51,15 +51,17 @@ input{width:95%;padding:14px;margin:15px 0;border-radius:12px;border:1px solid #
 ♾ Lifetime Guaranteed <br>
 ⚡ 10–30 Minutes Delivery
 </div>
-</div><div class="popup" id="popup">
-<div class="popup-content">
-<div class="popup-header">Complete Your Payment</div>
-<div class="packageBox"><h2 id="popupTitle"></h2>
+</div><!-- POPUP --><div class="popup" id="popup">
+<div class="popup-content"><!-- 🔙 TOP BACK BUTTON --><button onclick="closePopup()" style="position:fixed;top:15px;left:15px;background:#ccc;border:none;padding:10px 15px;border-radius:10px;font-size:14px;cursor:pointer;z-index:1000;">
+⬅ Back
+</button><div class="popup-header">Complete Your Payment</div><div class="packageBox">
+<h2 id="popupTitle"></h2>
 <h3 id="popupPrice" style="color:red;"></h3><img id="qrImage" class="qr-img"><div class="stepBox"><b>Step 1:</b> Scan & Make Payment</div>
 <div class="stepBox"><b>Step 2:</b> Enter Instagram Link After Payment</div>
 <div class="stepBox"><b>Step 3:</b> Click On Payment Done</div><div class="timerBox">⏳ Offer Ends In: <span id="timer">10:00</span></div><input type="text" id="insta" placeholder="Enter Instagram Link">
-<button class="paymentBtn" onclick="submitOrder()">Payment Done</button>
-<button class="backBtn" onclick="closePopup()">⬅️Back To Packages</button><div class="error" id="errorMsg">Please Enter Instagram Link</div></div>
+<button class="paymentBtn" onclick="submitOrder()">Payment Done</button><!-- 🔙 BOTTOM BACK --><button class="backBtn" onclick="closePopup()">⬅️Back To Packages</button>
+
+<div class="error" id="errorMsg">Please Enter Instagram Link</div></div>
 </div>
 </div><script>
 function openPopup(title,price,qr){
@@ -81,43 +83,13 @@ document.getElementById("errorMsg").style.display="block";
 return;
 }
 
-document.body.innerHTML=`
-<div style="background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);
-background-size:400% 400%;
-animation:glowBG 8s ease infinite;
-min-height:100vh;
-text-align:center;
-padding:50px 20px;
-font-family:'Segoe UI',sans-serif;
-color:white;">
-
-<div style="width:150px;height:150px;background:#28a745;border-radius:50%;
-margin:40px auto;display:flex;align-items:center;justify-content:center;">
-<span style="color:white;font-size:75px;font-weight:bold;">✓</span>
-</div>
-
-<h1 style="font-size:32px;font-weight:bold;letter-spacing:2px;">
-Order checking 
-</h1>
-
-<p style="font-size:20px;font-weight:bold;margin-top:20px;">
-SEND PAYMENT SCREENSHOT AND YOUR INSTAGRAM LINK ON WHATSAPP
-</p>
-
-<a href="https://wa.me/917258028139" target="_blank"
-style="display:inline-block;margin-top:30px;background:#25D366;color:white;
-padding:18px 45px;border-radius:40px;font-size:20px;
-text-decoration:none;font-weight:bold;">
-Chat On WhatsApp
-</a>
-
+document.body.innerHTML=`<div style="background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);background-size:400% 400%;animation:glowBG 8s ease infinite;min-height:100vh;text-align:center;padding:50px 20px;font-family:'Segoe UI',sans-serif;color:white;">
+<div style="width:150px;height:150px;background:#28a745;border-radius:50%;margin:40px auto;display:flex;align-items:center;justify-content:center;"><span style="color:white;font-size:75px;font-weight:bold;">✓</span></div>
+<h1 style="font-size:32px;font-weight:bold;letter-spacing:2px;">Order checking </h1>
+<p style="font-size:20px;font-weight:bold;margin-top:20px;">SEND PAYMENT SCREENSHOT AND YOUR INSTAGRAM LINK ON WHATSAPP</p>
+<a href="https://wa.me/917258028139" target="_blank" style="display:inline-block;margin-top:30px;background:#25D366;color:white;padding:18px 45px;border-radius:40px;font-size:20px;text-decoration:none;font-weight:bold;">Chat On WhatsApp</a>
 <br><br>
-
-<button onclick="location.reload()" 
-style="padding:15px 40px;border:none;border-radius:30px;background:#ccc;font-size:16px;">
-⬅ Back To Home
-</button>
-
+<button onclick="location.reload()" style="padding:15px 40px;border:none;border-radius:30px;background:#ccc;font-size:16px;">⬅ Back To Home</button>
 </div>`;
 }
 
