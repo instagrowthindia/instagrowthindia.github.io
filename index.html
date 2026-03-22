@@ -11,7 +11,7 @@ color:white;
 text-align:center;
 }
 
-/* 🔥 LIVE COUNTER */
+/* LIVE COUNTER */
 .liveBox{
 position:fixed;
 top:10px;
@@ -36,12 +36,7 @@ box-shadow:0 5px 15px rgba(0,0,0,0.3);
 font-size:14px;
 display:none;
 z-index:9999;
-max-width:250px;
-}
-
-/* TITLE */
-h1{
-margin-top:60px;
+max-width:260px;
 }
 
 /* CARD */
@@ -52,7 +47,6 @@ padding:35px;
 border-radius:30px;
 }
 
-/* PRICE */
 .price{
 background:#00c853;
 padding:12px 25px;
@@ -61,7 +55,6 @@ display:inline-block;
 font-weight:bold;
 }
 
-/* BUTTON */
 .buyBtn{
 background:#ff1744;
 border:none;
@@ -72,7 +65,6 @@ font-size:18px;
 margin-top:15px;
 }
 
-/* FEATURES */
 .features{
 margin-top:20px;
 line-height:28px;
@@ -90,14 +82,6 @@ background:linear-gradient(135deg,#ff00cc,#7b00ff,#ff2e8b);
 z-index:999;
 }
 
-.popupBox{
-background:white;
-color:black;
-margin:80px 20px;
-padding:25px;
-border-radius:20px;
-}
-
 /* LOADER */
 .loader{
 border:6px solid #eee;
@@ -109,13 +93,12 @@ margin:30px auto;
 }
 @keyframes spin{100%{transform:rotate(360deg);}}
 
-/* ERROR */
 .error{
 color:red;
 display:none;
 margin-top:10px;
 }
-</style></head><body><!-- 🔥 LIVE --><div class="liveBox" id="liveCount">🔥 120 PEOPLE WATCHING NOW</div><h1>🚀 TODAY BIG OFFER 🚀</h1><!-- DEMO --><div class="card">
+</style></head><body><!-- LIVE --><div class="liveBox" id="liveCount">🔥 120 PEOPLE WATCHING NOW</div><h1>🚀 TODAY BIG OFFER 🚀</h1><!-- DEMO --><div class="card">
 <h2>100 Instagram Followers (DEMO)</h2>
 <div class="price">₹20</div><br>
 <button class="buyBtn" onclick="openPopup('100 Followers','₹20')">Buy Now</button>
@@ -173,29 +156,75 @@ setTimeout(()=>{box.style.display="none";},4000);
 }
 setInterval(showOrder,6000);
 
-// OPEN POPUP
+// OPEN POPUP (COLORFUL)
 function openPopup(title,price){
 document.getElementById("popup").style.display="block";
 
 document.getElementById("popup").innerHTML=`
-<div class="popupBox">
+<div style="max-width:400px;margin:60px auto;background:white;color:black;border-radius:25px;padding:25px;position:relative;">
 
-<button onclick="closePopup()" style="float:right;">← Back</button>
+<button onclick="closePopup()" style="position:absolute;top:15px;right:15px;">← Back</button>
 
-<h2>`+title+`</h2>
+<h2 style="font-size:26px;">`+title+`</h2>
 <h3 style="color:red;">`+price+`</h3>
 
-<img src="dk.jpg" width="200"><br><br>
+<img src="dk.jpg" style="width:230px;margin:20px auto;display:block;">
 
-<div>Scan & Pay</div><br>
+<div style="background:#e8f0fe;padding:12px;border-radius:12px;margin:10px 0;text-align:left;">
+<b>Step 1:</b> Scan & Make Payment
+</div>
 
-<input id="insta" placeholder="Enter Instagram Link"><br><br>
+<div style="background:#e8f0fe;padding:12px;border-radius:12px;margin:10px 0;text-align:left;">
+<b>Step 2:</b> Enter Instagram Link After Payment
+</div>
 
-<button onclick="submitOrder()">Payment Done</button>
+<div style="background:#e8f0fe;padding:12px;border-radius:12px;margin:10px 0;text-align:left;">
+<b>Step 3:</b> Click On Payment Done
+</div>
 
-<div id="error" class="error">⚠️ ENTER INSTAGRAM LINK</div>
+<div style="background:#fff3cd;border:2px dashed orange;padding:12px;border-radius:12px;margin:15px 0;font-weight:bold;color:#ff6f00;">
+⏳ Offer Ends In: <span id="timer">10:00</span>
+</div>
+
+<input id="insta" placeholder="Enter Instagram Link" style="width:95%;padding:12px;border-radius:10px;border:1px solid #ccc;"><br><br>
+
+<button onclick="submitOrder()" style="background:#00c853;color:white;padding:14px;width:95%;border:none;border-radius:15px;font-size:18px;">
+Payment Done
+</button>
+
+<button onclick="closePopup()" style="background:#ccc;padding:12px;width:95%;border:none;border-radius:15px;margin-top:10px;">
+⬅ Back To Packages
+</button>
+
+<div id="error" class="error">⚠️ Enter Instagram Link</div>
 
 </div>`;
+
+startTimer();
+}
+
+// TIMER
+var time=600;
+var countdown;
+
+function startTimer(){
+clearInterval(countdown);
+time=600;
+
+countdown=setInterval(function(){
+var m=Math.floor(time/60);
+var s=time%60;
+if(s<10){s="0"+s;}
+
+document.getElementById("timer").innerText=m+":"+s;
+
+time--;
+
+if(time<0){
+clearInterval(countdown);
+document.getElementById("timer").innerText="Expired";
+}
+},1000);
 }
 
 // CLOSE
@@ -246,7 +275,6 @@ CHAT ON WHATSAPP
 
 </div>`;
 },3000);
-
 }
 
 </script></body>
