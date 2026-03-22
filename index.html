@@ -140,17 +140,29 @@ animation:spin 1s linear infinite;
 }
 @keyframes spin{100%{transform:rotate(360deg);}}
 
-/* NOTIFICATION */
+/* 🔥 NEW POPUP DESIGN */
 .noti{
 position:fixed;
-bottom:15px;
+bottom:80px; /* ऊपर उठा दिया */
 left:50%;
-transform:translateX(-50%);
+transform:translateX(-50%) translateY(100px);
 background:white;
 color:black;
-padding:12px 18px;
+padding:18px 20px;
 border-radius:20px;
+width:75%;
+max-width:320px;
 display:none;
+font-size:15px;
+line-height:22px;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+transition:0.4s;
+}
+
+/* show animation */
+.noti.show{
+display:block;
+transform:translateX(-50%) translateY(0);
 }
 </style>
 </head>
@@ -301,40 +313,33 @@ document.body.innerHTML=`
 },2000);
 }
 
-/* LIVE COUNT */
+/* LIVE */
 setInterval(()=>{
 document.getElementById("watch").innerText=Math.floor(Math.random()*100+80);
 },2000);
 
-/* POPUP SYSTEM */
-let users=[
-"insta_raj","growth_hub","viral_king",
-"insta_pro","fast_user","real_boost",
-"follower_zone","insta_star","social_x"
-];
-
-let cities=[
-"Delhi","Mumbai","Kolkata",
-"Hyderabad","Jaipur","Chennai"
-];
-
+/* POPUP DATA */
+let users=["insta_raj","growth_hub","viral_king","insta_pro","fast_user"];
+let cities=["Delhi","Mumbai","Kolkata","Hyderabad","Jaipur"];
 let packages=["1K","2K","3K","5K","10K"];
 
+/* POPUP */
 function showPopup(){
-
 let u=users[Math.floor(Math.random()*users.length)];
 let c=cities[Math.floor(Math.random()*cities.length)];
 let p=packages[Math.floor(Math.random()*packages.length)];
 
 let n=document.getElementById("noti");
 
-n.style.display="block";
 n.innerText="🔥 "+u+" just bought "+p+" followers from "+c;
+n.classList.add("show");
 
 setTimeout(()=>{
-n.style.display="none";
+n.classList.remove("show");
+
 let delay=Math.floor(Math.random()*2000)+5000;
 setTimeout(showPopup,delay);
+
 },4000);
 }
 
