@@ -301,26 +301,32 @@ document.body.innerHTML=`
 }
 
 /* LIVE */
-setInterval(()=>{
-document.getElementById("watch").innerText=Math.floor(Math.random()*100+80);
-},2000);
+let packages = ["1K","2K","3K","5K","10K"];
 
-/* NOTI */
-let users=["insta_raj","growth_hub","viral_king","insta_pro","fast_user"];
-let cities=["Delhi","Mumbai","Kolkata","Hyderabad","Jaipur"];
+function showPopup(){
 
-setInterval(()=>{
-let u=users[Math.floor(Math.random()*users.length)];
-let c=cities[Math.floor(Math.random()*cities.length)];
+let u = users[Math.floor(Math.random()*users.length)];
+let c = cities[Math.floor(Math.random()*cities.length)];
+let p = packages[Math.floor(Math.random()*packages.length)];
 
-let n=document.getElementById("noti");
+let n = document.getElementById("noti");
+
 n.style.display="block";
-n.innerText="🔥 "+u+" just bought followers from "+c;
+n.innerText="🔥 "+u+" just bought "+p+" followers from "+c;
 
-setTimeout(()=>{n.style.display="none";},4000);
+// 4 सेकंड दिखेगा
+setTimeout(()=>{
+    n.style.display="none";
 
-},6000);
+    // फिर 5-6 सेकंड बाद नया popup
+    let delay = Math.floor(Math.random()*2000)+5000; // 5–7 sec
+    setTimeout(showPopup, delay);
 
+},4000);
+}
+
+// पहली बार 3 सेकंड बाद start
+setTimeout(showPopup,3000);
 </script>
 
 </body>
