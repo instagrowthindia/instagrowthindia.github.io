@@ -14,18 +14,26 @@ color:white;
 text-align:center;
 }
 
+/* BACK BUTTON TOP */
+.topBack{
+position:fixed;
+top:15px;
+left:15px;
+background:white;
+color:black;
+padding:8px 15px;
+border-radius:10px;
+font-size:14px;
+z-index:999;
+}
+
 /* LIVE */
 .live{
 background:black;
 padding:10px 18px;
 border-radius:30px;
 display:inline-block;
-margin-top:10px;
-}
-
-/* HEADER */
-h1{
-margin-top:20px;
+margin-top:70px;
 }
 
 /* CARD */
@@ -36,7 +44,6 @@ padding:25px;
 border-radius:20px;
 }
 
-/* PRICE */
 .price{
 background:#00c853;
 padding:8px 20px;
@@ -45,14 +52,19 @@ display:inline-block;
 margin:10px 0;
 }
 
-/* BUTTON */
 .buy{
 background:#ff1744;
 padding:12px 25px;
 border:none;
 border-radius:20px;
 color:white;
+}
+
+/* FEATURES BOTTOM */
+.features{
+margin:30px;
 font-size:16px;
+line-height:28px;
 }
 
 /* POPUP */
@@ -71,7 +83,6 @@ overflow-y:auto;
 padding:20px;
 }
 
-/* STEP */
 .step{
 background:rgba(255,255,255,0.2);
 padding:12px;
@@ -79,17 +90,14 @@ margin:10px 0;
 border-radius:10px;
 }
 
-/* TIMER */
 .timer{
 background:#fff3cd;
 color:black;
 padding:12px;
 border-radius:10px;
 margin:10px 0;
-font-weight:bold;
 }
 
-/* INPUT */
 input{
 width:90%;
 padding:12px;
@@ -97,7 +105,6 @@ border-radius:10px;
 border:none;
 }
 
-/* BUTTON */
 .btn{
 background:#00c853;
 padding:14px;
@@ -106,7 +113,6 @@ border-radius:20px;
 color:white;
 width:90%;
 margin-top:10px;
-font-size:16px;
 }
 
 .back{
@@ -116,14 +122,12 @@ border:none;
 border-radius:20px;
 width:90%;
 margin-top:10px;
-margin-bottom:30px;
+margin-bottom:40px;
 }
 
-/* ERROR */
 .error{
 color:yellow;
 display:none;
-margin-top:10px;
 }
 
 /* LOADER */
@@ -135,12 +139,9 @@ width:70px;
 height:70px;
 animation:spin 1s linear infinite;
 }
+@keyframes spin{100%{transform:rotate(360deg);}}
 
-@keyframes spin{
-100%{transform:rotate(360deg);}
-}
-
-/* NOTIFICATION */
+/* NOTI */
 .noti{
 position:fixed;
 bottom:15px;
@@ -151,7 +152,6 @@ color:black;
 padding:12px 18px;
 border-radius:20px;
 display:none;
-font-size:14px;
 }
 </style>
 
@@ -159,9 +159,12 @@ font-size:14px;
 
 <body>
 
+<!-- TOP BACK -->
+<button class="topBack" onclick="goBack()">⬅ Back</button>
+
 <h1>🚀 TODAY BIG OFFER 🚀</h1>
 
-<!-- LIVE ABOVE FIRST CARD -->
+<!-- LIVE -->
 <div class="live">🔴 LIVE <span id="watch">120</span> watching now</div>
 
 <!-- CARDS -->
@@ -189,12 +192,21 @@ font-size:14px;
 <button class="buy" onclick="openPay('10K Followers','₹450')">Buy Now</button>
 </div>
 
+<!-- FEATURES -->
+<div class="features">
+🇮🇳 Indian Followers <br>
+🔒 Non Drop Guarantee <br>
+⚡ Fast Delivery 10–30 Minutes
+</div>
+
 <!-- POPUP -->
 <div class="popup" id="popup">
 <div class="box">
 
+<button class="topBack" onclick="closePop()">⬅ Back</button>
+
 <h2 id="title"></h2>
-<h3 id="price" style="color:#00ffcc;"></h3>
+<h3 id="price"></h3>
 
 <img src="dk.jpg" width="200" style="background:white;padding:10px;border-radius:10px;">
 
@@ -218,6 +230,30 @@ font-size:14px;
 
 <script>
 
+/* BACK FUNCTION */
+function goBack(){
+if(document.getElementById("popup").style.display=="block"){
+closePop();
+}else{
+window.scrollTo(0,0);
+}
+}
+
+/* SWIPE BACK FIX */
+let startX=0;
+
+document.addEventListener("touchstart",(e)=>{
+startX=e.touches[0].clientX;
+});
+
+document.addEventListener("touchend",(e)=>{
+let endX=e.changedTouches[0].clientX;
+
+if(endX-startX>100){
+goBack();
+}
+});
+
 /* OPEN */
 function openPay(t,p){
 document.getElementById("popup").style.display="block";
@@ -231,7 +267,7 @@ function closePop(){
 document.getElementById("popup").style.display="none";
 }
 
-/* TIMER FIX */
+/* TIMER */
 let time=600;
 let timerInterval;
 
@@ -242,10 +278,9 @@ time=600;
 timerInterval=setInterval(()=>{
 let m=Math.floor(time/60);
 let s=time%60;
-if(s<10){s="0"+s;}
+if(s<10)s="0"+s;
 
 document.getElementById("time").innerText=m+":"+s;
-
 time--;
 
 if(time<0){
@@ -268,7 +303,7 @@ document.body.innerHTML=`
 <div style="height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;">
 <div class="loader"></div>
 <h1>VERIFYING PAYMENT...</h1>
-<p>SEND SCREENSHOT ON WHATSAPP</p>
+<p>Send screenshot on WhatsApp</p>
 </div>
 `;
 
@@ -279,20 +314,20 @@ document.body.innerHTML=`
 <h1>PAYMENT SUCCESSFUL</h1>
 <p>SEND SCREENSHOT & INSTAGRAM ID ON WHATSAPP</p>
 <a href="https://wa.me/917258028139" style="background:#25D366;color:white;padding:15px 30px;border-radius:30px;text-decoration:none;">CHAT ON WHATSAPP</a>
-<button onclick="location.reload()" style="margin-top:10px;padding:10px 20px;">BACK HOME</button>
+<button onclick="location.reload()" style="margin-top:10px;">BACK HOME</button>
 </div>
 `;
 },2000);
 }
 
-/* LIVE COUNT */
+/* LIVE */
 setInterval(()=>{
 document.getElementById("watch").innerText=Math.floor(Math.random()*100+80);
 },2000);
 
-/* POPUP BUY */
-let users=["insta_raj","viral_king","growth_hub","real_boost","insta_pro","fast_growth","insta_star"];
-let cities=["Delhi","Mumbai","Kolkata","Chennai","Hyderabad","Jaipur"];
+/* NOTIFICATION */
+let users=["insta_raj","growth_hub","viral_king","insta_pro","fast_user"];
+let cities=["Delhi","Mumbai","Kolkata","Hyderabad","Jaipur"];
 
 setInterval(()=>{
 let u=users[Math.floor(Math.random()*users.length)];
