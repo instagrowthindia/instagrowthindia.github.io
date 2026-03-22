@@ -6,7 +6,6 @@
 <title>Today Big Offer</title>
 
 <style>
-
 body{
 margin:0;
 font-family:sans-serif;
@@ -15,22 +14,44 @@ color:white;
 text-align:center;
 }
 
-/* WATCHING */
-.watch{
+/* LIVE */
+.liveBar{
 position:fixed;
 top:10px;
-left:50%;
-transform:translateX(-50%);
+left:10px;
 background:black;
-padding:10px 20px;
-border-radius:30px;
+padding:8px 15px;
+border-radius:25px;
+display:flex;
+align-items:center;
+gap:8px;
 z-index:999;
 }
 
-/* TITLE */
-h1{
-margin-top:70px;
+.dot{
+width:10px;
+height:10px;
+background:red;
+border-radius:50%;
+animation:blink 1s infinite;
 }
+
+@keyframes blink{
+50%{opacity:0;}
+}
+
+/* WATCH */
+.watch{
+position:fixed;
+top:10px;
+right:10px;
+background:black;
+padding:8px 15px;
+border-radius:25px;
+z-index:999;
+}
+
+h1{margin-top:70px;}
 
 /* CARD */
 .card{
@@ -42,20 +63,27 @@ border-radius:25px;
 
 .price{
 background:#00c853;
-display:inline-block;
 padding:10px 25px;
 border-radius:12px;
+display:inline-block;
 margin:10px;
 }
 
 .buyBtn{
 background:#ff1744;
-border:none;
 padding:14px 30px;
+border:none;
 border-radius:20px;
 color:white;
 font-size:18px;
 cursor:pointer;
+}
+
+/* FEATURES */
+.features{
+margin-top:10px;
+font-size:14px;
+line-height:22px;
 }
 
 /* POPUP */
@@ -81,9 +109,14 @@ width:90%;
 max-width:400px;
 }
 
+.qrBox{
+background:#f2f2f2;
+padding:20px;
+border-radius:20px;
+}
+
 .qr{
 width:220px;
-margin:15px 0;
 }
 
 .step{
@@ -118,7 +151,6 @@ border-radius:20px;
 width:90%;
 margin-top:15px;
 font-size:18px;
-cursor:pointer;
 }
 
 .backBtn{
@@ -128,16 +160,34 @@ border:none;
 border-radius:20px;
 width:90%;
 margin-top:10px;
-cursor:pointer;
+}
+
+/* TOAST */
+.toast{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:white;
+color:black;
+padding:15px;
+border-radius:15px;
+width:85%;
+max-width:350px;
+display:none;
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="watch">🔥 <span id="watch">120</span> PEOPLE WATCHING NOW</div>
+<div class="liveBar">
+<div class="dot"></div>
+<b>LIVE</b>
+</div>
+
+<div class="watch">🔥 <span id="watch">120</span> watching now</div>
 
 <h1>🚀 TODAY BIG OFFER 🚀</h1>
 
@@ -145,42 +195,83 @@ cursor:pointer;
 
 <div class="card">
 <h2>100 Instagram Followers (DEMO)</h2>
-<div class="price">₹20</div><br>
-<button class="buyBtn" onclick="openPopup('100 Instagram Followers','₹20')">Buy Now</button>
+<div class="price">₹20</div>
+<br>
+<button class="buyBtn" onclick="openPopup('100 Followers','₹20')">Buy Now</button>
+
+<div class="features">
+🇮🇳 Indian Followers <br>
+🔒 Non Drop <br>
+⚡ 10–30 Min Delivery
+</div>
 </div>
 
 <div class="card">
 <h2>1K Instagram Followers</h2>
-<div class="price">₹150</div><br>
-<button class="buyBtn" onclick="openPopup('1K Instagram Followers','₹150')">Buy Now</button>
+<div class="price">₹150</div>
+<br>
+<button class="buyBtn" onclick="openPopup('1K Followers','₹150')">Buy Now</button>
+
+<div class="features">
+🇮🇳 Indian Followers <br>
+🔒 Non Drop <br>
+⚡ 10–30 Min Delivery
+</div>
 </div>
 
 <div class="card">
 <h2>2K Instagram Followers</h2>
-<div class="price">₹200</div><br>
-<button class="buyBtn" onclick="openPopup('2K Instagram Followers','₹200')">Buy Now</button>
+<div class="price">₹200</div>
+<br>
+<button class="buyBtn" onclick="openPopup('2K Followers','₹200')">Buy Now</button>
+
+<div class="features">
+🇮🇳 Indian Followers <br>
+🔒 Non Drop <br>
+⚡ 10–30 Min Delivery
+</div>
 </div>
 
 <div class="card">
 <h2>3K Instagram Followers</h2>
-<div class="price">₹300</div><br>
-<button class="buyBtn" onclick="openPopup('3K Instagram Followers','₹300')">Buy Now</button>
+<div class="price">₹300</div>
+<br>
+<button class="buyBtn" onclick="openPopup('3K Followers','₹300')">Buy Now</button>
+
+<div class="features">
+🇮🇳 Indian Followers <br>
+🔒 Non Drop <br>
+⚡ 10–30 Min Delivery
+</div>
 </div>
 
 <div class="card">
 <h2>5K Instagram Followers</h2>
-<div class="price">₹350</div><br>
-<button class="buyBtn" onclick="openPopup('5K Instagram Followers','₹350')">Buy Now</button>
+<div class="price">₹350</div>
+<br>
+<button class="buyBtn" onclick="openPopup('5K Followers','₹350')">Buy Now</button>
+
+<div class="features">
+🇮🇳 Indian Followers <br>
+🔒 Non Drop <br>
+⚡ 10–30 Min Delivery
+</div>
 </div>
 
 <div class="card">
 <h2>10K Instagram Followers</h2>
-<div class="price">₹450</div><br>
-<button class="buyBtn" onclick="openPopup('10K Instagram Followers','₹450')">Buy Now</button>
+<div class="price">₹450</div>
+<br>
+<button class="buyBtn" onclick="openPopup('10K Followers','₹450')">Buy Now</button>
+
+<div class="features">
+🇮🇳 Indian Followers <br>
+🔒 Non Drop <br>
+⚡ 10–30 Min Delivery
+</div>
 </div>
 
 <!-- POPUP -->
-
 <div class="popup" id="popup">
 <div class="box">
 
@@ -189,7 +280,9 @@ cursor:pointer;
 <h2 id="title"></h2>
 <h3 id="price" style="color:red;"></h3>
 
+<div class="qrBox">
 <img src="dk.jpg" class="qr">
+</div>
 
 <div class="step">Step 1: Scan & Make Payment</div>
 <div class="step">Step 2: Enter Instagram Link</div>
@@ -197,20 +290,39 @@ cursor:pointer;
 
 <div class="timer">⏳ Offer Ends In: <span id="time">10:00</span></div>
 
-<input type="text" id="insta" placeholder="Enter Instagram Link">
+<input id="insta" placeholder="Enter Instagram Link">
 
-<br>
-
-<button class="payBtn" onclick="submitPayment()">Payment Done</button>
-
+<button class="payBtn" onclick="pay()">Payment Done</button>
 <button class="backBtn" onclick="closePopup()">Back</button>
 
 </div>
 </div>
 
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
 <script>
 
-/* OPEN POPUP */
+/* WATCH RANDOM */
+setInterval(()=>{
+document.getElementById("watch").innerText=
+Math.floor(Math.random()*60)+80;
+},3000);
+
+/* TIMER */
+function startTimer(){
+let t=600;
+let x=setInterval(()=>{
+let m=Math.floor(t/60);
+let s=t%60;
+if(s<10)s="0"+s;
+document.getElementById("time").innerText=m+":"+s;
+t--;
+if(t<0)clearInterval(x);
+},1000);
+}
+
+/* POPUP */
 function openPopup(t,p){
 document.getElementById("popup").style.display="block";
 document.getElementById("title").innerText=t;
@@ -218,85 +330,50 @@ document.getElementById("price").innerText=p;
 startTimer();
 }
 
-/* CLOSE */
 function closePopup(){
 document.getElementById("popup").style.display="none";
 }
 
-/* TIMER */
-var timer;
-function startTimer(){
-clearInterval(timer);
-var time=600;
-timer=setInterval(function(){
-var m=Math.floor(time/60);
-var s=time%60;
-if(s<10)s="0"+s;
-document.getElementById("time").innerText=m+":"+s;
-time--;
-if(time<0){clearInterval(timer);}
-},1000);
-}
-
-/* WATCHING RANDOM */
-setInterval(function(){
-document.getElementById("watch").innerText=
-Math.floor(Math.random()*80)+80;
-},3000);
-
 /* PAYMENT */
-function submitPayment(){
-var v=document.getElementById("insta").value.trim();
+function pay(){
+let v=document.getElementById("insta").value;
 
-if(v===""){
-alert("Payment Failed ❌ Enter Instagram Link");
+if(v==""){
+alert("Payment Failed ❌");
 return;
 }
 
-/* VERIFY SCREEN */
+/* VERIFY */
 document.body.innerHTML=`
-<div style="height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(135deg,#ff00cc,#7b00ff);color:white;text-align:center;">
-
-<div style="border:6px solid white;border-top:6px solid transparent;width:70px;height:70px;border-radius:50%;animation:spin 1s linear infinite;"></div>
-
-<h1 style="margin-top:20px;">VERIFYING PAYMENT...</h1>
-
-<p>SEND PAYMENT SCREENSHOT & INSTAGRAM ID ON WHATSAPP</p>
-
+<div style="height:100vh;display:flex;justify-content:center;align-items:center;flex-direction:column;background:linear-gradient(135deg,#ff00cc,#7b00ff);color:white;">
+<h1>VERIFYING PAYMENT...</h1>
+<p>Send screenshot on WhatsApp</p>
 </div>
-
-<style>
-@keyframes spin{
-0%{transform:rotate(0deg);}
-100%{transform:rotate(360deg);}
-}
-</style>
 `;
 
-/* SUCCESS */
-setTimeout(function(){
+setTimeout(()=>{
 document.body.innerHTML=`
-<div style="height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(135deg,#ff00cc,#7b00ff);color:white;text-align:center;">
-
+<div style="height:100vh;display:flex;justify-content:center;align-items:center;flex-direction:column;background:linear-gradient(135deg,#ff00cc,#7b00ff);color:white;text-align:center;">
 <div style="width:120px;height:120px;background:#00c853;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:60px;">✔</div>
-
 <h1>PAYMENT SUCCESSFUL</h1>
-
-<p>SEND PAYMENT SCREENSHOT AND INSTAGRAM ID ON WHATSAPP</p>
-
-<a href="https://wa.me/917258028139" style="background:#25D366;padding:15px 30px;border-radius:30px;color:white;text-decoration:none;margin-top:20px;font-size:18px;">
-CHAT ON WHATSAPP
-</a>
-
-<br><br>
-
-<button onclick="location.reload()" style="padding:12px 30px;border:none;border-radius:20px;">BACK HOME</button>
-
+<p>SEND SCREENSHOT ON WHATSAPP</p>
+<a href="https://wa.me/917258028139" style="background:#25D366;padding:15px 25px;border-radius:25px;color:white;text-decoration:none;">CHAT NOW</a>
 </div>
 `;
-},3000);
+},2000);
 
 }
+
+/* TOAST POPUP */
+let names=["user_rahul","insta_king","real_boy","viral_amit","grow_fast"];
+let cities=["Delhi","Mumbai","Chennai","Kolkata"];
+
+setInterval(()=>{
+let t=document.getElementById("toast");
+t.style.display="block";
+t.innerHTML=`🔥 ${names[Math.floor(Math.random()*5)]} from ${cities[Math.floor(Math.random()*4)]} bought followers`;
+setTimeout(()=>{t.style.display="none";},3000);
+},5000);
 
 </script>
 
