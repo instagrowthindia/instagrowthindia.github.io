@@ -6,7 +6,6 @@
 <title>Offer</title>
 
 <style>
-
 body{
 margin:0;
 font-family:sans-serif;
@@ -113,7 +112,6 @@ border-radius:20px;
 color:white;
 width:90%;
 margin-top:10px;
-font-size:18px;
 }
 
 .back{
@@ -131,7 +129,23 @@ color:yellow;
 display:none;
 }
 
-/* POPUP NOTIFICATION */
+/* LOADER */
+.loader{
+border:6px solid #f3f3f3;
+border-top:6px solid #00c853;
+border-radius:50%;
+width:70px;
+height:70px;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+/* 🔥 NEW POPUP DESIGN */
 .noti{
 position:fixed;
 bottom:80px;
@@ -150,11 +164,11 @@ box-shadow:0 5px 15px rgba(0,0,0,0.3);
 transition:0.4s;
 }
 
+/* show animation */
 .noti.show{
 display:block;
 transform:translateX(-50%) translateY(0);
 }
-
 </style>
 </head>
 
@@ -224,7 +238,7 @@ Buy Now
 ⚡ Fast Delivery 10–30 Minutes
 </div>
 
-<!-- PAYMENT POPUP -->
+<!-- PAYMENT PAGE -->
 
 <div class="popup" id="popup">
 
@@ -235,30 +249,28 @@ Buy Now
 <h2 id="title"></h2>
 <h3 id="price"></h3>
 
-<img src="dk.jpg"
-width="220"
-style="background:white;padding:10px;border-radius:15px;">
+<img src="dk.jpg" width="200"
+style="background:white;padding:10px;border-radius:10px;">
 
-<div class="step">Step 1: Click Payment Button</div>
+<div class="step">Step 1: Scan & Pay</div>
 
-<div class="step">Step 2: Pay Using UPI / BHIM / GPay</div>
+<div class="step">Step 2: Enter Instagram Link</div>
 
-<div class="step">Step 3: Order Auto Confirm</div>
+<div class="step">Step 3: Click Payment Done</div>
 
 <div class="timer">
 ⏳ Offer Ends In:
 <span id="time">10:00</span>
 </div>
 
-<input id="insta"
-placeholder="Enter Instagram Link">
+<input id="insta" placeholder="Enter Instagram Link">
 
 <div class="error" id="err">
 ⚠️ Enter Instagram link
 </div>
 
 <button class="btn" onclick="pay()">
-PAY NOW
+Payment Done
 </button>
 
 <button class="back" onclick="closePop()">
@@ -269,9 +281,6 @@ Back
 </div>
 
 <div class="noti" id="noti"></div>
-
-<!-- Razorpay -->
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <script>
 
@@ -345,34 +354,25 @@ return;
 
 }
 
-/* PRICE */
+document.body.innerHTML=`
 
-let priceText=document.getElementById("price").innerText;
+<div style="height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;">
 
-let amount=0;
+<div class="loader"></div>
 
-if(priceText=="₹20"){amount=2000;}
-if(priceText=="₹150"){amount=15000;}
-if(priceText=="₹200"){amount=20000;}
-if(priceText=="₹300"){amount=30000;}
-if(priceText=="₹350"){amount=35000;}
-if(priceText=="₹450"){amount=45000;}
+<h1>VERIFYING PAYMENT...</h1>
 
-/* RAZORPAY */
+<p>Send screenshot on WhatsApp</p>
 
-var options = {
+</div>
 
-key: "rzp_test_xxxxxxxxx",
+`;
 
-amount: amount,
-
-currency: "INR",
-
-name: "Insta Growth India",
-
-description: document.getElementById("title").innerText,
-
-handler: function (response){
+setTimeout(()=>{
 
 document.body.innerHTML=`
 
@@ -380,11 +380,7 @@ document.body.innerHTML=`
 display:flex;
 flex-direction:column;
 justify-content:center;
-align-items:center;
-background:linear-gradient(135deg,#ff00cc,#7b00ff);
-color:white;
-padding:20px;
-text-align:center;">
+align-items:center;">
 
 <div style="background:#00c853;
 width:120px;
@@ -399,25 +395,27 @@ font-size:60px;">
 
 </div>
 
-<h1>PAYMENT VERIFIED</h1>
+<h1>PAYMENT SUCCESSFUL</h1>
 
-<p>Your order has been confirmed</p>
+<p>
+SEND PAYMENT SCREENSHOT &
+INSTAGRAM ID ON WHATSAPP
+</p>
 
-<p><b>Instagram ID:</b></p>
+<a href="https://wa.me/917258028139"
 
-<p>${v}</p>
+style="background:#25D366;
+color:white;
+padding:15px 30px;
+border-radius:30px;
+text-decoration:none;">
 
-<p><b>Payment ID:</b></p>
+CHAT ON WHATSAPP
 
-<p>${response.razorpay_payment_id}</p>
+</a>
 
 <button onclick="location.reload()"
-
-style="margin-top:20px;
-padding:14px 30px;
-border:none;
-border-radius:20px;
-font-size:18px;">
+style="margin-top:10px;">
 
 BACK HOME
 
@@ -427,21 +425,11 @@ BACK HOME
 
 `;
 
-},
-
-theme:{
-color:"#00c853"
-}
-
-};
-
-var rzp1 = new Razorpay(options);
-
-rzp1.open();
+},2000);
 
 }
 
-/* LIVE WATCH */
+/* LIVE */
 
 setInterval(()=>{
 
@@ -489,7 +477,8 @@ let p=packages[Math.floor(Math.random()*packages.length)];
 let n=document.getElementById("noti");
 
 n.innerText=
-"🔥 "+u+" just bought "+p+" followers from "+c;
+"🔥 "+u+" just bought "+p+
+" followers from "+c;
 
 n.classList.add("show");
 
@@ -497,7 +486,8 @@ setTimeout(()=>{
 
 n.classList.remove("show");
 
-let delay=Math.floor(Math.random()*2000)+5000;
+let delay=
+Math.floor(Math.random()*2000)+5000;
 
 setTimeout(showPopup,delay);
 
