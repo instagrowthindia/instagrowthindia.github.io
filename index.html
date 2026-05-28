@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Offer</title>
+<title>Insta Growth India</title><style>
 
-<style>
 body{
 margin:0;
 font-family:sans-serif;
@@ -14,21 +12,32 @@ color:white;
 text-align:center;
 }
 
+/* HEADER */
+
+h1{
+margin-top:30px;
+font-size:32px;
+}
+
 /* LIVE */
+
 .live{
 background:black;
 padding:10px 18px;
 border-radius:30px;
 display:inline-block;
-margin-top:40px;
+margin-top:20px;
+font-size:18px;
 }
 
 /* CARD */
+
 .card{
 background:linear-gradient(135deg,#7b1fa2,#c2185b);
 margin:20px;
 padding:25px;
 border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
 
 .price{
@@ -37,115 +46,30 @@ padding:8px 20px;
 border-radius:15px;
 display:inline-block;
 margin:10px 0;
+font-size:20px;
+font-weight:bold;
 }
 
 .buy{
 background:#ff1744;
-padding:12px 25px;
+padding:14px 28px;
 border:none;
 border-radius:20px;
 color:white;
+font-size:18px;
+cursor:pointer;
 }
 
 /* FEATURES */
+
 .features{
 margin:30px;
 font-size:16px;
-line-height:28px;
+line-height:30px;
 }
 
-/* POPUP PAGE */
-.popup{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:linear-gradient(135deg,#ff00cc,#7b00ff);
-overflow-y:auto;
-}
+/* NOTIFICATION */
 
-/* BACK BUTTON */
-.backTop{
-position:fixed;
-top:15px;
-left:15px;
-background:white;
-color:black;
-padding:8px 15px;
-border-radius:10px;
-z-index:999;
-}
-
-.box{
-padding:20px;
-}
-
-.step{
-background:rgba(255,255,255,0.2);
-padding:12px;
-margin:10px 0;
-border-radius:10px;
-}
-
-.timer{
-background:#fff3cd;
-color:black;
-padding:12px;
-border-radius:10px;
-margin:10px 0;
-}
-
-input{
-width:90%;
-padding:12px;
-border-radius:10px;
-border:none;
-}
-
-.btn{
-background:#00c853;
-padding:14px;
-border:none;
-border-radius:20px;
-color:white;
-width:90%;
-margin-top:10px;
-}
-
-.back{
-background:#ccc;
-padding:12px;
-border:none;
-border-radius:20px;
-width:90%;
-margin-top:10px;
-margin-bottom:40px;
-}
-
-.error{
-color:yellow;
-display:none;
-}
-
-/* LOADER */
-.loader{
-border:6px solid #f3f3f3;
-border-top:6px solid #00c853;
-border-radius:50%;
-width:70px;
-height:70px;
-animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-100%{
-transform:rotate(360deg);
-}
-}
-
-/* 🔥 NEW POPUP DESIGN */
 .noti{
 position:fixed;
 bottom:80px;
@@ -164,223 +88,147 @@ box-shadow:0 5px 15px rgba(0,0,0,0.3);
 transition:0.4s;
 }
 
-/* show animation */
 .noti.show{
 display:block;
 transform:translateX(-50%) translateY(0);
 }
-</style>
-</head>
 
-<body>
+/* INPUT */
 
-<h1>🚀 TODAY BIG OFFER 🚀</h1>
+.instaInput{
+width:90%;
+padding:14px;
+border:none;
+border-radius:15px;
+margin-top:15px;
+font-size:16px;
+}
 
-<div class="live">
+/* SUCCESS */
+
+.success{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+/* WHATSAPP BUTTON */
+
+.whatsapp{
+background:#25D366;
+padding:15px 30px;
+border-radius:30px;
+color:white;
+text-decoration:none;
+margin-top:20px;
+display:inline-block;
+font-size:18px;
+}
+
+</style></head><body><h1>🚀 TODAY BIG OFFER 🚀</h1><div class="live">
 🔴 LIVE <span id="watch">120</span> watching now
-</div>
+</div><!-- PACKAGES --><div class="card"><h2>100 Followers (DEMO)</h2><div class="price">₹20</div><input type="text"
+id="insta1"
+class="instaInput"
+placeholder="Enter Instagram Link">
 
-<!-- PACKAGES -->
+<br><br>
 
-<div class="card">
-<h2>100 Followers (DEMO)</h2>
-<div class="price">₹20</div><br>
-<button class="buy" onclick="openPay('100 Followers','₹20')">
+<button class="buy"
+onclick="payNow(20,'100 Followers','insta1')">
+
 Buy Now
-</button>
-</div>
 
-<div class="card">
-<h2>1K Followers</h2>
-<div class="price">₹150</div><br>
-<button class="buy" onclick="openPay('1K Followers','₹150')">
+</button></div><div class="card"><h2>1K Followers</h2><div class="price">₹150</div><input type="text"
+id="insta2"
+class="instaInput"
+placeholder="Enter Instagram Link">
+
+<br><br>
+
+<button class="buy"
+onclick="payNow(150,'1K Followers','insta2')">
+
 Buy Now
-</button>
-</div>
 
-<div class="card">
-<h2>2K Followers</h2>
-<div class="price">₹200</div><br>
-<button class="buy" onclick="openPay('2K Followers','₹200')">
+</button></div><div class="card"><h2>2K Followers</h2><div class="price">₹200</div><input type="text"
+id="insta3"
+class="instaInput"
+placeholder="Enter Instagram Link">
+
+<br><br>
+
+<button class="buy"
+onclick="payNow(200,'2K Followers','insta3')">
+
 Buy Now
-</button>
-</div>
 
-<div class="card">
-<h2>3K Followers</h2>
-<div class="price">₹300</div><br>
-<button class="buy" onclick="openPay('3K Followers','₹300')">
+</button></div><div class="card"><h2>5K Followers</h2><div class="price">₹350</div><input type="text"
+id="insta4"
+class="instaInput"
+placeholder="Enter Instagram Link">
+
+<br><br>
+
+<button class="buy"
+onclick="payNow(350,'5K Followers','insta4')">
+
 Buy Now
-</button>
-</div>
 
-<div class="card">
-<h2>5K Followers</h2>
-<div class="price">₹350</div><br>
-<button class="buy" onclick="openPay('5K Followers','₹350')">
+</button></div><div class="card"><h2>10K Followers</h2><div class="price">₹450</div><input type="text"
+id="insta5"
+class="instaInput"
+placeholder="Enter Instagram Link">
+
+<br><br>
+
+<button class="buy"
+onclick="payNow(450,'10K Followers','insta5')">
+
 Buy Now
-</button>
-</div>
 
-<div class="card">
-<h2>10K Followers</h2>
-<div class="price">₹450</div><br>
-<button class="buy" onclick="openPay('10K Followers','₹450')">
-Buy Now
-</button>
-</div>
-
-<!-- FEATURES -->
-
-<div class="features">
-🇮🇳 Indian Followers <br>
+</button></div><!-- FEATURES --><div class="features">🇮🇳 Indian Followers <br>
 🔒 Non Drop Guarantee <br>
 ⚡ Fast Delivery 10–30 Minutes
-</div>
 
-<!-- PAYMENT PAGE -->
+</div><!-- POPUP --><div class="noti" id="noti"></div><!-- RAZORPAY --><script src="https://checkout.razorpay.com/v1/checkout.js"></script><script>
 
-<div class="popup" id="popup">
+/* 🔥 RAZORPAY PAYMENT */
 
-<div class="box">
+function payNow(amount,pack,inputId){
 
-<button class="backTop" onclick="closePop()">⬅ Back</button>
+let insta =
+document.getElementById(inputId).value.trim();
 
-<h2 id="title"></h2>
-<h3 id="price"></h3>
+if(insta==""){
 
-<img src="dk.jpg" width="200"
-style="background:white;padding:10px;border-radius:10px;">
-
-<div class="step">Step 1: Scan & Pay</div>
-
-<div class="step">Step 2: Enter Instagram Link</div>
-
-<div class="step">Step 3: Click Payment Done</div>
-
-<div class="timer">
-⏳ Offer Ends In:
-<span id="time">10:00</span>
-</div>
-
-<input id="insta" placeholder="Enter Instagram Link">
-
-<div class="error" id="err">
-⚠️ Enter Instagram link
-</div>
-
-<button class="btn" onclick="pay()">
-Payment Done
-</button>
-
-<button class="back" onclick="closePop()">
-Back
-</button>
-
-</div>
-</div>
-
-<div class="noti" id="noti"></div>
-
-<script>
-
-/* OPEN */
-function openPay(t,p){
-
-document.getElementById("popup").style.display="block";
-
-document.getElementById("title").innerText=t;
-
-document.getElementById("price").innerText=p;
-
-startTimer();
-
-}
-
-/* CLOSE */
-function closePop(){
-
-document.getElementById("popup").style.display="none";
-
-}
-
-/* TIMER */
-
-let time=600;
-
-let timerInterval;
-
-function startTimer(){
-
-clearInterval(timerInterval);
-
-time=600;
-
-timerInterval=setInterval(()=>{
-
-let m=Math.floor(time/60);
-
-let s=time%60;
-
-if(s<10)s="0"+s;
-
-document.getElementById("time").innerText=m+":"+s;
-
-time--;
-
-if(time<0){
-
-clearInterval(timerInterval);
-
-document.getElementById("time").innerText="Expired";
-
-}
-
-},1000);
-
-}
-
-/* PAYMENT */
-
-function pay(){
-
-let v=document.getElementById("insta").value.trim();
-
-if(v==""){
-
-document.getElementById("err").style.display="block";
+alert("Enter Instagram Link");
 
 return;
 
 }
 
-document.body.innerHTML=`
+var options = {
 
-<div style="height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;">
+"key":"rzp_test_51ABCXYZ123456",
 
-<div class="loader"></div>
+"amount":amount*100,
 
-<h1>VERIFYING PAYMENT...</h1>
+"currency":"INR",
 
-<p>Send screenshot on WhatsApp</p>
+"name":"Insta Growth India",
 
-</div>
+"description":pack,
 
-`;
+"image":"https://cdn-icons-png.flaticon.com/512/174/174855.png",
 
-setTimeout(()=>{
+"handler":function(response){
 
 document.body.innerHTML=`
 
-<div style="height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;">
+<div class="success">
 
 <div style="background:#00c853;
 width:120px;
@@ -398,24 +246,31 @@ font-size:60px;">
 <h1>PAYMENT SUCCESSFUL</h1>
 
 <p>
-SEND PAYMENT SCREENSHOT &
-INSTAGRAM ID ON WHATSAPP
+
+Package: ${pack}<br><br>
+
+Instagram:<br>
+
+${insta}
+
 </p>
 
-<a href="https://wa.me/917258028139"
+<a class="whatsapp"
 
-style="background:#25D366;
-color:white;
-padding:15px 30px;
-border-radius:30px;
-text-decoration:none;">
+href="https://wa.me/917258028139?text=Payment%20Done%20For:%20${pack}%20Instagram:%20${insta}"
+
+target="_blank">
 
 CHAT ON WHATSAPP
 
 </a>
 
+<br><br>
+
 <button onclick="location.reload()"
-style="margin-top:10px;">
+style="padding:12px 25px;
+border:none;
+border-radius:20px;">
 
 BACK HOME
 
@@ -425,27 +280,40 @@ BACK HOME
 
 `;
 
-},2000);
+},
+
+"theme":{
+
+"color":"#ff00cc"
 
 }
 
-/* LIVE */
+};
+
+var rzp1 = new Razorpay(options);
+
+rzp1.open();
+
+}
+
+/* LIVE WATCH */
 
 setInterval(()=>{
 
 document.getElementById("watch").innerText=
+
 Math.floor(Math.random()*100+80);
 
 },2000);
 
-/* POPUP DATA */
+/* FAKE SALES POPUP */
 
 let users=[
 "insta_raj",
-"growth_hub",
 "viral_king",
-"insta_pro",
-"fast_user"
+"growth_hub",
+"fast_user",
+"real_followers"
 ];
 
 let cities=[
@@ -456,15 +324,12 @@ let cities=[
 "Jaipur"
 ];
 
-let packages=[
+let packs=[
 "1K",
 "2K",
-"3K",
 "5K",
 "10K"
 ];
-
-/* POPUP */
 
 function showPopup(){
 
@@ -472,12 +337,16 @@ let u=users[Math.floor(Math.random()*users.length)];
 
 let c=cities[Math.floor(Math.random()*cities.length)];
 
-let p=packages[Math.floor(Math.random()*packages.length)];
+let p=packs[Math.floor(Math.random()*packs.length)];
 
 let n=document.getElementById("noti");
 
 n.innerText=
-"🔥 "+u+" just bought "+p+
+
+"🔥 "+u+
+
+" just bought "+p+
+
 " followers from "+c;
 
 n.classList.add("show");
@@ -487,6 +356,7 @@ setTimeout(()=>{
 n.classList.remove("show");
 
 let delay=
+
 Math.floor(Math.random()*2000)+5000;
 
 setTimeout(showPopup,delay);
@@ -497,7 +367,5 @@ setTimeout(showPopup,delay);
 
 setTimeout(showPopup,3000);
 
-</script>
-
-</body>
+</script></body>
 </html>
