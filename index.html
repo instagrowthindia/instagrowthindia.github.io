@@ -263,22 +263,306 @@ ${insta}
 
 </p>
 
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Insta Growth India</title><style>
+
+body{
+margin:0;
+font-family:sans-serif;
+background:linear-gradient(135deg,#ff00cc,#7b00ff);
+color:white;
+text-align:center;
+}
+
+/* TITLE */
+
+h1{
+margin-top:30px;
+font-size:34px;
+}
+
+/* LIVE */
+
+.live{
+background:black;
+padding:10px 18px;
+border-radius:30px;
+display:inline-block;
+margin-top:20px;
+font-size:18px;
+}
+
+/* CARD */
+
+.card{
+background:linear-gradient(135deg,#7b1fa2,#c2185b);
+margin:20px;
+padding:25px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+.price{
+background:#00c853;
+padding:8px 20px;
+border-radius:15px;
+display:inline-block;
+margin:10px 0;
+font-size:20px;
+font-weight:bold;
+}
+
+.buy{
+background:#ff1744;
+padding:14px 28px;
+border:none;
+border-radius:20px;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+/* INPUT */
+
+.instaInput{
+width:90%;
+padding:14px;
+border:none;
+border-radius:15px;
+margin-top:15px;
+font-size:16px;
+}
+
+/* FEATURES */
+
+.features{
+margin:30px;
+font-size:16px;
+line-height:30px;
+}
+
+/* SUCCESS */
+
+.success{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+/* WHATSAPP BUTTON */
+
+.whatsapp{
+background:#25D366;
+padding:16px 35px;
+border-radius:35px;
+color:white;
+text-decoration:none;
+font-size:22px;
+font-weight:bold;
+display:inline-block;
+}
+
+/* POPUP */
+
+.noti{
+position:fixed;
+bottom:80px;
+left:50%;
+transform:translateX(-50%) translateY(100px);
+background:white;
+color:black;
+padding:18px 20px;
+border-radius:20px;
+width:75%;
+max-width:320px;
+display:none;
+font-size:15px;
+line-height:22px;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+transition:0.4s;
+}
+
+.noti.show{
+display:block;
+transform:translateX(-50%) translateY(0);
+}
+
+</style></head><body><h1>🚀 TODAY BIG OFFER 🚀</h1><div class="live">🔴 LIVE
+<span id="watch">120</span>
+watching now
+
+</div><!-- 100 --><div class="card"><h2>100 Followers (DEMO)</h2><div class="price">₹20</div><input
+type="text"
+id="insta1"
+class="instaInput"
+placeholder="Enter Instagram Link">
+
+<br><br>
+
+<button
+class="buy"
+onclick="payNow(20,'100 Followers','insta1')">
+
+Buy Now
+
+</button></div><!-- 1K --><div class="card"><h2>1K Followers</h2><div class="price">₹150</div><input
+type="text"
+id="insta2"
+class="instaInput"
+placeholder="Enter Instagram Link">
+
+<br><br>
+
+<button
+class="buy"
+onclick="payNow(150,'1K Followers','insta2')">
+
+Buy Now
+
+</button></div><!-- 2K --><div class="card"><h2>2K Followers</h2><div class="price">₹200</div><input
+type="text"
+id="insta3"
+class="instaInput"
+placeholder="Enter Instagram Link">
+
+<br><br>
+
+<button
+class="buy"
+onclick="payNow(200,'2K Followers','insta3')">
+
+Buy Now
+
+</button></div><!-- 5K --><div class="card"><h2>5K Followers</h2><div class="price">₹350</div><input
+type="text"
+id="insta4"
+class="instaInput"
+placeholder="Enter Instagram Link">
+
+<br><br>
+
+<button
+class="buy"
+onclick="payNow(350,'5K Followers','insta4')">
+
+Buy Now
+
+</button></div><!-- 10K --><div class="card"><h2>10K Followers</h2><div class="price">₹450</div><input
+type="text"
+id="insta5"
+class="instaInput"
+placeholder="Enter Instagram Link">
+
+<br><br>
+
+<button
+class="buy"
+onclick="payNow(450,'10K Followers','insta5')">
+
+Buy Now
+
+</button></div><!-- FEATURES --><div class="features">🇮🇳 Indian Followers <br>
+
+🔒 Non Drop Guarantee <br>
+
+⚡ Fast Delivery 10–30 Minutes
+
+</div><!-- POPUP --><div class="noti" id="noti"></div><!-- RAZORPAY --><script src="https://checkout.razorpay.com/v1/checkout.js"></script><script>
+
+/* PAYMENT */
+
+function payNow(amount,pack,inputId){
+
+let insta =
+document.getElementById(inputId).value.trim();
+
+if(insta==""){
+
+alert("Enter Instagram Link");
+
+return;
+
+}
+
+var options = {
+
+"key":"rzp_live_Sumt1ycOKlQtEm",
+
+"amount":amount*100,
+
+"currency":"INR",
+
+"name":"Insta Growth India",
+
+"description":pack,
+
+"image":"https://cdn-icons-png.flaticon.com/512/174/174855.png",
+
+"handler":function(response){
+
+document.body.innerHTML=`
+
+<div class="success">
+
+<div style="background:#00c853;
+width:120px;
+height:120px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:60px;">
+
+✔
+
+</div>
+
+<h1 style="font-size:45px;
+margin-top:20px;">
+
+PAYMENT SUCCESSFUL
+
+</h1>
+
+<p style="font-size:22px;
+line-height:38px;
+padding:20px;">
+
+✅ Package: ${pack}<br><br>
+
+📸 Instagram Link:<br>
+
+${insta}<br><br>
+
+⚡ Send Your Instagram Link<br>
+On My WhatsApp
+
+</p>
+
 <a class="whatsapp"
 
-href="https://wa.me/917258028139?text=Payment%20Done%20For:%20${pack}%20Instagram:%20${insta}"
+href="https://wa.me/917258028139?text=Hello%20I%20Have%20Paid%20For%20${pack}%20My%20Instagram%20Link:%20${insta}"
 
 target="_blank">
 
-CHAT ON WHATSAPP
+SEND ON WHATSAPP
 
 </a>
 
 <br><br>
 
 <button onclick="location.reload()"
-style="padding:12px 25px;
+
+style="padding:14px 30px;
 border:none;
-border-radius:20px;">
+border-radius:25px;
+font-size:20px;
+font-weight:bold;">
 
 BACK HOME
 
@@ -302,7 +586,7 @@ rzp1.open();
 
 }
 
-/* LIVE */
+/* LIVE WATCH */
 
 setInterval(()=>{
 
@@ -373,5 +657,4 @@ setTimeout(showPopup,delay);
 
 setTimeout(showPopup,3000);
 
-</script></body>
-</html>
+</script></body></html>
